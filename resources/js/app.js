@@ -1,15 +1,16 @@
 require('./bootstrap');
 
-import Vue from 'vue'
+import { createApp } from 'vue';
 
 //Main pages
-import Dropdown from './components/Dropdown.vue'
+import Dropdown from './components/Dropdown.vue';
 
-
-const app = new Vue({
-    el: '#app',
-    components: { Dropdown },
+const app = createApp({
     data() {
-        return { mobileMenuOpen: false }
+        return { mobileMenuOpen: false };
     }
 });
+
+app.component('Dropdown', Dropdown);
+
+app.mount('#app');
