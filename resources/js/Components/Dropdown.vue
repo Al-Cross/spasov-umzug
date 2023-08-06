@@ -2,7 +2,7 @@
 import { watch, ref } from 'vue';
 import ContactInfo from './ContactInfo.vue';
 import Appointment from './Appointment.vue';
-import FormError from './FormError';
+import AddressFromTo from './AddressFromTo.vue';
 import { rooms } from '../../data/menus';
 import { mainMenus } from '../../data/main-menus';
 import { services } from '../../data/services';
@@ -136,94 +136,7 @@ function columnize(menu) {
 					<i v-if="!mainMenus[2].status" class="fas fa-arrow-down absolute lg:right-56" />
 					<i v-if="mainMenus[2].status" class="fas fa-arrow-up absolute lg:right-56" />
 				</button>
-				<div v-show="mainMenus[2].status"
-					class="grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="strasse">Straße/ Nr. *</label>
-						<input v-model="formData.von_strasse" type="text" name="von_strasse"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-						<form-error v-if="formData.errors.von_strasse" :errors="formData.errors">@{{ formData.errors.von_strasse[0] }}</form-error>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="ort">Ort *</label>
-						<input v-model="formData.von_ort" type="text" name="von_ort"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-						<form-error v-if="formData.errors.von_ort" :errors="formData.errors">@{{ formData.errors.von_ort[0] }}</form-error>
-					</div>
-					<div class="grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20">
-						<div class="flex flex-col space-y-1.5 md:mb-2 lg:mb-0">
-							<label class="tracking-wide text-gray-700 font-bold mb-2" for="etage">Etage</label>
-							<input v-model="formData.von_etage" type="text" name="von_etage"
-								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-							<form-error v-if="formData.errors.von_etage" :errors="formData.errors">@{{ formData.errors.von_etage[0] }}</form-error>
-						</div>
-						<div class="flex flex-col space-y-1.5">
-							<label class="tracking-wide text-gray-700 font-bold mb-2" for="groesse">Größe (in q. m.)
-								*</label>
-							<input v-model="formData.von_groesse" type="text" name="von_groesse"
-								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-							<form-error v-if="formData.errors.von_groesse" :errors="formData.errors">@{{ formData.errors.von_groesse[0] }}</form-error>
-						</div>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="fahrstuhl">Fahrstuhl</label>
-						<select v-model="formData.von_fahrstuhl" name="von_fahrstuhl"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-48">
-							<option value="Nicht vorhanden" selected>Nicht vorhanden</option>
-							<option value="2-4 Personen">2-4 Personen</option>
-							<option value="5-8 Personen">5-8 Personen</option>
-							<option value="Lastenfahrstuhl">Lastenfahrstuhl</option>
-						</select>
-						<form-error v-if="formData.errors.von_fahrstuhl" :errors="formData.errors">@{{ formData.errors.von_fahrstuhl[0] }}</form-error>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="postleitzahl">Postleitzahl *</label>
-						<input v-model="formData.von_postleitzahl" type="text" name="von_postleitzahl"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-1/2 lg:w-1/4">
-						<form-error v-if="formData.errors.von_postleitzahl" :errors="formData.errors">@{{ formData.errors.von_postleitzahl[0]
-						}}</form-error>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="land">Land *</label>
-						<input v-model="formData.von_land" type="text" name="von_land"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-						<form-error v-if="formData.errors.von_land" :errors="formData.errors">@{{ formData.errors.von_land[0] }}</form-error>
-					</div>
-					<div class="grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20">
-						<div class="flex flex-col space-y-7 md:space-y-1.5">
-							<label class="tracking-wide text-gray-700 font-bold mb-2" for="raume">Anzahl Räume *</label>
-							<input v-model="formData.von_raume" type="text" name="von_raume"
-								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-							<form-error v-if="formData.errors.von_raume" :errors="formData.errors">@{{ formData.errors.von_raume[0] }}</form-error>
-						</div>
-						<div class="flex flex-col space-y-1.5">
-							<label class="tracking-wide text-gray-700 font-bold mb-2" for="tragestrecke">
-								Tragestrecke zum LKW (in m) *
-							</label>
-							<input v-model="formData.von_tragestrecke" type="text" name="von_tragestrecke"
-								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-							<form-error v-if="formData.errors.von_tragestrecke" :errors="formData.errors">@{{ formData.errors.von_tragestrecke[0]
-							}}</form-error>
-						</div>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="gebaudeart">Gebäudeart</label>
-						<select v-model="formData.von_gebaudeart" name="von_gebaudeart"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-1/3">
-							<option value="Mehrfamilienhaus" selected>Mehrfamilienhaus</option>
-							<option value="Einfamilienhaus">Einfamilienhaus</option>
-							<option value="Doppelhaushalfte">Doppelhaushälfte</option>
-							<option value="Reihenhaus">Reihenhaus</option>
-							<option value="Maisonette">Maisonette-Wohnung</option>
-							<option value="Garage">Garage</option>
-							<option value="Lager">Lager</option>
-							<option value="Burogebaude">Bürogebäude</option>
-							<option value="Bungalow">Bungalow</option>
-						</select>
-						<form-error v-if="formData.errors.von_gebaudeart" :errors="formData.errors">@{{ formData.errors.von_gebaudeart[0]
-						}}</form-error>
-					</div>
-				</div>
+				<AddressFromTo v-show="mainMenus[2].status" direction="von" />
 
 				<button type="button"
 					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
@@ -232,95 +145,7 @@ function columnize(menu) {
 					<i v-if="!mainMenus[3].status" class="fas fa-arrow-down absolute lg:right-56"></i>
 					<i v-if="mainMenus[3].status" class="fas fa-arrow-up absolute lg:right-56"></i>
 				</button>
-				<div v-show="mainMenus[3].status"
-					class="grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="strasse">Straße/ Nr. *</label>
-						<input v-model="formData.nach_strasse" type="text" name="nach_strasse"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-						<form-error v-if="formData.errors.nach_strasse" :errors="formData.errors">@{{ formData.errors.nach_strasse[0] }}</form-error>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="ort">Ort *</label>
-						<input v-model="formData.nach_ort" type="text" name="nach_ort"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-						<form-error v-if="formData.errors.nach_ort" :errors="formData.errors">@{{ formData.errors.nach_ort[0] }}</form-error>
-					</div>
-					<div class="grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20">
-						<div class="flex flex-col space-y-1.5 md:mb-2 lg:mb-0">
-							<label class="tracking-wide text-gray-700 font-bold mb-2" for="etage">Etage</label>
-							<input v-model="formData.nach_etage" type="text" name="nach_etage"
-								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-							<form-error v-if="formData.errors.nach_etage" :errors="formData.errors">@{{ formData.errors.nach_etage[0] }}</form-error>
-						</div>
-						<div class="flex flex-col space-y-1.5">
-							<label class="tracking-wide text-gray-700 font-bold mb-2" for="groesse">Größe (in q. m.)
-								*</label>
-							<input v-model="formData.nach_groesse" type="text" name="nach_groesse"
-								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-							<form-error v-if="formData.errors.nach_groesse" :errors="formData.errors">@{{ formData.errors.nach_groesse[0]
-							}}</form-error>
-						</div>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="fahrstuhl">Fahrstuhl</label>
-						<select v-model="formData.nach_fahrstuhl" name="nach_fahrstuhl"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-48">
-							<option value="Nicht vorhanden" selected>Nicht vorhanden</option>
-							<option value="2-4 personen">2-4 Personen</option>
-							<option value="5-8 personen">5-8 Personen</option>
-							<option value="Lastenfahrstuhl">Lastenfahrstuhl</option>
-						</select>
-						<form-error v-if="formData.errors.nach_fahrstuhl" :errors="formData.errors">@{{ formData.errors.nach_fahrstuhl[0]
-						}}</form-error>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="postleitzahl">Postleitzahl *</label>
-						<input v-model="formData.nach_postleitzahl" type="text" name="nach_postleitzahl"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-1/2 lg:w-1/4">
-						<form-error v-if="formData.errors.nach_postleitzahl" :errors="formData.errors">@{{ formData.errors.nach_postleitzahl[0]
-						}}</form-error>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="land">Land *</label>
-						<input v-model="formData.nach_land" type="text" name="nach_land"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-						<form-error v-if="formData.errors.nach_land" :errors="formData.errors">@{{ formData.errors.nach_land[0] }}</form-error>
-					</div>
-					<div class="grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20">
-						<div class="flex flex-col space-y-7 md:space-y-1.5">
-							<label class="tracking-wide text-gray-700 font-bold mb-2" for="raume">Anzahl Räume *</label>
-							<input v-model="formData.nach_raume" type="text" name="nach_raume"
-								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-							<form-error v-if="formData.errors.nach_raume" :errors="formData.errors">@{{ formData.errors.nach_raume[0] }}</form-error>
-						</div>
-						<div class="flex flex-col space-y-1.5">
-							<label class="tracking-wide text-gray-700 font-bold mb-2" for="tragestrecke">Tragestrecke zum
-								LKW (in m) *</label>
-							<input v-model="formData.nach_tragestrecke" type="text" name="nach_tragestrecke"
-								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-							<form-error v-if="formData.errors.nach_tragestrecke" :errors="formData.errors">@{{ formData.errors.nach_tragestrecke[0]
-							}}</form-error>
-						</div>
-					</div>
-					<div class="flex flex-col space-y-1.5">
-						<label class="tracking-wide text-gray-700 font-bold mb-2" for="gebaudeart">Gebäudeart</label>
-						<select v-model="formData.nach_gebaudeart" name="nach_gebaudeart"
-							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-1/3">
-							<option value="Mehrfamilienhaus" selected>Mehrfamilienhaus</option>
-							<option value="Einfamilienhaus">Einfamilienhaus</option>
-							<option value="Doppelhaushalfte">Doppelhaushälfte</option>
-							<option value="Reihenhaus">Reihenhaus</option>
-							<option value="Maisonette">Maisonette-Wohnung</option>
-							<option value="Garage">Garage</option>
-							<option value="Lager">Lager</option>
-							<option value="Burogebaude">Bürogebäude</option>
-							<option value="Bungalow">Bungalow</option>
-						</select>
-						<form-error v-if="formData.errors.nach_gebaudeart" :errors="formData.errors">@{{ formData.errors.nach_gebaudeart[0]
-						}}</form-error>
-					</div>
-				</div>
+				<AddressFromTo v-show="mainMenus[3].status" direction="nach" />
 
 				<button type="button"
 					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
