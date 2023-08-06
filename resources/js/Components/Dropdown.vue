@@ -1,271 +1,474 @@
-<script>
+<script setup>
+import { watch, ref } from 'vue';
 import FormError from './FormError';
+import { rooms } from '../../data/menus';
+import { mainMenus } from '../../data/main-menus';
+import { services } from '../../data/services';
+import { formDataStore } from '../../data/formStore';
 
-export default {
-	components: { FormError },
+let menus = rooms,
+	formData = formDataStore,
+	errors = [],
+	success = ref(false);
 
-	data() {
-		return {
-			menus: [
-				{
-					id: 0,
-					title: 'Arbeitszimmer',
-					contents: [{ name: 'Aktienschrank (laufende Meter)', value: 0, volume: Math.random()}, { name: 'Bücherregal, nicht zerlegbar (laufende Meter)', value: 0, volume: Math.random()}, { name: 'Deckenlampe', value: 0, volume: Math.random()}, { name: 'Rollcontainer', value: 0, volume: Math.random()}, { name: 'Schreibtisch (bis 1,6 m)', value: 0, volume: Math.random()}, { name: 'Schreibtischstuhl', value: 0, volume: Math.random()}, { name: 'Sessel ohne Armlehnen', value: 0, volume: Math.random()}, { name: 'Teppich', value: 0, volume: Math.random()}, { name: 'Tisch bis 1,0 m', value: 0, volume: Math.random()}, { name: 'Tisch über 1,2 m', value: 0, volume: Math.random()}, { name: 'Umzugskarton über 80 L', value: 0, volume: Math.random()}, { name: 'Brücke', value: 0, volume: Math.random()}, { name: 'Bücherregal, zerlegbar (laufende Meter)', value: 0, volume: Math.random()}, { name: 'Kommode', value: 0, volume: Math.random()}, { name: 'Schrank zerlegbar (laufende Meter)', value: 0, volume: Math.random()}, { name: 'Schreibtisch über 1,6 m', value: 0, volume: Math.random()}, { name: 'Sessel mit Armlehnen', value: 0, volume: Math.random()}, { name: 'Stehlampe', value: 0, volume: Math.random()}, { name: 'Tisch bis 0,6 m', value: 0, volume: Math.random()}, { name: 'Tisch über 1,2 m', value: 0, volume: Math.random()}, { name: 'Umzugskarton bis 80 L', value: 0, volume: Math.random()},
-					],
-					status: false,
-					chunked: [],
-					itemsPerColumn: 11,
-					volume: 0
-				},
-				{
-					id: 1,
-					title: 'Diele / Bad',
-					contents: [{ name: 'Deckenlampe', value: 0, volume: Math.random() }, { name: 'Regal', value: 0, volume: Math.random() }, { name: 'Teppich', value: 0, volume: Math.random() }, { name: 'Truhe, Kommode', value: 0, volume: Math.random() }, { name: 'Umzugskarton über 80 L', value: 0, volume: Math.random() }, { name: 'Wäschepuff', value: 0, volume: Math.random() }, { name: 'Hut-/Kleiderablage', value: 0, volume: Math.random() }, { name: 'Stuhl/Hocker', value: 0, volume: Math.random() }, { name: 'Toilettenschrank', value: 0, volume: Math.random() }, { name: 'Umzugskarton bis 80 L', value: 0, volume: Math.random() }, { name: 'Waschmaschine/Trockner', value: 0, volume: Math.random() }, { name: 'Wäschespinne', value: 0, volume: Math.random() },
-					],
-					status: false,
-					chunked: [],
-					itemsPerColumn: 6,
-					volume: 0
-				},
-				{
-					id: 2,
-					title: 'Esszimmer',
-					contents: [{ name: 'Brücke', value: 0, volume: Math.random() }, { name: 'Bücherregal, nicht zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Deckenlampe', value: 0, volume: Math.random() }, { name: 'Hausbar', value: 0, volume: Math.random() }, { name: 'Sideboard', value: 0, volume: Math.random() }, { name: 'Stuhl mit Armlehnen', value: 0, volume: Math.random() }, { name: 'Teppich', value: 0, volume: Math.random() }, { name: 'Tisch bis 1,0 m', value: 0, volume: Math.random() }, { name: 'Tisch über 1,2 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton über 80 L', value: 0, volume: Math.random() }, { name: 'Buffet ohne Aufsatz', value: 0, volume: Math.random() }, { name: 'Bücherregal, zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Eckbank (Anzahl Sitzplätze)', value: 0, volume: Math.random() }, { name: 'Schrank, zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Stuhl', value: 0, volume: Math.random() }, { name: 'Teewagen, nicht zerlegbar', value: 0, volume: Math.random() }, { name: 'Tisch bis 0,6 m', value: 0, volume: Math.random() }, { name: 'Tisch über 1,2 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton bis 80 L', value: 0, volume: Math.random() }, { name: 'Vitrine (Glasschrank)', value: 0, volume: Math.random() },
-					],
-					status: false,
-					chunked: [],
-					itemsPerColumn: 10,
-					volume: 0
-				},
-				{
-					id: 3,
-					title: 'Keller / Speicher / Garten',
-					contents: [{ name: 'Autoreifen', value: 0, volume: Math.random() }, { name: 'Blumenkübel/Kasten', value: 0, volume: Math.random() }, { name: 'Dreirad/Kinderrad', value: 0, volume: Math.random() }, { name: 'Gartenwerkzeug', value: 0 }, { name: 'Kinderwagen', value: 0 }, { name: 'Koffer', value: 0 }, { name: 'Motorrad', value: 0, volume: Math.random() }, { name: 'Plastikbox', value: 0, volume: Math.random() }, { name: 'Rasenmäher, Motor', value: 0, volume: Math.random() }, { name: 'Schlitten', value: 0, volume: Math.random() }, { name: 'Schubkarre', value: 0, volume: Math.random() }, { name: 'Sonnenschirm', value: 0, volume: Math.random() }, { name: 'Umzugskarton über 80 L', value: 0, volume: Math.random() }, { name: 'Werkzeugkoffer', value: 0, volume: Math.random() }, { name: 'Billardtisch', value: 0, volume: Math.random() }, { name: 'Bügelbrett', value: 0, volume: Math.random() }, { name: 'Fahrrad/Moped', value: 0, volume: Math.random() }, { name: 'Kinderanhänger', value: 0, volume: Math.random() }, { name: 'Klapptisch/Klappstuhl', value: 0, volume: Math.random() }, { name: 'Leiter (je angefangener Meter)', value: 0, volume: Math.random() }, { name: 'Mülltonne', value: 0, volume: Math.random() }, { name: 'Rasenmäher, Hand', value: 0, volume: Math.random() }, { name: 'Regal, zerlegbar (je angefangener Meter)', value: 0, volume: Math.random() }, { name: 'Schrank, zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Ski', value: 0, volume: Math.random() }, { name: 'Staubsauger', value: 0, volume: Math.random() }, { name: 'Umzugskarton bis 80 L', value: 0, volume: Math.random() }, { name: 'Werkbank, zerlegbar', value: 0, volume: Math.random() }, { name: 'Werkzeugschrank', value: 0, volume: Math.random() },
-					],
-					status: false,
-					chunked: [],
-					itemsPerColumn: 15,
-					volume: 0
-				},
-				{
-					id: 4,
-					title: 'Kinderzimmer / Studio',
-					contents: [{ name: 'Anbauwand bis 38 cm (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Bett, komplett', value: 0, volume: Math.random() }, { name: 'Brücke', value: 0, volume: Math.random() }, { name: 'Bücherregal, zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Etagenbett, komplett', value: 0, volume: Math.random() }, { name: 'Kleiderbehältnis', value: 0, volume: Math.random() }, { name: 'Kommode', value: 0, volume: Math.random() }, { name: 'Nachttisch', value: 0, volume: Math.random() }, { name: 'Schrank, zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Spielzeugkiste', value: 0, volume: Math.random() }, { name: 'Teppich', value: 0, volume: Math.random() }, { name: 'Tisch bis 1,0 m', value: 0, volume: Math.random() }, { name: 'Tisch bis 1,2 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton über 80 L', value: 0, volume: Math.random() }, { name: 'Anbauwand über 38 cm Tiefe (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Bettzeug, je Betteinheit', value: 0, volume: Math.random() }, { name: 'Bücherregal, nicht zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Deckenlampe', value: 0, volume: Math.random() }, { name: 'Kinderbett, komplett', value: 0, volume: Math.random() }, { name: 'Klettergerüst (je angefangener Meter)', value: 0, volume: Math.random() }, { name: 'Laufgitter', value: 0, volume: Math.random() }, { name: 'Schrank bis zwei Türen, nicht zerlegbar', value: 0, volume: Math.random() }, { name: 'Schreibpult', value: 0, volume: Math.random() }, { name: 'Stuhl/Hocker', value: 0, volume: Math.random() }, { name: 'Tisch bis 0,6 m', value: 0, volume: Math.random() }, { name: 'Tisch bis 1,2 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton bis 80 L', value: 0, volume: Math.random() },
-					],
-					status: false,
-					chunked: [],
-					itemsPerColumn: 14,
-					volume: 0
-				},
-				{
-					id: 5,
-					title: 'Küche',
-					contents: [{ name: 'Arbeitsplatte, nicht unterbrochen (je angefangener Meter)', value: 0, volume: Math.random() }, { name: 'Buffet mit Aufsätzen', value: 0, volume: Math.random() }, { name: 'Eckbank (Anzahl Sitzplätze)', value: 0, volume: Math.random() }, { name: 'Herd', value: 0, volume: Math.random() }, { name: 'Kühlschrank/Truhe über 120 L', value: 0, volume: Math.random() }, { name: 'Stuhl', value: 0, volume: Math.random() }, { name: 'Tisch bis 0,6 m', value: 0, volume: Math.random() }, { name: 'Tisch bis 1,2 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton bis 80 L', value: 0, volume: Math.random() }, { name: 'Unterteil (Anzahl Türen)', value: 0, volume: Math.random() }, { name: 'Besenschrank', value: 0, volume: Math.random() }, { name: 'Deckenlampe', value: 0, volume: Math.random() }, { name: 'Geschirrspülmaschine', value: 0, volume: Math.random() }, { name: 'Kühlschrank/Truhe bis 120 L', value: 0, volume: Math.random() }, { name: 'Oberteil (Anzahl Türen)', value: 0, volume: Math.random() }, { name: 'Teppich', value: 0, volume: Math.random() }, { name: 'Tisch bis 1,0 m', value: 0, volume: Math.random() }, { name: 'Tisch über 1,2 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton über 80 L', value: 0, volume: Math.random() }, { name: 'Waschmaschine/Trockner', value: 0, volume: Math.random() },
-					],
-					status: false,
-					chunked: [],
-					itemsPerColumn: 10,
-					volume: 0
-				},
-				{
-					id: 6,
-					title: 'Schlafzimmer',
-					contents: [{ name: 'Bettumbau', value: 0, volume: Math.random() }, { name: 'Deckenlampe', value: 0, volume: Math.random() }, { name: 'Einzelbett, komplett', value: 0, volume: Math.random() }, { name: 'Frisierkommode mit Spiegel', value: 0, volume: Math.random() }, { name: 'Kommode', value: 0, volume: Math.random() }, { name: 'Schrank bis 2 Türen, nicht zerlegbar', value: 0, volume: Math.random() }, { name: 'Sideboard', value: 0, volume: Math.random() }, { name: 'Stuhl/Hocker', value: 0, volume: Math.random() }, { name: 'Umzugskarton über 80 L', value: 0, volume: Math.random() }, { name: 'Bettzeug (je Betteinheit)', value: 0, volume: Math.random() }, { name: 'Doppelbett, komplett', value: 0, volume: Math.random() }, { name: 'Französisches Bett, komplett', value: 0, volume: Math.random() }, { name: 'Kleiderbehältnis', value: 0, volume: Math.random() }, { name: 'Nachttisch', value: 0, volume: Math.random() }, { name: 'Schrank, zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Spiegel über 0,8 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton bis 80 L', value: 0, volume: Math.random() }, { name: 'Wäschetruhe', value: 0, volume: Math.random() },
-					],
-					status: false,
-					chunked: [],
-					itemsPerColumn: 9,
-					volume: 0
-				},
-				{
-					id: 7,
-					title: 'Wohnzimmer',
-					contents: [{ name: 'Anbauwand bis 38 cm Tiefe (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Bilder über 0,8 m', value: 0, volume: Math.random() }, { name: 'Buffet mit Aufsatz', value: 0, volume: Math.random() }, { name: 'Bücherregal, zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Fernseher', value: 0, volume: Math.random() }, { name: 'Heimorgel', value: 0, volume: Math.random() }, { name: 'Kommode', value: 0, volume: Math.random() }, { name: 'Musikschrank/Turm', value: 0, volume: Math.random() }, { name: 'Schreibtisch bis 1,6 m', value: 0, volume: Math.random() }, { name: 'Sekretär', value: 0, volume: Math.random() }, { name: 'Sessel ohne Armlehnen', value: 0, volume: Math.random() }, { name: 'Sitzlandschaft (Element), (Anzahl Sitzplätze)', value: 0, volume: Math.random() }, { name: 'Standuhr', value: 0, volume: Math.random() }, { name: 'Stereoanlage', value: 0, volume: Math.random() }, { name: 'Stuhl mit Armlehnen', value: 0, volume: Math.random() }, { name: 'Tisch bis 0,6 m', value: 0, volume: Math.random() }, { name: 'Tisch bis 1,2 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton bis 80 L', value: 0, volume: Math.random() }, { name: 'Wohnzimmerschrank, zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Anbauwand über 38 cm Tiefe (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Brücke', value: 0, volume: Math.random() }, { name: 'Bücherregal, nicht zerlegbar (laufende Meter)', value: 0, volume: Math.random() }, { name: 'Deckenlampe', value: 0, volume: Math.random() }, { name: 'Flügel', value: 0, volume: Math.random() }, { name: 'Klavier', value: 0, volume: Math.random() }, { name: 'Lüster', value: 0, volume: Math.random() }, { name: 'Nähmaschine (Schrank)', value: 0, volume: Math.random() }, { name: 'Schreibtisch über 1,6 m', value: 0, volume: Math.random() }, { name: 'Sessel mit Armlehnen', value: 0, volume: Math.random() }, { name: 'Sideboard', value: 0, volume: Math.random() }, { name: 'Sofa, Couch, Liege (Anzahl Sitzplätze)', value: 0, volume: Math.random() }, { name: 'Stehlampe', value: 0, volume: Math.random() }, { name: 'Stuhl', value: 0, volume: Math.random() }, { name: 'Teppich', value: 0, volume: Math.random() }, { name: 'Tisch bis 1,0 m', value: 0, volume: Math.random() }, { name: 'Tisch über 1,2 m', value: 0, volume: Math.random() }, { name: 'Umzugskarton über 80 L', value: 0, volume: Math.random() },
-					],
-					status: false,
-					chunked: [],
-					itemsPerColumn: 19,
-					volume: 0
+watch(errors, () => {
+	mainMenus.forEach(menu => {
+		menu.elements.some(str => str in errors) ? menu.status = true : menu.status = false;
+	});
+});
+
+function submit() {
+	let rooms = [];
+	let totalVolume = 0;
+
+	menus.forEach(menu => {
+		if (menu.volume != 0) {
+			let room = { room: menu.title, roomVolume: menu.volume };
+			room.elements = [];
+			menu.contents.forEach(furniture => {
+				if (furniture.value != 0) {
+					let item = {};
+					item.name = furniture.name;
+					item.value = furniture.value;
+					room.elements.push(item);
 				}
-			],
-			mainMenus: [
-				{
-					title: 'Auftraggeber',
-					elements: ['anrede', 'vorname', 'nachname', 'telefon', 'email'],
-					status: false,
-				},
-				{
-					title: 'Terminvereibarung',
-					elements: ['date', 'kostentraeger', 'bemerkungen'],
-					status: false
-				},
-				{
-					title: 'Umzug von',
-					elements: ['von_strasse', 'von_ort', 'von_etage', 'von_groesse', 'von_fahrstuhl', 'von_postleitzahl', 'von_land', 'von_raume', 'von_tragestrecke', 'von_gebaudeart'],
-					status: false,
-				},
-				{
-					title: 'Umzug nach',
-					elements: ['nach_strasse', 'nach_ort', 'nach_etage', 'nach_groesse', 'nach_fahrstuhl', 'nach_postleitzahl', 'nach_land', 'nach_raume', 'nach_tragestrecke', 'nach_gebaudeart'],
-					status: false
-				},
-				{
-					title: 'Umzugsgüter',
-					elements: [],
-					status: false
-				},
-				{
-					title: 'Sonstige Dienstleistungen',
-					elements: [],
-					status: false
-				}
-			],
-			formData: {
-				anrede: '',
-				vorname: '',
-				nachname: '',
-				telefon: '',
-				email: '',
-				date: '',
-				kostentraeger: '',
-				bemerkungen: '',
-				von_strasse: '',
-				von_ort: '',
-				von_etage: '',
-				von_groesse: '',
-				von_fahrstuhl: 'Nicht vorhanden',
-				von_postleitzahl: '',
-				von_land: '',
-				von_raume: '',
-				von_tragestrecke: '',
-				von_gebaudeart: 'Mehrfamilienhaus',
-				nach_strasse: '',
-				nach_ort: '',
-				nach_etage: '',
-				nach_groesse: '',
-				nach_fahrstuhl: 'Nicht vorhanden',
-				nach_postleitzahl: '',
-				nach_land: '',
-				nach_raume: '',
-				nach_tragestrecke: '',
-				nach_gebaudeart: 'Mehrfamilienhaus'
-			},
-			services: {
-				type: [
-					{
-						name: 'Montage / Demontage',
-						objects: ['Möbel', 'Lampen', 'Vorhänge', 'Küche', 'Installationsarbeiten']
-					},
-					{
-						name: 'Verpacken und Entpacken',
-						objects: ['Zerbrechliche Gegenstände', 'Alle Gegenstände']
-					},
-					{
-						name: 'Halteverbotszone',
-						objects: ['Genehmigung beantragen', 'Absperrung durch Auftragnehmer', 'Absperrung durch Auftraggeber', 'Absperrung nicht notwendig']
-					}
-				],
-				beladestelle: [],
-				entladestelle: []
-			},
-			errors: [],
-			success: false
-		};
-	},
-
-	watch: {
-		errors() {
-			this.mainMenus.forEach(menu => {
-				menu.elements.some(str => str in this.errors) ? menu.status = true : menu.status = false;
 			});
+
+			totalVolume = totalVolume + menu.volume;
+			rooms.push(room);
 		}
-	},
+	});
 
-	methods: {
-		submit() {
-			var rooms = [];
-			var totalVolume = 0;
+	axios.post('/calculator', {
+		userData: formData,
+		objects: rooms,
+		totalVolume: totalVolume,
+		loadingPoint: services.beladestelle,
+		unloadingPoint: services.entladestelle
+	})
+		.then(() => {
+			success.value = true;
+		})
+		.catch(error => {
+			errors = error.response.data.errors;
+		});
+};
 
-			this.menus.forEach(menu => {
-				if (menu.volume != 0) {
-					var room = { room: menu.title, roomVolume: menu.volume };
-					room.elements = [];
-					menu.contents.forEach(furniture => {
-						if (furniture.value != 0) {
-							var item = {};
-							item.name = furniture.name;
-							item.value = furniture.value;
-							room.elements.push(item);
-						}
-					});
-
-					totalVolume = totalVolume + menu.volume;
-					rooms.push(room);
-				}
-			});
-
-			axios.post('/calculator', {
-				userData: this.formData,
-				objects: rooms,
-				totalVolume: totalVolume,
-				loadingPoint: this.services.beladestelle,
-				unloadingPoint: this.services.entladestelle
-			})
-			.then((response) => {
-				this.success = true;
-			})
-			.catch(error => {
-				this.errors = error.response.data.errors;
-			});
-		},
-
-		toggleAccordion(name, submenu = false) {
-			if (submenu) {
-				this.menus.forEach(menu => {
-					if (menu.title == name) {
-						menu.status = !menu.status;
-					}
-				});
-			} else {
-				this.mainMenus.forEach(menu => {
-					if (menu.title == name) {
-						menu.status = !menu.status;
-					} else {}
-				});
+function toggleAccordion(name, submenu = false) {
+	if (submenu) {
+		menus.forEach(menu => {
+			if (menu.title == name) {
+				menu.status = !menu.status;
 			}
-		},
-
-
-		reduceVolume(room, object) {
-			if(object.value === 0) return;
-
-			room.volume == 0 ? room.volume = 0 : room.volume = room.volume - object.volume;
-			object.value--;
-		},
-
-		increaseVolume(room, object) {
-			room.volume = room.volume + object.volume;
-			object.value++;
-		},
-
-		calculateVolume(room) {
-			room.volume = 0;
-
-			room.contents.forEach(roomObject => {
-				room.volume += roomObject.volume * roomObject.value;
-			});
-		},
-
-		columnize(menu) {
-			if (menu.chunked.length == 0) {
-				var i = 0;
-				var length = menu.contents.length;
-
-				while (i < length) {
-					menu.chunked.push(menu.contents.slice(i, i += menu.itemsPerColumn));
-				}
+		});
+	} else {
+		mainMenus.forEach(menu => {
+			if (menu.title == name) {
+				menu.status = !menu.status;
 			}
+		});
+	}
+};
+
+
+function reduceVolume(room, object) {
+	if (object.value === 0) return;
+
+	room.volume == 0 ? room.volume = 0 : room.volume = room.volume - object.volume;
+	object.value--;
+};
+
+function increaseVolume(room, object) {
+	room.volume = room.volume + object.volume;
+	object.value++;
+};
+
+function calculateVolume(room) {
+	room.volume = 0;
+
+	room.contents.forEach(roomObject => {
+		room.volume += roomObject.volume * roomObject.value;
+	});
+};
+
+function columnize(menu) {
+	if (menu.chunked.length == 0) {
+		var i = 0;
+		var length = menu.contents.length;
+
+		while (i < length) {
+			menu.chunked.push(menu.contents.slice(i, i += menu.itemsPerColumn));
 		}
 	}
 };
 </script>
+
+<template>
+	<div class="container mx-auto px-6 md:px-16">
+		<div v-if="success.value" class="text-green-700 text-center p-3 mb-5">
+			Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist.
+		</div>
+		<form class="mt-7">
+			<div class="space-y-1.5">
+				<button type="button"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full"
+					:class="mainMenus[0].status ? 'bg-blue-200' : ''" @click="toggleAccordion(mainMenus[0].title)">
+					{{ mainMenus[0].title }}
+					<i v-if="!mainMenus[0].status" class="fas fa-arrow-down absolute lg:right-56" />
+					<i v-if="mainMenus[0].status" class="fas fa-arrow-up absolute lg:right-56" />
+				</button>
+				<div v-show="mainMenus[0].status"
+					class="md:grid md:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 transition duration-500 ease-in rounded-2xl w-full p-6">
+					<div class="flex flex-col col-span-2 space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="anrede">Anrede *</label>
+						<select v-model="formData.anrede" name="anrede"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-36">
+							<option value="" disabled selected>Auswählen</option>
+							<option value="Frau">Frau</option>
+							<option value="Herr">Herr</option>
+						</select>
+						<form-error v-if="errors.anrede" :errors="errors">@{{ errors.anrede[0] }}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="vorname">Vorname *</label>
+						<input v-model="formData.vorname" type="text" name="vorname"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.vorname" :errors="errors">@{{ errors.vorname[0] }}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="nachname">Nachname *</label>
+						<input v-model="formData.nachname" type="text" name="nachname"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.nachname" :errors="errors">@{{ errors.nachname[0] }}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="telefon">Telefonnummer *</label>
+						<input v-model="formData.telefon" type="text" name="telefon"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.telefon" :errors="errors">@{{ errors.telefon[0] }}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="email">Email Adresse *</label>
+						<input v-model="formData.email" type="email" name="email"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.email" :errors="errors">@{{ errors.email[0] }}</form-error>
+					</div>
+				</div>
+
+				<button type="button"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					:class="mainMenus[1].status ? 'bg-blue-200' : ''" @click="toggleAccordion(mainMenus[1].title)">
+					{{ mainMenus[1].title }}
+					<i v-if="!mainMenus[1].status" class="fas fa-arrow-down absolute lg:right-56" />
+					<i v-if="mainMenus[1].status" class="fas fa-arrow-up absolute lg:right-56" />
+				</button>
+				<div v-show="mainMenus[1].status"
+					class="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="termin">Termin *</label>
+						<input v-model="formData.date" type="date" name="date"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.date" :errors="errors">@{{ errors.date[0] }}</form-error>
+					</div>
+					<div>
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="kostentraeger">Kostenträger *</label>
+						<div>
+							<input v-model="formData.kostentraeger" type="radio" value="Selbst">
+							<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="selbst">Selbst</label>
+						</div>
+						<div>
+							<input v-model="formData.kostentraeger" type="radio" value="Arbeitgeber">
+							<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1"
+								for="Arbeitgeber">Arbeitgeber</label>
+						</div>
+						<div>
+							<input v-model="formData.kostentraeger" type="radio" value="Bundesagentur für Arbeit">
+							<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="Bundesagentur">Bundesagentur
+								für Arbeit</label>
+						</div>
+						<div>
+							<input v-model="formData.kostentraeger" type="radio" value="Bundeswehr">
+							<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1"
+								for="Bundeswehr">Bundeswehr</label>
+						</div>
+						<form-error v-if="errors.kostentraeger" :errors="errors">@{{ errors.kostentraeger[0] }}</form-error>
+					</div>
+					<div class="flex flex-col md:col-span-2 lg:col-span-1 space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="bemerkungen">Bemerkungen</label>
+						<textarea v-model="formData.bemerkungen" rows="7"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+						<form-error v-if="errors.bemerkungen" :errors="errors">@{{ errors.bemerkungen[0] }}</form-error>
+					</div>
+				</div>
+
+				<button type="button"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					:class="mainMenus[2].status ? 'bg-blue-200' : ''" @click="toggleAccordion(mainMenus[2].title)">
+					{{ mainMenus[2].title }}
+					<i v-if="!mainMenus[2].status" class="fas fa-arrow-down absolute lg:right-56" />
+					<i v-if="mainMenus[2].status" class="fas fa-arrow-up absolute lg:right-56" />
+				</button>
+				<div v-show="mainMenus[2].status"
+					class="grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="strasse">Straße/ Nr. *</label>
+						<input v-model="formData.von_strasse" type="text" name="von_strasse"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.von_strasse" :errors="errors">@{{ errors.von_strasse[0] }}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="ort">Ort *</label>
+						<input v-model="formData.von_ort" type="text" name="von_ort"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.von_ort" :errors="errors">@{{ errors.von_ort[0] }}</form-error>
+					</div>
+					<div class="grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20">
+						<div class="flex flex-col space-y-1.5 md:mb-2 lg:mb-0">
+							<label class="tracking-wide text-gray-700 font-bold mb-2" for="etage">Etage</label>
+							<input v-model="formData.von_etage" type="text" name="von_etage"
+								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+							<form-error v-if="errors.von_etage" :errors="errors">@{{ errors.von_etage[0] }}</form-error>
+						</div>
+						<div class="flex flex-col space-y-1.5">
+							<label class="tracking-wide text-gray-700 font-bold mb-2" for="groesse">Größe (in q. m.)
+								*</label>
+							<input v-model="formData.von_groesse" type="text" name="von_groesse"
+								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+							<form-error v-if="errors.von_groesse" :errors="errors">@{{ errors.von_groesse[0] }}</form-error>
+						</div>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="fahrstuhl">Fahrstuhl</label>
+						<select v-model="formData.von_fahrstuhl" name="von_fahrstuhl"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-48">
+							<option value="Nicht vorhanden" selected>Nicht vorhanden</option>
+							<option value="2-4 Personen">2-4 Personen</option>
+							<option value="5-8 Personen">5-8 Personen</option>
+							<option value="Lastenfahrstuhl">Lastenfahrstuhl</option>
+						</select>
+						<form-error v-if="errors.von_fahrstuhl" :errors="errors">@{{ errors.von_fahrstuhl[0] }}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="postleitzahl">Postleitzahl *</label>
+						<input v-model="formData.von_postleitzahl" type="text" name="von_postleitzahl"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-1/2 lg:w-1/4">
+						<form-error v-if="errors.von_postleitzahl" :errors="errors">@{{ errors.von_postleitzahl[0]
+						}}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="land">Land *</label>
+						<input v-model="formData.von_land" type="text" name="von_land"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.von_land" :errors="errors">@{{ errors.von_land[0] }}</form-error>
+					</div>
+					<div class="grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20">
+						<div class="flex flex-col space-y-7 md:space-y-1.5">
+							<label class="tracking-wide text-gray-700 font-bold mb-2" for="raume">Anzahl Räume *</label>
+							<input v-model="formData.von_raume" type="text" name="von_raume"
+								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+							<form-error v-if="errors.von_raume" :errors="errors">@{{ errors.von_raume[0] }}</form-error>
+						</div>
+						<div class="flex flex-col space-y-1.5">
+							<label class="tracking-wide text-gray-700 font-bold mb-2" for="tragestrecke">
+								Tragestrecke zum LKW (in m) *
+							</label>
+							<input v-model="formData.von_tragestrecke" type="text" name="von_tragestrecke"
+								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+							<form-error v-if="errors.von_tragestrecke" :errors="errors">@{{ errors.von_tragestrecke[0]
+							}}</form-error>
+						</div>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="gebaudeart">Gebäudeart</label>
+						<select v-model="formData.von_gebaudeart" name="von_gebaudeart"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-1/3">
+							<option value="Mehrfamilienhaus" selected>Mehrfamilienhaus</option>
+							<option value="Einfamilienhaus">Einfamilienhaus</option>
+							<option value="Doppelhaushalfte">Doppelhaushälfte</option>
+							<option value="Reihenhaus">Reihenhaus</option>
+							<option value="Maisonette">Maisonette-Wohnung</option>
+							<option value="Garage">Garage</option>
+							<option value="Lager">Lager</option>
+							<option value="Burogebaude">Bürogebäude</option>
+							<option value="Bungalow">Bungalow</option>
+						</select>
+						<form-error v-if="errors.von_gebaudeart" :errors="errors">@{{ errors.von_gebaudeart[0]
+						}}</form-error>
+					</div>
+				</div>
+
+				<button type="button"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					:class="mainMenus[3].status ? 'bg-blue-200' : ''" @click="toggleAccordion(mainMenus[3].title)">
+					{{ mainMenus[3].title }}
+					<i v-if="!mainMenus[3].status" class="fas fa-arrow-down absolute lg:right-56"></i>
+					<i v-if="mainMenus[3].status" class="fas fa-arrow-up absolute lg:right-56"></i>
+				</button>
+				<div v-show="mainMenus[3].status"
+					class="grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="strasse">Straße/ Nr. *</label>
+						<input v-model="formData.nach_strasse" type="text" name="nach_strasse"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.nach_strasse" :errors="errors">@{{ errors.nach_strasse[0] }}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="ort">Ort *</label>
+						<input v-model="formData.nach_ort" type="text" name="nach_ort"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.nach_ort" :errors="errors">@{{ errors.nach_ort[0] }}</form-error>
+					</div>
+					<div class="grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20">
+						<div class="flex flex-col space-y-1.5 md:mb-2 lg:mb-0">
+							<label class="tracking-wide text-gray-700 font-bold mb-2" for="etage">Etage</label>
+							<input v-model="formData.nach_etage" type="text" name="nach_etage"
+								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+							<form-error v-if="errors.nach_etage" :errors="errors">@{{ errors.nach_etage[0] }}</form-error>
+						</div>
+						<div class="flex flex-col space-y-1.5">
+							<label class="tracking-wide text-gray-700 font-bold mb-2" for="groesse">Größe (in q. m.)
+								*</label>
+							<input v-model="formData.nach_groesse" type="text" name="nach_groesse"
+								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+							<form-error v-if="errors.nach_groesse" :errors="errors">@{{ errors.nach_groesse[0]
+							}}</form-error>
+						</div>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="fahrstuhl">Fahrstuhl</label>
+						<select v-model="formData.nach_fahrstuhl" name="nach_fahrstuhl"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-48">
+							<option value="Nicht vorhanden" selected>Nicht vorhanden</option>
+							<option value="2-4 personen">2-4 Personen</option>
+							<option value="5-8 personen">5-8 Personen</option>
+							<option value="Lastenfahrstuhl">Lastenfahrstuhl</option>
+						</select>
+						<form-error v-if="errors.nach_fahrstuhl" :errors="errors">@{{ errors.nach_fahrstuhl[0]
+						}}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="postleitzahl">Postleitzahl *</label>
+						<input v-model="formData.nach_postleitzahl" type="text" name="nach_postleitzahl"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-1/2 lg:w-1/4">
+						<form-error v-if="errors.nach_postleitzahl" :errors="errors">@{{ errors.nach_postleitzahl[0]
+						}}</form-error>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="land">Land *</label>
+						<input v-model="formData.nach_land" type="text" name="nach_land"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+						<form-error v-if="errors.nach_land" :errors="errors">@{{ errors.nach_land[0] }}</form-error>
+					</div>
+					<div class="grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20">
+						<div class="flex flex-col space-y-7 md:space-y-1.5">
+							<label class="tracking-wide text-gray-700 font-bold mb-2" for="raume">Anzahl Räume *</label>
+							<input v-model="formData.nach_raume" type="text" name="nach_raume"
+								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+							<form-error v-if="errors.nach_raume" :errors="errors">@{{ errors.nach_raume[0] }}</form-error>
+						</div>
+						<div class="flex flex-col space-y-1.5">
+							<label class="tracking-wide text-gray-700 font-bold mb-2" for="tragestrecke">Tragestrecke zum
+								LKW (in m) *</label>
+							<input v-model="formData.nach_tragestrecke" type="text" name="nach_tragestrecke"
+								class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
+							<form-error v-if="errors.nach_tragestrecke" :errors="errors">@{{ errors.nach_tragestrecke[0]
+							}}</form-error>
+						</div>
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<label class="tracking-wide text-gray-700 font-bold mb-2" for="gebaudeart">Gebäudeart</label>
+						<select v-model="formData.nach_gebaudeart" name="nach_gebaudeart"
+							class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-1/3">
+							<option value="Mehrfamilienhaus" selected>Mehrfamilienhaus</option>
+							<option value="Einfamilienhaus">Einfamilienhaus</option>
+							<option value="Doppelhaushalfte">Doppelhaushälfte</option>
+							<option value="Reihenhaus">Reihenhaus</option>
+							<option value="Maisonette">Maisonette-Wohnung</option>
+							<option value="Garage">Garage</option>
+							<option value="Lager">Lager</option>
+							<option value="Burogebaude">Bürogebäude</option>
+							<option value="Bungalow">Bungalow</option>
+						</select>
+						<form-error v-if="errors.nach_gebaudeart" :errors="errors">@{{ errors.nach_gebaudeart[0]
+						}}</form-error>
+					</div>
+				</div>
+
+				<button type="button"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					:class="mainMenus[4].status ? 'bg-blue-200' : ''" @click="toggleAccordion(mainMenus[4].title)">
+					{{ mainMenus[4].title }}
+					<i v-if="!mainMenus[4].status" class="fas fa-arrow-down absolute lg:right-56"></i>
+					<i v-if="mainMenus[4].status" class="fas fa-arrow-up absolute lg:right-56"></i>
+				</button>
+				<div v-show="mainMenus[4].status"
+					class="bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full md:p-6">
+					<div class="space-y-1.5 p-2">
+						<template v-for="(menu, index) in menus.slice(0, 8)" :key="index">
+							<button type="button"
+								class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono md:text-2xl tracking-widest py-4 w-full"
+								:class="menu.status ? 'bg-blue-200' : ''"
+								@click="toggleAccordion(menu.title, true); columnize(menu)">
+								<span class="text-xs md:text-xl">{{ menu.title }}</span>
+								<span class="text-xs md:text-xl">{{ menu.volume.toFixed(2) }} m <sup>3</sup></span>
+								<i v-if="!menu.status" class="fas fa-arrow-down absolute lg:right-56"></i>
+								<i v-if="menu.status" class="fas fa-arrow-up absolute lg:right-56"></i>
+							</button>
+							<div v-show="menu.status"
+								class="grid grid-cols-1 md:grid-cols-2 bg-gradient-to-b from-blue-300 to-blue-200 rounded-2xl p-6 mt-2">
+								<div v-for="(chunk, chunkIndex) in menu.chunked" :key="chunkIndex">
+									<div v-for="(object, i) in chunk" :key="i"
+										class="items-baseline text-center xl:flex mb-3">
+										<div class="mb-1.5">
+											<button type="button"
+												class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2"
+												@click="reduceVolume(menu, object)">-</button>
+											<input :id="object.name" v-model="object.value" type="text" name="object"
+												class="border-0 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
+												@change="calculateVolume(menu)">
+											<button type="button"
+												class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2"
+												@click="increaseVolume(menu, object)">+</button>
+										</div>
+										<span class="fw-bold" v-text="object.name"></span>
+									</div>
+								</div>
+							</div>
+						</template>
+					</div>
+				</div>
+
+				<button type="button"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					:class="mainMenus[5].status ? 'bg-blue-400' : ''" @click="toggleAccordion(mainMenus[5].title)">
+					{{ mainMenus[5].title }}
+					<i v-if="!mainMenus[5].status" class="fas fa-arrow-down absolute lg:right-56"></i>
+					<i v-if="mainMenus[5].status" class="fas fa-arrow-up absolute lg:right-56"></i>
+				</button>
+				<div v-show="mainMenus[5].status"
+					class="grid gap-2 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
+					<template v-for="(service, index) in services.type" :key="index">
+						<span class="bg-blue-300 font-bold rounded p-2">{{ service.name }}</span>
+						<div v-for="(object, i) in service.objects" :key="i"
+							class="grid lg:grid-cols-2 font-semibold text-lg m-2">
+							<span class="font-bold">{{ object }}</span>
+							<div class="grid grid-cols-2">
+								<div>
+									<input v-model="services.beladestelle" type="checkbox" :value="object">
+									<label for="beladestelle">Beladestelle</label>
+								</div>
+								<div>
+									<input v-model="services.entladestelle" type="checkbox" :value="object">
+									<label for="entladestelle">Entladestelle</label>
+								</div>
+							</div>
+						</div>
+					</template>
+				</div>
+
+				<button type="button" class="bg-yellow-100 px-5 py-1.5 rounded-full mt-2" @click="submit()">Anfrage
+					senden</button>
+			</div>
+		</form>
+	</div>
+</template>
