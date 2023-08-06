@@ -28,6 +28,7 @@ module.exports = {
         "component": "always"
       }
     }],
-    "vue/html-indent": ["error", "tab"]
+    "vue/html-indent": ["error", "tab"],
+    "vue/require-default-prop": "off"
   }
 }
