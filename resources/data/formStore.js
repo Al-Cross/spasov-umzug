@@ -28,5 +28,7 @@ export const formDataStore = reactive({
     nach_land: '',
     nach_raume: '',
     nach_tragestrecke: '',
-    nach_gebaudeart: 'Mehrfamilienhaus'
+    nach_gebaudeart: 'Mehrfamilienhaus',
+
+    errors: []
 });
