@@ -1,4 +1,6 @@
-export const services = {
+import { reactive } from "vue"
+
+export const services = reactive({
     type: [
         {
             name: 'Montage / Demontage',
@@ -15,4 +17,4 @@ export const services = {
     ],
     beladestelle: [],
     entladestelle: []
-};
+});
