@@ -1,0 +1,82 @@
+<script setup>
+import { rooms } from '../../data/menus';
+
+
+function toggleRoom(roomName) {
+    rooms.forEach(menu => {
+        if (menu.title == roomName) {
+            menu.status = !menu.status;
+        }
+    });
+}
+
+function reduceVolume(room, object) {
+	if (object.value === 0) return;
+
+	room.volume == 0 ? room.volume = 0 : room.volume = room.volume - object.volume;
+	object.value--;
+};
+
+function increaseVolume(room, object) {
+	room.volume = room.volume + object.volume;
+	object.value++;
+};
+
+function calculateVolume(room) {
+	room.volume = 0;
+
+	room.contents.forEach(roomObject => {
+		room.volume += roomObject.volume * roomObject.value;
+	});
+};
+
+function columnize(menu) {
+	if (menu.chunked.length == 0) {
+		var i = 0;
+		var length = menu.contents.length;
+
+		while (i < length) {
+			menu.chunked.push(menu.contents.slice(i, i += menu.itemsPerColumn));
+		}
+	}
+};
+</script>
+
+<template>
+	<div class="bg-gradient-to-b from-blue-201 to-blue-100 rounded-2xl w-full md:p-6">
+		<div class="space-y-2.5 p-2">
+			<template v-for="(menu, index) in rooms" :key="index">
+				<button type="button"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono md:text-2xl tracking-widest py-4 w-full"
+					:class="menu.status ? 'bg-blue-201' : ''"
+					@click="toggleRoom(menu.title); columnize(menu)">
+					<span class="text-xs md:text-xl">{{ menu.title }}</span>
+					<span class="text-xs md:text-xl">
+						{{ menu.volume.toFixed(1) }} m <sup>3</sup>
+					</span>
+					<i v-if="!menu.status" class="fas fa-arrow-down absolute lg:right-57"></i>
+					<i v-if="menu.status" class="fas fa-arrow-up absolute lg:right-57"></i>
+				</button>
+				<div v-show="menu.status"
+					class="grid grid-cols-2 md:grid-cols-2 bg-gradient-to-b from-blue-300 to-blue-200 rounded-2xl p-6 mt-2">
+					<div v-for="(chunk, chunkIndex) in menu.chunked" :key="chunkIndex">
+						<div v-for="(object, i) in chunk" :key="i" class="items-baseline text-center xl:flex mb-4">
+							<div class="mb-2.5">
+								<button type="button"
+									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2"
+									@click="reduceVolume(menu, object)">-</button>
+								<input :id="object.name" v-model="object.value" type="text"
+									class="border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
+									@change="calculateVolume(menu)">
+								<button type="button"
+									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2"
+									@click="increaseVolume(menu, object)">+</button>
+							</div>
+							<span class="fw-bold" v-text="object.name"></span>
+						</div>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
+</template>
