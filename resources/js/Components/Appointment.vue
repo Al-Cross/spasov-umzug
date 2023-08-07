@@ -9,52 +9,54 @@ let formData = formDataStore;
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
 		<div class="flex flex-col space-y-1.5">
 			<label class="tracking-wide text-gray-700 font-bold mb-2" for="termin">Termin *</label>
-			<input v-model="formData.date" type="date" name="date"
+			<input v-model="formData.date" type="date"
 				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
 			<form-error v-if="formData.errors.date" :errors="formData.errors">
 				{{ formData.errors.date[0] }}
 			</form-error>
 		</div>
 		<div>
-			<label class="tracking-wide text-gray-700 font-bold mb-2" for="kostentraeger">
+			<label class="tracking-wide text-gray-700 font-bold mb-2">
 				Kostenträger *
 			</label>
 			<div>
-				<input v-model="formData.kostentraeger" type="radio" value="Selbst">
-				<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="selbst">
+				<input id="self" v-model="formData.cost_bearer" type="radio" value="Selbst">
+				<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="self">
 					Selbst
 				</label>
 			</div>
 			<div>
-				<input v-model="formData.kostentraeger" type="radio" value="Arbeitgeber">
-				<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="Arbeitgeber">
+				<input id="employer" v-model="formData.cost_bearer" type="radio" value="Arbeitgeber">
+				<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="employer">
 					Arbeitgeber
 				</label>
 			</div>
 			<div>
-				<input v-model="formData.kostentraeger" type="radio" value="Bundesagentur für Arbeit">
-				<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="Bundesagentur">
+				<input id="UnemploymentAgency" v-model="formData.cost_bearer" type="radio"
+					value="Bundesagentur für Arbeit">
+				<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1"
+					for="UnemploymentAgency">
 					Bundesagentur für Arbeit
 				</label>
 			</div>
 			<div>
-				<input v-model="formData.kostentraeger" type="radio" value="Bundeswehr">
-				<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="Bundeswehr">
+				<input id="army" v-model="formData.cost_bearer" type="radio" value="Bundeswehr">
+				<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="army">
 					Bundeswehr
 				</label>
 			</div>
-			<form-error v-if="formData.errors.kostentraeger" :errors="formData.errors">
-				{{ formData.errors.kostentraeger[0] }}
+			<form-error v-if="formData.errors.cost_bearer" :errors="formData.errors">
+				{{ formData.errors.cost_bearer[0] }}
 			</form-error>
 		</div>
 		<div class="flex flex-col md:col-span-2 lg:col-span-1 space-y-1.5">
-			<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="bemerkungen">
+			<label class="tracking-wide text-gray-700 font-bold mb-2 ml-1" for="remarks">
 				Bemerkungen
 			</label>
-			<textarea v-model="formData.bemerkungen" rows="7"
+			<textarea id="remarks" v-model="formData.remarks" rows="7"
 				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
-			<form-error v-if="formData.errors.bemerkungen" :errors="formData.errors">
-				{{ formData.errors.bemerkungen[0] }}
+			<form-error v-if="formData.errors.remarks" :errors="formData.errors">
+				{{ formData.errors.remarks[0] }}
 			</form-error>
 		</div>
 	</div>

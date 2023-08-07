@@ -3,22 +3,44 @@ import { reactive } from "vue";
 export const mainMenus = reactive([
     {
         title: 'Auftraggeber',
-        elements: ['anrede', 'vorname', 'nachname', 'telefon', 'email'],
+        elements: ['salutation', 'first_name', 'last_name', 'phone', 'email'],
         status: false
     },
     {
         title: 'Terminvereibarung',
-        elements: ['date', 'kostentraeger', 'bemerkungen'],
+        elements: ['date', 'cost_bearer', 'remarks'],
         status: false
     },
     {
         title: 'Umzug von',
-        elements: ['von_strasse', 'von_ort', 'von_etage', 'von_groesse', 'von_fahrstuhl', 'von_postleitzahl', 'von_land', 'von_raume', 'von_tragestrecke', 'von_gebaudeart'],
+        elements: [
+            'from_street',
+            'from_location',
+            'from_floor',
+            'from_sq_m',
+            'from_elevator',
+            'from_zip',
+            'from_province',
+            'from_rooms',
+            'from_carry_distance',
+            'from_building_type'
+        ],
         status: false
     },
     {
         title: 'Umzug nach',
-        elements: ['nach_strasse', 'nach_ort', 'nach_etage', 'nach_groesse', 'nach_fahrstuhl', 'nach_postleitzahl', 'nach_land', 'nach_raume', 'nach_tragestrecke', 'nach_gebaudeart'],
+        elements: [
+            'to_street',
+            'to_location',
+            'to_floor',
+            'to_sq_m',
+            'to_elevator',
+            'to_zip',
+            'to_province',
+            'to_rooms',
+            'to_carry_distance',
+            'to_building_type'
+        ],
         status: false
     },
     {

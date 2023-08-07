@@ -46,8 +46,8 @@ function submit() {
 		userData: formData,
 		objects: rooms,
 		totalVolume: totalVolume,
-		loadingPoint: services.beladestelle,
-		unloadingPoint: services.entladestelle
+		loadingPoint: services.loadingPoint,
+		unloadingPoint: services.unloadingPoint
 	})
 		.then(() => {
 			success.value = true;
@@ -98,7 +98,7 @@ function toggleMainMenu(name) {
 					<i v-if="!mainMenus[2].status" class="fas fa-arrow-down absolute lg:right-56" />
 					<i v-if="mainMenus[2].status" class="fas fa-arrow-up absolute lg:right-56" />
 				</button>
-				<AddressFromTo v-show="mainMenus[2].status" direction="von" />
+				<AddressFromTo v-show="mainMenus[2].status" direction="from" />
 
 				<button type="button"
 					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
@@ -107,7 +107,7 @@ function toggleMainMenu(name) {
 					<i v-if="!mainMenus[3].status" class="fas fa-arrow-down absolute lg:right-56"></i>
 					<i v-if="mainMenus[3].status" class="fas fa-arrow-up absolute lg:right-56"></i>
 				</button>
-				<AddressFromTo v-show="mainMenus[3].status" direction="nach" />
+				<AddressFromTo v-show="mainMenus[3].status" direction="to" />
 
 				<button type="button"
 					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"

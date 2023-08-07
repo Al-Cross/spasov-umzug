@@ -15,6 +15,6 @@ export const services = reactive({
             objects: ['Genehmigung beantragen', 'Absperrung durch Auftragnehmer', 'Absperrung durch Auftraggeber', 'Absperrung nicht notwendig']
         }
     ],
-    beladestelle: [],
-    entladestelle: []
+    loadingPoint: [],
+    unloadingPoint: []
 });

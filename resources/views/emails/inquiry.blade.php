@@ -1,38 +1,38 @@
 @component('mail::message')
 # Umzugsanfrage
 
-**Von:** {{ $data['anrede'] }} {{ $data['vorname'] }} {{ $data['nachname'] }}\
-**Telefonnummer:** {{ $data['telefon'] }}\
+**Von:** {{ $data['salutation'] }} {{ $data['first_name'] }} {{ $data['last_name'] }}\
+**Telefonnummer:** {{ $data['phone'] }}\
 **Email Adresse:** {{ $data['email'] }}
 
 # Gewünschter Termin
 **Am Datum:** {{ $data['date']}}\
-**Kostenträger:** {{ $data['kostentraeger']}}\
-**Bemerkungen:** {{ $data['bemerkungen']}}
+**Kostenträger:** {{ $data['cost_bearer']}}\
+**Bemerkungen:** {{ $data['remarks']}}
 
 # Umzug von
-**Strasse / Nr.:** {{ $data['von_strasse'] }}\
-**Ort:** {{ $data['von_ort'] }}\
-**Postleitzahl:** {{ $data['von_postleitzahl'] }}\
-**Land:** {{ $data['von_land'] }}\
-**Etage:** {{ $data['von_etage'] ?? '-' }}\
-**Größe der Wohnung:** {{ $data['von_groesse'] }}\
-**Anzahl Räume:** {{ $data['von_raume'] }}\
-**Fahrstuhl:** {{ $data['von_fahrstuhl'] ?? '-' }}\
-**Tragestrecke:** {{ $data['von_tragestrecke'] }}\
-**Gebäudeart:** {{ $data['von_gebaudeart'] }}
+**Strasse / Nr.:** {{ $data['from_street'] }}\
+**Ort:** {{ $data['from_location'] }}\
+**Postleitzahl:** {{ $data['from_zip'] }}\
+**Land:** {{ $data['from_province'] }}\
+**Etage:** {{ $data['from_floor'] ?? '-' }}\
+**Größe der Wohnung:** {{ $data['from_sq_m'] }}\
+**Anzahl Räume:** {{ $data['from_rooms'] }}\
+**Fahrstuhl:** {{ $data['from_elevator'] ?? '-' }}\
+**Tragestrecke:** {{ $data['from_carry_distance'] }}\
+**Gebäudeart:** {{ $data['from_building_type'] }}
 
 # Umzug nach
-**Strasse / Nr.:** {{ $data['nach_strasse'] }}\
-**Ort:** {{ $data['nach_ort'] }}\
-**Postleitzahl:** {{ $data['nach_postleitzahl'] }}\
-**Land:** {{ $data['nach_land'] }}\
-**Etage:** {{ $data['nach_etage'] ?? '-' }}\
-**Größe der Wohnung:** {{ $data['nach_groesse'] }}\
-**Anzahl Räume:** {{ $data['nach_raume'] }}\
-**Fahrstuhl:** {{ $data['nach_fahrstuhl'] ?? '-' }}\
-**Tragestrecke:** {{ $data['nach_tragestrecke'] }}\
-**Gebäudeart:** {{ $data['nach_gebaudeart'] }}
+**Strasse / Nr.:** {{ $data['to_street'] }}\
+**Ort:** {{ $data['to_location'] }}\
+**Postleitzahl:** {{ $data['to_zip'] }}\
+**Land:** {{ $data['to_province'] }}\
+**Etage:** {{ $data['to_floor'] ?? '-' }}\
+**Größe der Wohnung:** {{ $data['to_sq_m'] }}\
+**Anzahl Räume:** {{ $data['to_rooms'] }}\
+**Fahrstuhl:** {{ $data['to_elevator'] ?? '-' }}\
+**Tragestrecke:** {{ $data['to_carry_distance'] }}\
+**Gebäudeart:** {{ $data['to_building_type'] }}
 
 # Umzugsgüter
 @if(!empty($objects))
