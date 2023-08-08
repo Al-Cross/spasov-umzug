@@ -30,5 +30,7 @@ export const formDataStore = reactive({
     to_carry_distance: '',
     to_building_type: 'Mehrfamilienhaus',
 
-    errors: []
+    errors: [],
+
+    filledOutRooms: []
 });

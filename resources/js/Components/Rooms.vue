@@ -1,26 +1,62 @@
 <script setup>
+import { formDataStore } from '../../data/formStore';
 import { rooms } from '../../data/menus';
 
 
 function toggleRoom(roomName) {
-    rooms.forEach(menu => {
-        if (menu.title == roomName) {
-            menu.status = !menu.status;
-        }
-    });
+	rooms.forEach(menu => {
+		if (menu.title == roomName) {
+			menu.status = !menu.status;
+		}
+	});
 }
 
-function reduceVolume(room, object) {
+function addItem(room, object) {
+	const roomHasItems = formDataStore.filledOutRooms
+		.some(filledOutRoom => filledOutRoom.title === room.title);
+	const item = {
+		name: object.name,
+		length: '',
+		width: '',
+		height: ''
+	};
+	if (!roomHasItems) {
+		const filledOutRoom = {
+			id: room.id,
+			title: room.title,
+			contents: []
+		}
+		filledOutRoom.contents.push(item);
+		formDataStore.filledOutRooms.push(filledOutRoom);
+	} else {
+		const filledOutRoom = findRoom(room);
+		if (filledOutRoom) {
+			filledOutRoom.contents.push(item);
+		}
+	}
+	object.value++;
+};
+
+function removeItem(room, object) {
 	if (object.value === 0) return;
 
-	room.volume == 0 ? room.volume = 0 : room.volume = room.volume - object.volume;
+	const filledOutRoom = findRoom(room);
+	if (filledOutRoom) {
+		const itemIndex = filledOutRoom.contents.findIndex(item => item.name === object.name);
+		if (itemIndex !== -1) {
+			filledOutRoom.contents.splice(itemIndex, 1);
+		}
+		if (filledOutRoom.contents.length === 0) {
+			formDataStore.filledOutRooms = formDataStore.filledOutRooms
+				.filter(room => room.title !== filledOutRoom.title);
+		}
+	}
 	object.value--;
 };
 
-function increaseVolume(room, object) {
-	room.volume = room.volume + object.volume;
-	object.value++;
-};
+function findRoom(room) {
+	return formDataStore.filledOutRooms.find(filled => filled.id === room.id);
+}
 
 function calculateVolume(room) {
 	room.volume = 0;
@@ -48,8 +84,7 @@ function columnize(menu) {
 			<template v-for="(menu, index) in rooms" :key="index">
 				<button type="button"
 					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono md:text-2xl tracking-widest py-4 w-full"
-					:class="menu.status ? 'bg-blue-201' : ''"
-					@click="toggleRoom(menu.title); columnize(menu)">
+					:class="menu.status ? 'bg-blue-201' : ''" @click="toggleRoom(menu.title); columnize(menu)">
 					<span class="text-xs md:text-xl">{{ menu.title }}</span>
 					<span class="text-xs md:text-xl">
 						{{ menu.volume.toFixed(1) }} m <sup>3</sup>
@@ -64,13 +99,13 @@ function columnize(menu) {
 							<div class="mb-2.5">
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2"
-									@click="reduceVolume(menu, object)">-</button>
+									@click="removeItem(menu, object)">-</button>
 								<input :id="object.name" v-model="object.value" type="text"
 									class="border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
 									@change="calculateVolume(menu)">
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2"
-									@click="increaseVolume(menu, object)">+</button>
+									@click="addItem(menu, object)">+</button>
 							</div>
 							<span class="fw-bold" v-text="object.name"></span>
 						</div>
