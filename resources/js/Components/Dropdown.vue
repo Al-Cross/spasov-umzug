@@ -5,6 +5,7 @@ import Appointment from './Appointment.vue';
 import AddressFromTo from './AddressFromTo.vue';
 import Rooms from './Rooms.vue';
 import Services from './Services.vue';
+import ItemOverviewModal from './ItemOverviewModal.vue';
 import { rooms } from '../../data/menus';
 import { mainMenus } from '../../data/main-menus';
 import { services } from '../../data/services';
@@ -14,10 +15,17 @@ let menus = rooms,
 	formData = formDataStore,
 	success = ref(false);
 
+let toggleModal = ref(false);
+
 watch(() => formData.errors, () => {
 	mainMenus.forEach(menu => {
 		menu.elements.some(str => str in formData.errors) ? menu.status = true : menu.status = false;
 	});
+});
+
+watch(toggleModal, (newValue) => {
+	const scrollToTopElement = document.querySelector('.fade-small');
+	scrollToTopElement.style.zIndex = newValue ? -1 : 0;
 });
 
 function submit() {
@@ -83,7 +91,7 @@ function toggleMainMenu(name) {
 				<contact-info v-show="mainMenus[0].status" />
 
 				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full"
 					:class="mainMenus[1].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[1].title)">
 					{{ mainMenus[1].title }}
 					<i v-if="!mainMenus[1].status" class="fas fa-arrow-down absolute lg:right-56" />
@@ -92,7 +100,7 @@ function toggleMainMenu(name) {
 				<Appointment v-show="mainMenus[1].status" />
 
 				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full"
 					:class="mainMenus[2].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[2].title)">
 					{{ mainMenus[2].title }}
 					<i v-if="!mainMenus[2].status" class="fas fa-arrow-down absolute lg:right-56" />
@@ -101,7 +109,7 @@ function toggleMainMenu(name) {
 				<AddressFromTo v-show="mainMenus[2].status" direction="from" />
 
 				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full"
 					:class="mainMenus[3].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[3].title)">
 					{{ mainMenus[3].title }}
 					<i v-if="!mainMenus[3].status" class="fas fa-arrow-down absolute lg:right-56"></i>
@@ -110,7 +118,7 @@ function toggleMainMenu(name) {
 				<AddressFromTo v-show="mainMenus[3].status" direction="to" />
 
 				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full"
 					:class="mainMenus[4].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[4].title)">
 					{{ mainMenus[4].title }}
 					<i v-if="!mainMenus[4].status" class="fas fa-arrow-down absolute lg:right-56"></i>
@@ -119,7 +127,7 @@ function toggleMainMenu(name) {
 				<Rooms v-show="mainMenus[4].status" />
 
 				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full"
+					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full"
 					:class="mainMenus[5].status ? 'bg-blue-400' : ''" @click="toggleMainMenu(mainMenus[5].title)">
 					{{ mainMenus[5].title }}
 					<i v-if="!mainMenus[5].status" class="fas fa-arrow-down absolute lg:right-56"></i>
@@ -127,10 +135,11 @@ function toggleMainMenu(name) {
 				</button>
 				<Services v-show="mainMenus[5].status" />
 
-				<button type="button" class="bg-yellow-100 px-5 py-1.5 rounded-full mt-2" @click="submit()">
+				<button type="button" class="bg-yellow-100 px-5 py-1.5 rounded-full mt-2" @click="toggleModal = true">
 					Anfrage senden
 				</button>
 			</div>
 		</form>
 	</div>
+	<ItemOverviewModal v-if="toggleModal" @close-modal="toggleModal = false" />
 </template>

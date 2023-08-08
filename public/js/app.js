@@ -19010,10 +19010,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddressFromTo_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddressFromTo.vue */ "./resources/js/components/AddressFromTo.vue");
 /* harmony import */ var _Rooms_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Rooms.vue */ "./resources/js/components/Rooms.vue");
 /* harmony import */ var _Services_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Services.vue */ "./resources/js/components/Services.vue");
-/* harmony import */ var _data_menus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../data/menus */ "./resources/data/menus.js");
-/* harmony import */ var _data_main_menus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../data/main-menus */ "./resources/data/main-menus.js");
-/* harmony import */ var _data_services__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../data/services */ "./resources/data/services.js");
-/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
+/* harmony import */ var _ItemOverviewModal_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ItemOverviewModal.vue */ "./resources/js/components/ItemOverviewModal.vue");
+/* harmony import */ var _data_menus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../data/menus */ "./resources/data/menus.js");
+/* harmony import */ var _data_main_menus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../data/main-menus */ "./resources/data/main-menus.js");
+/* harmony import */ var _data_services__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../data/services */ "./resources/data/services.js");
+/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
+
 
 
 
@@ -19029,17 +19031,22 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose;
     __expose();
-    var menus = _data_menus__WEBPACK_IMPORTED_MODULE_6__.rooms,
-      formData = _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore,
+    var menus = _data_menus__WEBPACK_IMPORTED_MODULE_7__.rooms,
+      formData = _data_formStore__WEBPACK_IMPORTED_MODULE_10__.formDataStore,
       success = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var toggleModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
       return formData.errors;
     }, function () {
-      _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus.forEach(function (menu) {
+      _data_main_menus__WEBPACK_IMPORTED_MODULE_8__.mainMenus.forEach(function (menu) {
         menu.elements.some(function (str) {
           return str in formData.errors;
         }) ? menu.status = true : menu.status = false;
       });
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(toggleModal, function (newValue) {
+      var scrollToTopElement = document.querySelector('.fade-small');
+      scrollToTopElement.style.zIndex = newValue ? -1 : 0;
     });
     function submit() {
       var rooms = [];
@@ -19067,8 +19074,8 @@ __webpack_require__.r(__webpack_exports__);
         userData: formData,
         objects: rooms,
         totalVolume: totalVolume,
-        loadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_8__.services.loadingPoint,
-        unloadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_8__.services.unloadingPoint
+        loadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_9__.services.loadingPoint,
+        unloadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_9__.services.unloadingPoint
       }).then(function () {
         success.value = true;
       })["catch"](function (error) {
@@ -19077,7 +19084,7 @@ __webpack_require__.r(__webpack_exports__);
     }
     ;
     function toggleMainMenu(name) {
-      _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus.forEach(function (menu) {
+      _data_main_menus__WEBPACK_IMPORTED_MODULE_8__.mainMenus.forEach(function (menu) {
         if (menu.title == name) {
           menu.status = !menu.status;
         }
@@ -19103,6 +19110,12 @@ __webpack_require__.r(__webpack_exports__);
       set success(v) {
         success = v;
       },
+      get toggleModal() {
+        return toggleModal;
+      },
+      set toggleModal(v) {
+        toggleModal = v;
+      },
       submit: submit,
       toggleMainMenu: toggleMainMenu,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
@@ -19112,17 +19125,18 @@ __webpack_require__.r(__webpack_exports__);
       AddressFromTo: _AddressFromTo_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
       Rooms: _Rooms_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
       Services: _Services_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+      ItemOverviewModal: _ItemOverviewModal_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
       get rooms() {
-        return _data_menus__WEBPACK_IMPORTED_MODULE_6__.rooms;
+        return _data_menus__WEBPACK_IMPORTED_MODULE_7__.rooms;
       },
       get mainMenus() {
-        return _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus;
+        return _data_main_menus__WEBPACK_IMPORTED_MODULE_8__.mainMenus;
       },
       get services() {
-        return _data_services__WEBPACK_IMPORTED_MODULE_8__.services;
+        return _data_services__WEBPACK_IMPORTED_MODULE_9__.services;
       },
       get formDataStore() {
-        return _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore;
+        return _data_formStore__WEBPACK_IMPORTED_MODULE_10__.formDataStore;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -19165,6 +19179,58 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ItemOverviewModal.vue?vue&type=script&setup=true&lang=js":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ItemOverviewModal.vue?vue&type=script&setup=true&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  __name: 'ItemOverviewModal',
+  emits: ['closeModal'],
+  setup: function setup(__props, _ref) {
+    var __expose = _ref.expose,
+      emits = _ref.emit;
+    __expose();
+    function calculateQubicMeters(room, item) {
+      if (item.length && item.width && item.height) {
+        item.volume = item.length * item.width * item.height;
+      }
+      room.volume = room.contents.reduce(function (acc, item) {
+        if (item.volume) {
+          acc += item.volume;
+        }
+        return acc;
+      }, 0);
+    }
+    function closeModal() {
+      emits('closeModal');
+    }
+    var __returned__ = {
+      emits: emits,
+      calculateQubicMeters: calculateQubicMeters,
+      closeModal: closeModal,
+      get formDataStore() {
+        return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore;
+      }
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Rooms.vue?vue&type=script&setup=true&lang=js":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Rooms.vue?vue&type=script&setup=true&lang=js ***!
@@ -19176,7 +19242,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _data_menus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../data/menus */ "./resources/data/menus.js");
+/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
+/* harmony import */ var _data_menus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../data/menus */ "./resources/data/menus.js");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'Rooms',
@@ -19184,23 +19252,63 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose;
     __expose();
     function toggleRoom(roomName) {
-      _data_menus__WEBPACK_IMPORTED_MODULE_0__.rooms.forEach(function (menu) {
+      _data_menus__WEBPACK_IMPORTED_MODULE_1__.rooms.forEach(function (menu) {
         if (menu.title == roomName) {
           menu.status = !menu.status;
         }
       });
     }
-    function reduceVolume(room, object) {
-      if (object.value === 0) return;
-      room.volume == 0 ? room.volume = 0 : room.volume = room.volume - object.volume;
-      object.value--;
-    }
-    ;
-    function increaseVolume(room, object) {
-      room.volume = room.volume + object.volume;
+    function addItem(room, object) {
+      var roomHasItems = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.some(function (filledOutRoom) {
+        return filledOutRoom.title === room.title;
+      });
+      var item = {
+        name: object.name,
+        length: '',
+        width: '',
+        height: ''
+      };
+      if (!roomHasItems) {
+        var filledOutRoom = {
+          id: room.id,
+          title: room.title,
+          contents: []
+        };
+        filledOutRoom.contents.push(item);
+        _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.push(filledOutRoom);
+      } else {
+        var _filledOutRoom = findRoom(room);
+        if (_filledOutRoom) {
+          _filledOutRoom.contents.push(item);
+        }
+      }
       object.value++;
     }
     ;
+    function removeItem(room, object) {
+      if (object.value === 0) return;
+      var filledOutRoom = findRoom(room);
+      if (filledOutRoom) {
+        var itemIndex = filledOutRoom.contents.findIndex(function (item) {
+          return item.name === object.name;
+        });
+        if (itemIndex !== -1) {
+          filledOutRoom.contents.splice(itemIndex, 1);
+        }
+        if (filledOutRoom.contents.length === 0) {
+          _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.filter(function (room) {
+            return room.title !== filledOutRoom.title;
+          });
+        }
+      }
+      object.value--;
+    }
+    ;
+    function findRoom(room) {
+      return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.find(function (filled) {
+        return filled.id === room.id;
+      });
+    }
     function calculateVolume(room) {
       room.volume = 0;
       room.contents.forEach(function (roomObject) {
@@ -19220,12 +19328,16 @@ __webpack_require__.r(__webpack_exports__);
     ;
     var __returned__ = {
       toggleRoom: toggleRoom,
-      reduceVolume: reduceVolume,
-      increaseVolume: increaseVolume,
+      addItem: addItem,
+      removeItem: removeItem,
+      findRoom: findRoom,
       calculateVolume: calculateVolume,
       columnize: columnize,
+      get formDataStore() {
+        return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore;
+      },
       get rooms() {
-        return _data_menus__WEBPACK_IMPORTED_MODULE_0__.rooms;
+        return _data_menus__WEBPACK_IMPORTED_MODULE_1__.rooms;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -19891,7 +20003,7 @@ var _hoisted_16 = {
   "class": "fas fa-arrow-up absolute lg:right-56"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$setup.success.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, " Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [$setup.success.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, " Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[0].status ? 'bg-blue-200' : '']),
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -19899,13 +20011,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.mainMenus[0].title) + " ", 1 /* TEXT */), !$setup.mainMenus[0].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_5)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.mainMenus[0].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_6)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ContactInfo"], null, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.mainMenus[0].status]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[1].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[1].status ? 'bg-blue-200' : '']),
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[1].title);
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.mainMenus[1].title) + " ", 1 /* TEXT */), !$setup.mainMenus[1].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_7)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.mainMenus[1].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_8)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Appointment"], null, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.mainMenus[1].status]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[2].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[2].status ? 'bg-blue-200' : '']),
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[2].title);
     })
@@ -19913,7 +20025,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     direction: "from"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.mainMenus[2].status]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[3].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[3].status ? 'bg-blue-200' : '']),
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[3].title);
     })
@@ -19921,13 +20033,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     direction: "to"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.mainMenus[3].status]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[4].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[4].status ? 'bg-blue-200' : '']),
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[4].title);
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.mainMenus[4].title) + " ", 1 /* TEXT */), !$setup.mainMenus[4].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.mainMenus[4].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_14)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Rooms"], null, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.mainMenus[4].status]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[5].status ? 'bg-blue-400' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[5].status ? 'bg-blue-400' : '']),
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[5].title);
     })
@@ -19935,9 +20047,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "button",
     "class": "bg-yellow-100 px-5 py-1.5 rounded-full mt-2",
     onClick: _cache[6] || (_cache[6] = function ($event) {
-      return $setup.submit();
+      return $setup.toggleModal = true;
     })
-  }, " Anfrage senden ")])])]);
+  }, " Anfrage senden ")])])]), $setup.toggleModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ItemOverviewModal"], {
+    key: 0,
+    onCloseModal: _cache[7] || (_cache[7] = function ($event) {
+      return $setup.toggleModal = false;
+    })
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -19961,6 +20078,55 @@ var _hoisted_1 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ItemOverviewModal.vue?vue&type=template&id=1d4fe106":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ItemOverviewModal.vue?vue&type=template&id=1d4fe106 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "fixed flex justify-center items-center overflow-x-hidden overflow-y-auto inset-0"
+};
+var _hoisted_2 = {
+  "class": "relative mx-auto w-auto md:max-w-2xl z-50"
+};
+var _hoisted_3 = {
+  "class": "flex flex-col bg-white w-80 md:w-full rounded shadow-2xl p-5"
+};
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "text-2xl text-center font-bold border-b-2 pb-3"
+}, "Umzugsgüter Übersicht", -1 /* HOISTED */);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, " Bitte geben Sie die Länge, Breite und Höhe der Gegenstände an. Dies hilft uns, das gesamten Volumen zu berechnen. ", -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "flex justify-between sm:justify-end border-t-2 pt-3"
+};
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "button",
+  "class": "rounded bg-yellow-300 hover:bg-yellow-400 sm:w-3/12 px-4 py-2 ml-3"
+}, " Anfrage senden ", -1 /* HOISTED */);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "absolute inset-0 opacity-25 bg-black z-40"
+}, null, -1 /* HOISTED */);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "rounded border-2 border-black hover:bg-gray-200 sm:w-2/12 px-4 py-2",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $setup.closeModal();
+    })
+  }, " Schließen "), _hoisted_7])])]), _hoisted_8]);
 }
 
 /***/ }),
@@ -20032,7 +20198,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           type: "button",
           "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2",
           onClick: function onClick($event) {
-            return $setup.reduceVolume(menu, object);
+            return $setup.removeItem(menu, object);
           }
         }, "-", 8 /* PROPS */, _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
           id: object.name,
@@ -20048,7 +20214,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           type: "button",
           "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2",
           onClick: function onClick($event) {
-            return $setup.increaseVolume(menu, object);
+            return $setup.addItem(menu, object);
           }
         }, "+", 8 /* PROPS */, _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
           "class": "fw-bold",
@@ -20164,7 +20330,8 @@ var formDataStore = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   to_rooms: '',
   to_carry_distance: '',
   to_building_type: 'Mehrfamilienhaus',
-  errors: []
+  errors: [],
+  filledOutRooms: []
 });
 
 /***/ }),
@@ -20228,88 +20395,67 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   title: 'Arbeitszimmer',
   contents: [{
     name: 'Aktienschrank (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Deckenlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Rollcontainer',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schreibtisch (bis 1,6 m)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schreibtischstuhl',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sessel ohne Armlehnen',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Teppich',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 1,0 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch über 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Brücke',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bücherregal, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kommode',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schrank zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schreibtisch über 1,6 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sessel mit Armlehnen',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stehlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 0,6 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch über 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }],
   status: false,
   chunked: [],
@@ -20320,52 +20466,40 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   title: 'Diele / Bad',
   contents: [{
     name: 'Deckenlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Regal',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Teppich',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Truhe, Kommode',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Wäschepuff',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Hut-/Kleiderablage',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stuhl/Hocker',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Toilettenschrank',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Waschmaschine/Trockner',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Wäschespinne',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }],
   status: false,
   chunked: [],
@@ -20376,84 +20510,64 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   title: 'Esszimmer',
   contents: [{
     name: 'Brücke',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Deckenlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Hausbar',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sideboard',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stuhl mit Armlehnen',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Teppich',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 1,0 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch über 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Buffet ohne Aufsatz',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bücherregal, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Eckbank (Anzahl Sitzplätze)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schrank, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stuhl',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Teewagen, nicht zerlegbar',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 0,6 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch über 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Vitrine (Glasschrank)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }],
   status: false,
   chunked: [],
@@ -20464,16 +20578,13 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   title: 'Keller / Speicher / Garten',
   contents: [{
     name: 'Autoreifen',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Blumenkübel/Kasten',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Dreirad/Kinderrad',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Gartenwerkzeug',
     value: 0
@@ -20485,96 +20596,73 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Motorrad',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Plastikbox',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Rasenmäher, Motor',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schlitten',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schubkarre',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sonnenschirm',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Werkzeugkoffer',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Billardtisch',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bügelbrett',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Fahrrad/Moped',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kinderanhänger',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Klapptisch/Klappstuhl',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Leiter (je angefangener Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Mülltonne',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Rasenmäher, Hand',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Regal, zerlegbar (je angefangener Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schrank, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Ski',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Staubsauger',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Werkbank, zerlegbar',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Werkzeugschrank',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }],
   status: false,
   chunked: [],
@@ -20585,112 +20673,85 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   title: 'Kinderzimmer / Studio',
   contents: [{
     name: 'Anbauwand bis 38 cm (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bett, komplett',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Brücke',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bücherregal, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Etagenbett, komplett',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kleiderbehältnis',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kommode',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Nachttisch',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schrank, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Spielzeugkiste',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Teppich',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 1,0 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Anbauwand über 38 cm Tiefe (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bettzeug, je Betteinheit',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Deckenlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kinderbett, komplett',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Klettergerüst (je angefangener Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Laufgitter',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schrank bis zwei Türen, nicht zerlegbar',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schreibpult',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stuhl/Hocker',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 0,6 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }],
   status: false,
   chunked: [],
@@ -20701,84 +20762,65 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   title: 'Küche',
   contents: [{
     name: 'Arbeitsplatte, nicht unterbrochen (je angefangener Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Buffet mit Aufsätzen',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Eckbank (Anzahl Sitzplätze)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Herd',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kühlschrank/Truhe über 120 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stuhl',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 0,6 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Unterteil (Anzahl Türen)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Besenschrank',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Deckenlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Geschirrspülmaschine',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kühlschrank/Truhe bis 120 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Oberteil (Anzahl Türen)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Teppich',
     value: 0,
     volume: Math.random()
   }, {
     name: 'Tisch bis 1,0 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch über 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Waschmaschine/Trockner',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }],
   status: false,
   chunked: [],
@@ -20789,76 +20831,58 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   title: 'Schlafzimmer',
   contents: [{
     name: 'Bettumbau',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Deckenlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Einzelbett, komplett',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Frisierkommode mit Spiegel',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kommode',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schrank bis 2 Türen, nicht zerlegbar',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sideboard',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stuhl/Hocker',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bettzeug (je Betteinheit)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Doppelbett, komplett',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Französisches Bett, komplett',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kleiderbehältnis',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Nachttisch',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schrank, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Spiegel über 0,8 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Wäschetruhe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }],
   status: false,
   chunked: [],
@@ -20869,152 +20893,115 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   title: 'Wohnzimmer',
   contents: [{
     name: 'Anbauwand bis 38 cm Tiefe (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bilder über 0,8 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Buffet mit Aufsatz',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bücherregal, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Fernseher',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Heimorgel',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Kommode',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Musikschrank/Turm',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schreibtisch bis 1,6 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sekretär',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sessel ohne Armlehnen',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sitzlandschaft (Element), (Anzahl Sitzplätze)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Standuhr',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stereoanlage',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stuhl mit Armlehnen',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 0,6 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Wohnzimmerschrank, zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Anbauwand über 38 cm Tiefe (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Brücke',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Deckenlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Flügel',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Klavier',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Lüster',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Nähmaschine (Schrank)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Schreibtisch über 1,6 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sessel mit Armlehnen',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sideboard',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Sofa, Couch, Liege (Anzahl Sitzplätze)',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stehlampe',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Stuhl',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Teppich',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch bis 1,0 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Tisch über 1,2 m',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0,
-    volume: Math.random()
+    value: 0
   }],
   status: false,
   chunked: [],
@@ -38698,6 +38685,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/ItemOverviewModal.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/ItemOverviewModal.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ItemOverviewModal_vue_vue_type_template_id_1d4fe106__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ItemOverviewModal.vue?vue&type=template&id=1d4fe106 */ "./resources/js/components/ItemOverviewModal.vue?vue&type=template&id=1d4fe106");
+/* harmony import */ var _ItemOverviewModal_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ItemOverviewModal.vue?vue&type=script&setup=true&lang=js */ "./resources/js/components/ItemOverviewModal.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var C_laragon_www_spasov_umzug_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_spasov_umzug_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ItemOverviewModal_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ItemOverviewModal_vue_vue_type_template_id_1d4fe106__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/ItemOverviewModal.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/Rooms.vue":
 /*!*******************************************!*\
   !*** ./resources/js/components/Rooms.vue ***!
@@ -38834,6 +38849,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ItemOverviewModal.vue?vue&type=script&setup=true&lang=js":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/ItemOverviewModal.vue?vue&type=script&setup=true&lang=js ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ItemOverviewModal_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ItemOverviewModal_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ItemOverviewModal.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ItemOverviewModal.vue?vue&type=script&setup=true&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/Rooms.vue?vue&type=script&setup=true&lang=js":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/Rooms.vue?vue&type=script&setup=true&lang=js ***!
@@ -38942,6 +38973,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FormError_vue_vue_type_template_id_682967c9__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FormError_vue_vue_type_template_id_682967c9__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./FormError.vue?vue&type=template&id=682967c9 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/FormError.vue?vue&type=template&id=682967c9");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ItemOverviewModal.vue?vue&type=template&id=1d4fe106":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/ItemOverviewModal.vue?vue&type=template&id=1d4fe106 ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ItemOverviewModal_vue_vue_type_template_id_1d4fe106__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ItemOverviewModal_vue_vue_type_template_id_1d4fe106__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ItemOverviewModal.vue?vue&type=template&id=1d4fe106 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ItemOverviewModal.vue?vue&type=template&id=1d4fe106");
 
 
 /***/ }),
