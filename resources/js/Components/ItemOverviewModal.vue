@@ -1,34 +1,52 @@
 <script setup>
 import { formDataStore } from '../../data/formStore';
+import debounce from 'lodash.debounce';
 
 const emits = defineEmits(['closeModal']);
 
-function setLength(item, room, event) {
+const setLength = debounce((item, room, event) => {
     item.itemLength = event.target.value;
+    removeEmptyMetric(item, 'itemLength');
     calculateQubicMeters(room, item);
-}
+}, 300);
 
-function setWidth(item, room, event) {
+const setWidth = debounce((item, room, event) => {
     item.width = event.target.value;
+    removeEmptyMetric(item, 'width');
     calculateQubicMeters(room, item);
-}
+}, 300);
 
-function setHeight(item, room, event) {
+const setHeight = debounce((item, room, event) => {
     item.height = event.target.value;
+    removeEmptyMetric(item, 'height');
     calculateQubicMeters(room, item);
-}
+}, 300);
 
 function calculateQubicMeters(room, item) {
     if (item.itemLength && item.width && item.height) {
         item.volume = (item.itemLength * item.width * item.height) / (100 * 100 * 100);
         item.volume = parseFloat(item.volume.toFixed(2));
-        console.log('item', item.volume);
-        room.volume = room.contents.reduce((acc, item) => {
-            if (item.volume) {
-                acc += item.volume;
-            }
-            return acc;
-        }, 0);
+
+        calculateRoomVolume(room);
+    } else {
+        delete item.volume;
+        calculateRoomVolume(room);
+    }
+}
+
+function calculateRoomVolume(room) {
+    const volume = room.contents.reduce((accumulator, item) => {
+        if (item.volume) {
+            accumulator += item.volume;
+        }
+        return accumulator;
+    }, 0);
+    room.volume = volume.toFixed(2);
+}
+
+function removeEmptyMetric(item, metric) {
+    if (item[metric] === '') {
+        delete item[metric];
     }
 }
 
@@ -64,9 +82,12 @@ function closeModal() {
 									<span v-if="item.volume">{{ item.volume }} m<sup>3</sup></span>
 								</div>
 								<div class="flex md:justify-center gap-4">
-									<input :value="item.itemLength" type="text" class="w-20" placeholder="L" @input="setLength(item, room, $event)">
-									<input :value="item.width" type="text" class="w-20" placeholder="B" @input="setWidth(item, room, $event)">
-									<input :value="item.height" type="text" class="w-20" placeholder="H" @input="setHeight(item, room, $event)">
+									<input :value="item.itemLength" type="text" class="w-20" placeholder="L"
+										@input="setLength(item, room, $event)">
+									<input :value="item.width" type="text" class="w-20" placeholder="B"
+										@input="setWidth(item, room, $event)">
+									<input :value="item.height" type="text" class="w-20" placeholder="H"
+										@input="setHeight(item, room, $event)">
 								</div>
 							</div>
 						</div>
@@ -84,5 +105,4 @@ function closeModal() {
 			</div>
 		</div>
 		<div class="absolute inset-0 opacity-25 bg-black z-40"></div>
-	</div>
-</template>
+	</div></template>
