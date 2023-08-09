@@ -19165,9 +19165,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -19177,17 +19179,21 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose,
       emits = _ref.emit;
     __expose();
-    var setLength = lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default()(function (item, room, event) {
+    var error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var setLength = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(function (item, room, event) {
+      if (!validateInput(event.target.value)) return;
       item.itemLength = event.target.value;
       removeEmptyMetric(item, 'itemLength');
       calculateQubicMeters(room, item);
     }, 300);
-    var setWidth = lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default()(function (item, room, event) {
+    var setWidth = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(function (item, room, event) {
+      if (!validateInput(event.target.value)) return;
       item.width = event.target.value;
       removeEmptyMetric(item, 'width');
       calculateQubicMeters(room, item);
     }, 300);
-    var setHeight = lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default()(function (item, room, event) {
+    var setHeight = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(function (item, room, event) {
+      if (!validateInput(event.target.value)) return;
       item.height = event.target.value;
       removeEmptyMetric(item, 'height');
       calculateQubicMeters(room, item);
@@ -19216,6 +19222,11 @@ __webpack_require__.r(__webpack_exports__);
         delete item[metric];
       }
     }
+    function validateInput(input) {
+      var validation = /^[0-9]*$/.test(input);
+      error.value = !validation;
+      return validation;
+    }
     function submitForm() {
       emits('submitForm');
       closeModal();
@@ -19225,19 +19236,27 @@ __webpack_require__.r(__webpack_exports__);
     }
     var __returned__ = {
       emits: emits,
+      get error() {
+        return error;
+      },
+      set error(v) {
+        error = v;
+      },
       setLength: setLength,
       setWidth: setWidth,
       setHeight: setHeight,
       calculateQubicMeters: calculateQubicMeters,
       calculateRoomVolume: calculateRoomVolume,
       removeEmptyMetric: removeEmptyMetric,
+      validateInput: validateInput,
       submitForm: submitForm,
       closeModal: closeModal,
+      ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       get formDataStore() {
-        return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore;
+        return _data_formStore__WEBPACK_IMPORTED_MODULE_1__.formDataStore;
       },
       get debounce() {
-        return (lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default());
+        return (lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default());
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -20133,7 +20152,7 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "text-center border-b-2 pb-3"
 }, " Bitte geben Sie die Länge, Breite und Höhe der Gegenstände an. Dies hilft uns, das gesamten Volumen zu berechnen. ", -1 /* HOISTED */);
 var _hoisted_6 = {
-  "class": "lg:grid lg:grid-cols-2 lg:gap-2 mt-5"
+  "class": "lg:grid lg:grid-cols-2 overflow-y-scroll h-80 lg:gap-2 mt-5"
 };
 var _hoisted_7 = {
   "class": "block text-sm font-bold border-b mb-2"
@@ -20153,10 +20172,22 @@ var _hoisted_12 = {
 var _hoisted_13 = ["value", "onInput"];
 var _hoisted_14 = ["value", "onInput"];
 var _hoisted_15 = ["value", "onInput"];
-var _hoisted_16 = {
-  "class": "flex justify-between sm:justify-end border-t-2 pt-3"
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "border-t-2"
+}, null, -1 /* HOISTED */);
+var _hoisted_17 = {
+  key: 0,
+  "class": "text-red-500 text-sm md:hidden"
 };
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_18 = {
+  "class": "flex justify-between sm:justify-end pt-3"
+};
+var _hoisted_19 = {
+  key: 0,
+  "class": "hidden md:block self-center text-red-500 text-sm mr-10"
+};
+var _hoisted_20 = ["disabled"];
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "absolute inset-0 opacity-25 bg-black z-40"
 }, null, -1 /* HOISTED */);
 
@@ -20195,7 +20226,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }
       }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_15)])], 2 /* CLASS */);
     }), 128 /* KEYED_FRAGMENT */))])]);
-  }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), 128 /* KEYED_FRAGMENT */))]), _hoisted_16, $setup.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, " Die Eingabefelder dürfen nur numerische Zeichen enthalten. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [$setup.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, " Die Eingabefelder dürfen nur numerische Zeichen enthalten. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "rounded border-2 border-black hover:bg-gray-200 px-4 py-2",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -20203,11 +20234,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, " Schließen "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": "rounded bg-yellow-300 hover:bg-yellow-400 px-4 py-2 ml-3",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["rounded bg-yellow-300 hover:bg-yellow-400 px-4 py-2 ml-3", {
+      'opacity-50 cursor-not-allowed': $setup.error
+    }]),
+    disabled: $setup.error,
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $setup.submitForm();
     })
-  }, " Anfrage senden ")])])]), _hoisted_17]);
+  }, " Anfrage senden ", 10 /* CLASS, PROPS */, _hoisted_20)])])]), _hoisted_21]);
 }
 
 /***/ }),

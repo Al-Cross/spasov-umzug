@@ -1,22 +1,27 @@
 <script setup>
+import { ref } from 'vue';
 import { formDataStore } from '../../data/formStore';
 import debounce from 'lodash.debounce';
 
 const emits = defineEmits(['submitForm', 'closeModal']);
+let error = ref(false);
 
 const setLength = debounce((item, room, event) => {
+    if (!validateInput(event.target.value)) return;
     item.itemLength = event.target.value;
     removeEmptyMetric(item, 'itemLength');
     calculateQubicMeters(room, item);
 }, 300);
 
 const setWidth = debounce((item, room, event) => {
+    if (!validateInput(event.target.value)) return;
     item.width = event.target.value;
     removeEmptyMetric(item, 'width');
     calculateQubicMeters(room, item);
 }, 300);
 
 const setHeight = debounce((item, room, event) => {
+    if (!validateInput(event.target.value)) return;
     item.height = event.target.value;
     removeEmptyMetric(item, 'height');
     calculateQubicMeters(room, item);
@@ -50,6 +55,12 @@ function removeEmptyMetric(item, metric) {
     }
 }
 
+function validateInput(input) {
+    const validation = /^[0-9]*$/.test(input);
+    error.value = !validation;
+    return validation;
+}
+
 function submitForm() {
     emits('submitForm');
     closeModal();
@@ -71,7 +82,7 @@ function closeModal() {
 					Bitte geben Sie die Länge, Breite und Höhe der Gegenstände an.
 					Dies hilft uns, das gesamten Volumen zu berechnen.
 				</span>
-				<div class="lg:grid lg:grid-cols-2 lg:gap-2 mt-5">
+				<div class="lg:grid lg:grid-cols-2 overflow-y-scroll h-80 lg:gap-2 mt-5">
 					<div v-for="(room, index) in formDataStore.filledOutRooms" :key="index" class="mb-3">
 						<span class="block text-sm font-bold border-b mb-2">
 							{{ room.title }}
@@ -98,17 +109,25 @@ function closeModal() {
 						</div>
 					</div>
 				</div>
-				<div class="flex justify-between sm:justify-end border-t-2 pt-3">
+				<div class="border-t-2"></div>
+				<div v-if="error" class="text-red-500 text-sm md:hidden">
+					Die Eingabefelder dürfen nur numerische Zeichen enthalten.
+				</div>
+				<div class="flex justify-between sm:justify-end pt-3">
+					<div v-if="error" class="hidden md:block self-center text-red-500 text-sm mr-10">
+						Die Eingabefelder dürfen nur numerische Zeichen enthalten.
+					</div>
 					<button type="button" class="rounded border-2 border-black hover:bg-gray-200 px-4 py-2"
 						@click="closeModal()">
 						Schließen
 					</button>
 					<button type="button" class="rounded bg-yellow-300 hover:bg-yellow-400 px-4 py-2 ml-3"
-						@click="submitForm()">
+						:class="{ 'opacity-50 cursor-not-allowed': error }" :disabled="error" @click="submitForm()">
 						Anfrage senden
 					</button>
 				</div>
 			</div>
 		</div>
 		<div class="absolute inset-0 opacity-25 bg-black z-40"></div>
-	</div></template>
+	</div>
+</template>
