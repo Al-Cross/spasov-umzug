@@ -16,7 +16,7 @@ function addItem(room, object) {
 		.some(filledOutRoom => filledOutRoom.title === room.title);
 	const item = {
 		name: object.name,
-		length: '',
+		itemLength: '',
 		width: '',
 		height: ''
 	};

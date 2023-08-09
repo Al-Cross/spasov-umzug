@@ -3,16 +3,33 @@ import { formDataStore } from '../../data/formStore';
 
 const emits = defineEmits(['closeModal']);
 
+function setLength(item, room, event) {
+    item.itemLength = event.target.value;
+    calculateQubicMeters(room, item);
+}
+
+function setWidth(item, room, event) {
+    item.width = event.target.value;
+    calculateQubicMeters(room, item);
+}
+
+function setHeight(item, room, event) {
+    item.height = event.target.value;
+    calculateQubicMeters(room, item);
+}
+
 function calculateQubicMeters(room, item) {
-    if (item.length && item.width && item.height) {
-        item.volume = item.length * item.width * item.height;
+    if (item.itemLength && item.width && item.height) {
+        item.volume = (item.itemLength * item.width * item.height) / (100 * 100 * 100);
+        item.volume = parseFloat(item.volume.toFixed(2));
+        console.log('item', item.volume);
+        room.volume = room.contents.reduce((acc, item) => {
+            if (item.volume) {
+                acc += item.volume;
+            }
+            return acc;
+        }, 0);
     }
-    room.volume = room.contents.reduce((acc, item) => {
-        if (item.volume) {
-            acc += item.volume;
-        }
-        return acc;
-    }, 0);
 }
 
 function closeModal() {
@@ -24,25 +41,32 @@ function closeModal() {
 	<div class="fixed flex justify-center items-center overflow-x-hidden overflow-y-auto inset-0">
 		<div class="relative mx-auto sm:w-10/12 z-50">
 			<div class="flex flex-col bg-white w-80 md:w-full rounded shadow-2xl p-5">
-				<div class="text-2xl text-center font-bold border-b-2 pb-3">
+				<div class="text-2xl text-center font-bold">
 					Umzugsgüter Übersicht
 				</div>
-				<span>
+				<span class="text-center border-b-2 pb-3">
 					Bitte geben Sie die Länge, Breite und Höhe der Gegenstände an.
 					Dies hilft uns, das gesamten Volumen zu berechnen.
 				</span>
-				<div class="lg:grid lg:grid-cols-2 lg:gap-2">
+				<div class="lg:grid lg:grid-cols-2 lg:gap-2 mt-5">
 					<div v-for="(room, index) in formDataStore.filledOutRooms" :key="index" class="mb-3">
-						<span class="block text-sm font-bold border-b mb-2">{{ room.title }}</span>
+						<span class="block text-sm font-bold border-b mb-2">
+							{{ room.title }}
+							<span v-if="room.volume" class="ml-3">
+								{{ room.volume }} m<sup>3</sup>
+							</span>
+						</span>
 						<div>
-							<div v-for="(item, i) in room.contents" :key="i"
-								:class="i % 2 !== 0 ? 'bg-blue-100' : ''"
+							<div v-for="(item, i) in room.contents" :key="i" :class="i % 2 !== 0 ? 'bg-blue-100' : ''"
 								class="lg:flex lg:justify-between lg:items-center xl:gap-10 mt-2">
-								<div>{{ item.name }}</div>
+								<div>
+									{{ item.name }}
+									<span v-if="item.volume">{{ item.volume }} m<sup>3</sup></span>
+								</div>
 								<div class="flex md:justify-center gap-4">
-									<input type="text" class="w-20" placeholder="L">
-									<input type="text" class="w-20" placeholder="B">
-									<input type="text" class="w-20" placeholder="H">
+									<input :value="item.itemLength" type="text" class="w-20" placeholder="L" @input="setLength(item, room, $event)">
+									<input :value="item.width" type="text" class="w-20" placeholder="B" @input="setWidth(item, room, $event)">
+									<input :value="item.height" type="text" class="w-20" placeholder="H" @input="setHeight(item, room, $event)">
 								</div>
 							</div>
 						</div>
