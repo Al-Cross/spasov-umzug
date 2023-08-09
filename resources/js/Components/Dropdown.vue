@@ -6,20 +6,16 @@ import AddressFromTo from './AddressFromTo.vue';
 import Rooms from './Rooms.vue';
 import Services from './Services.vue';
 import ItemOverviewModal from './ItemOverviewModal.vue';
-import { rooms } from '../../data/menus';
 import { mainMenus } from '../../data/main-menus';
 import { services } from '../../data/services';
 import { formDataStore } from '../../data/formStore';
 
-let menus = rooms,
-	formData = formDataStore,
-	success = ref(false);
-
+let success = ref(false);
 let toggleModal = ref(false);
 
-watch(() => formData.errors, () => {
+watch(() => formDataStore.errors, () => {
 	mainMenus.forEach(menu => {
-		menu.elements.some(str => str in formData.errors) ? menu.status = true : menu.status = false;
+		menu.elements.some(str => str in formDataStore.errors) ? menu.status = true : menu.status = false;
 	});
 });
 
@@ -28,31 +24,16 @@ watch(toggleModal, (newValue) => {
 	scrollToTopElement.style.zIndex = newValue ? -1 : 0;
 });
 
+function onHandleFormSubmission() {
+	formDataStore.filledOutRooms.length ? toggleModal.value = true : submit();
+}
+
 function submit() {
-	let rooms = [];
-	let totalVolume = 0;
-
-	menus.forEach(menu => {
-		if (menu.volume != 0) {
-			let room = { room: menu.title, roomVolume: menu.volume };
-			room.elements = [];
-			menu.contents.forEach(furniture => {
-				if (furniture.value != 0) {
-					let item = {};
-					item.name = furniture.name;
-					item.value = furniture.value;
-					room.elements.push(item);
-				}
-			});
-
-			totalVolume = totalVolume + menu.volume;
-			rooms.push(room);
-		}
-	});
+	let totalVolume = calculateTotalVolume();
 
 	axios.post('/calculator', {
-		userData: formData,
-		objects: rooms,
+		userData: formDataStore,
+		objects: formDataStore.filledOutRooms,
 		totalVolume: totalVolume,
 		loadingPoint: services.loadingPoint,
 		unloadingPoint: services.unloadingPoint
@@ -61,9 +42,20 @@ function submit() {
 			success.value = true;
 		})
 		.catch(error => {
-			formData.errors = error.response.data.errors;
+			formDataStore.errors = error.response.data.errors;
 		});
 };
+
+function calculateTotalVolume() {
+	const volume = formDataStore.filledOutRooms.reduce((accumulator, room) => {
+		if (room.volume) {
+			accumulator += room.volume;
+		}
+		return accumulator;
+	}, 0);
+	
+	return Math.round(volume * 100) / 100;
+}
 
 function toggleMainMenu(name) {
 	mainMenus.forEach(menu => {
@@ -135,11 +127,11 @@ function toggleMainMenu(name) {
 				</button>
 				<Services v-show="mainMenus[5].status" />
 
-				<button type="button" class="bg-yellow-100 px-5 py-1.5 rounded-full mt-2" @click="toggleModal = true">
-					Anfrage senden
+				<button type="button" class="bg-yellow-100 px-5 py-1.5 rounded-full mt-2" @click="onHandleFormSubmission()">
+					{{ formDataStore.filledOutRooms.length ? 'Zur Übersicht' : 'Anfrage senden' }}
 				</button>
 			</div>
 		</form>
 	</div>
-	<ItemOverviewModal v-if="toggleModal" @close-modal="toggleModal = false" />
+	<ItemOverviewModal v-if="toggleModal" @submit-form="submit()" @close-modal="toggleModal = false" />
 </template>

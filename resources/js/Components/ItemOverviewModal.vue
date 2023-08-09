@@ -2,7 +2,7 @@
 import { formDataStore } from '../../data/formStore';
 import debounce from 'lodash.debounce';
 
-const emits = defineEmits(['closeModal']);
+const emits = defineEmits(['submitForm', 'closeModal']);
 
 const setLength = debounce((item, room, event) => {
     item.itemLength = event.target.value;
@@ -41,13 +41,18 @@ function calculateRoomVolume(room) {
         }
         return accumulator;
     }, 0);
-    room.volume = volume.toFixed(2);
+    room.volume = Math.round(volume * 100) / 100;
 }
 
 function removeEmptyMetric(item, metric) {
     if (item[metric] === '') {
         delete item[metric];
     }
+}
+
+function submitForm() {
+    emits('submitForm');
+    closeModal();
 }
 
 function closeModal() {
@@ -98,7 +103,8 @@ function closeModal() {
 						@click="closeModal()">
 						Schließen
 					</button>
-					<button type="button" class="rounded bg-yellow-300 hover:bg-yellow-400 px-4 py-2 ml-3">
+					<button type="button" class="rounded bg-yellow-300 hover:bg-yellow-400 px-4 py-2 ml-3"
+						@click="submitForm()">
 						Anfrage senden
 					</button>
 				</div>

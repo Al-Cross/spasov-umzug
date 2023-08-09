@@ -19011,11 +19011,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Rooms_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Rooms.vue */ "./resources/js/components/Rooms.vue");
 /* harmony import */ var _Services_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Services.vue */ "./resources/js/components/Services.vue");
 /* harmony import */ var _ItemOverviewModal_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ItemOverviewModal.vue */ "./resources/js/components/ItemOverviewModal.vue");
-/* harmony import */ var _data_menus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../data/menus */ "./resources/data/menus.js");
-/* harmony import */ var _data_main_menus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../data/main-menus */ "./resources/data/main-menus.js");
-/* harmony import */ var _data_services__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../data/services */ "./resources/data/services.js");
-/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
-
+/* harmony import */ var _data_main_menus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../data/main-menus */ "./resources/data/main-menus.js");
+/* harmony import */ var _data_services__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../data/services */ "./resources/data/services.js");
+/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
 
 
 
@@ -19031,16 +19029,14 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose;
     __expose();
-    var menus = _data_menus__WEBPACK_IMPORTED_MODULE_7__.rooms,
-      formData = _data_formStore__WEBPACK_IMPORTED_MODULE_10__.formDataStore,
-      success = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var success = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var toggleModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
-      return formData.errors;
+      return _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors;
     }, function () {
-      _data_main_menus__WEBPACK_IMPORTED_MODULE_8__.mainMenus.forEach(function (menu) {
+      _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus.forEach(function (menu) {
         menu.elements.some(function (str) {
-          return str in formData.errors;
+          return str in _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors;
         }) ? menu.status = true : menu.status = false;
       });
     });
@@ -19048,43 +19044,35 @@ __webpack_require__.r(__webpack_exports__);
       var scrollToTopElement = document.querySelector('.fade-small');
       scrollToTopElement.style.zIndex = newValue ? -1 : 0;
     });
+    function onHandleFormSubmission() {
+      _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.filledOutRooms.length ? toggleModal.value = true : submit();
+    }
     function submit() {
-      var rooms = [];
-      var totalVolume = 0;
-      menus.forEach(function (menu) {
-        if (menu.volume != 0) {
-          var room = {
-            room: menu.title,
-            roomVolume: menu.volume
-          };
-          room.elements = [];
-          menu.contents.forEach(function (furniture) {
-            if (furniture.value != 0) {
-              var item = {};
-              item.name = furniture.name;
-              item.value = furniture.value;
-              room.elements.push(item);
-            }
-          });
-          totalVolume = totalVolume + menu.volume;
-          rooms.push(room);
-        }
-      });
+      var totalVolume = calculateTotalVolume();
       axios.post('/calculator', {
-        userData: formData,
-        objects: rooms,
+        userData: _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore,
+        objects: _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.filledOutRooms,
         totalVolume: totalVolume,
-        loadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_9__.services.loadingPoint,
-        unloadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_9__.services.unloadingPoint
+        loadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_8__.services.loadingPoint,
+        unloadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_8__.services.unloadingPoint
       }).then(function () {
         success.value = true;
       })["catch"](function (error) {
-        formData.errors = error.response.data.errors;
+        _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors = error.response.data.errors;
       });
     }
     ;
+    function calculateTotalVolume() {
+      var volume = _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.filledOutRooms.reduce(function (accumulator, room) {
+        if (room.volume) {
+          accumulator += room.volume;
+        }
+        return accumulator;
+      }, 0);
+      return Math.round(volume * 100) / 100;
+    }
     function toggleMainMenu(name) {
-      _data_main_menus__WEBPACK_IMPORTED_MODULE_8__.mainMenus.forEach(function (menu) {
+      _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus.forEach(function (menu) {
         if (menu.title == name) {
           menu.status = !menu.status;
         }
@@ -19092,18 +19080,6 @@ __webpack_require__.r(__webpack_exports__);
     }
     ;
     var __returned__ = {
-      get menus() {
-        return menus;
-      },
-      set menus(v) {
-        menus = v;
-      },
-      get formData() {
-        return formData;
-      },
-      set formData(v) {
-        formData = v;
-      },
       get success() {
         return success;
       },
@@ -19116,7 +19092,9 @@ __webpack_require__.r(__webpack_exports__);
       set toggleModal(v) {
         toggleModal = v;
       },
+      onHandleFormSubmission: onHandleFormSubmission,
       submit: submit,
+      calculateTotalVolume: calculateTotalVolume,
       toggleMainMenu: toggleMainMenu,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
@@ -19126,17 +19104,14 @@ __webpack_require__.r(__webpack_exports__);
       Rooms: _Rooms_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
       Services: _Services_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
       ItemOverviewModal: _ItemOverviewModal_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-      get rooms() {
-        return _data_menus__WEBPACK_IMPORTED_MODULE_7__.rooms;
-      },
       get mainMenus() {
-        return _data_main_menus__WEBPACK_IMPORTED_MODULE_8__.mainMenus;
+        return _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus;
       },
       get services() {
-        return _data_services__WEBPACK_IMPORTED_MODULE_9__.services;
+        return _data_services__WEBPACK_IMPORTED_MODULE_8__.services;
       },
       get formDataStore() {
-        return _data_formStore__WEBPACK_IMPORTED_MODULE_10__.formDataStore;
+        return _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -19197,7 +19172,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'ItemOverviewModal',
-  emits: ['closeModal'],
+  emits: ['submitForm', 'closeModal'],
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose,
       emits = _ref.emit;
@@ -19234,12 +19209,16 @@ __webpack_require__.r(__webpack_exports__);
         }
         return accumulator;
       }, 0);
-      room.volume = volume.toFixed(2);
+      room.volume = Math.round(volume * 100) / 100;
     }
     function removeEmptyMetric(item, metric) {
       if (item[metric] === '') {
         delete item[metric];
       }
+    }
+    function submitForm() {
+      emits('submitForm');
+      closeModal();
     }
     function closeModal() {
       emits('closeModal');
@@ -19252,6 +19231,7 @@ __webpack_require__.r(__webpack_exports__);
       calculateQubicMeters: calculateQubicMeters,
       calculateRoomVolume: calculateRoomVolume,
       removeEmptyMetric: removeEmptyMetric,
+      submitForm: submitForm,
       closeModal: closeModal,
       get formDataStore() {
         return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore;
@@ -20086,11 +20066,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "button",
     "class": "bg-yellow-100 px-5 py-1.5 rounded-full mt-2",
     onClick: _cache[6] || (_cache[6] = function ($event) {
-      return $setup.toggleModal = true;
+      return $setup.onHandleFormSubmission();
     })
-  }, " Anfrage senden ")])])]), $setup.toggleModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ItemOverviewModal"], {
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formDataStore.filledOutRooms.length ? 'Zur Übersicht' : 'Anfrage senden'), 1 /* TEXT */)])])]), $setup.toggleModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ItemOverviewModal"], {
     key: 0,
-    onCloseModal: _cache[7] || (_cache[7] = function ($event) {
+    onSubmitForm: _cache[7] || (_cache[7] = function ($event) {
+      return $setup.submit();
+    }),
+    onCloseModal: _cache[8] || (_cache[8] = function ($event) {
       return $setup.toggleModal = false;
     })
   })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
@@ -20173,11 +20156,7 @@ var _hoisted_15 = ["value", "onInput"];
 var _hoisted_16 = {
   "class": "flex justify-between sm:justify-end border-t-2 pt-3"
 };
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "button",
-  "class": "rounded bg-yellow-300 hover:bg-yellow-400 px-4 py-2 ml-3"
-}, " Anfrage senden ", -1 /* HOISTED */);
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "absolute inset-0 opacity-25 bg-black z-40"
 }, null, -1 /* HOISTED */);
 
@@ -20222,7 +20201,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $setup.closeModal();
     })
-  }, " Schließen "), _hoisted_17])])]), _hoisted_18]);
+  }, " Schließen "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "rounded bg-yellow-300 hover:bg-yellow-400 px-4 py-2 ml-3",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $setup.submitForm();
+    })
+  }, " Anfrage senden ")])])]), _hoisted_17]);
 }
 
 /***/ }),
