@@ -15,7 +15,7 @@ let toggleModal = ref(false);
 
 watch(() => formDataStore.errors, () => {
 	mainMenus.forEach(menu => {
-		menu.elements.some(str => str in formDataStore.errors) ? menu.status = true : menu.status = false;
+		mainMenus.status = menu.elements.some(str => str in formDataStore.errors);
 	});
 });
 
@@ -42,7 +42,7 @@ function submit() {
 			success.value = true;
 		})
 		.catch(error => {
-			if (error.status === 419) {
+			if (error.response.status === 419 || error.response.status === 422) {
 				formDataStore.errors = error.response.data.errors;
 			}
 		});
@@ -70,7 +70,7 @@ function toggleMainMenu(name) {
 
 <template>
 	<div class="container mx-auto px-6 md:px-16">
-		<div v-if="success.value" class="text-green-700 text-center p-3 mb-5">
+		<div v-if="success" class="text-green-700 text-center p-3 mb-5">
 			Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist.
 		</div>
 		<form class="mt-7">

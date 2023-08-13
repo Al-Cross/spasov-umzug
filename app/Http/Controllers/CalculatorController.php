@@ -27,7 +27,7 @@ class CalculatorController extends Controller
                 $request->unloadingPoint
             ));
 
-        return response([], 204);
+        return response(['Email sent successfully.'], 204);
     }
 
     public function sanitize($userData)

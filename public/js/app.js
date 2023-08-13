@@ -19035,9 +19035,9 @@ __webpack_require__.r(__webpack_exports__);
       return _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors;
     }, function () {
       _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus.forEach(function (menu) {
-        menu.elements.some(function (str) {
+        _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus.status = menu.elements.some(function (str) {
           return str in _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors;
-        }) ? menu.status = true : menu.status = false;
+        });
       });
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(toggleModal, function (newValue) {
@@ -19058,7 +19058,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         success.value = true;
       })["catch"](function (error) {
-        if (error.status === 419) {
+        if (error.response.status === 419 || error.response.status === 422) {
           _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors = error.response.data.errors;
         }
       });
@@ -20043,7 +20043,7 @@ var _hoisted_16 = {
   "class": "fas fa-arrow-up absolute lg:right-56"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [$setup.success.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, " Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [$setup.success ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, " Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-2xl tracking-widest py-4 w-full", $setup.mainMenus[0].status ? 'bg-blue-200' : '']),
     onClick: _cache[0] || (_cache[0] = function ($event) {
