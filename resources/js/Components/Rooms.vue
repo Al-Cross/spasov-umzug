@@ -85,12 +85,13 @@ function columnize(menu) {
 				<button type="button"
 					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white rounded-3xl focus:outline-none font-mono md:text-2xl tracking-widest py-4 w-full"
 					:class="menu.status ? 'bg-blue-201' : ''" @click="toggleRoom(menu.title); columnize(menu)">
-					<span class="text-xs md:text-xl">{{ menu.title }}</span>
-					<span class="text-xs md:text-xl">
-						{{ menu.volume.toFixed(1) }} m <sup>3</sup>
-					</span>
-					<i v-if="!menu.status" class="fas fa-arrow-down absolute lg:right-57"></i>
-					<i v-if="menu.status" class="fas fa-arrow-up absolute lg:right-57"></i>
+					<div class="flex justify-between">
+						<div class="m-auto text-xs md:text-xl">{{ menu.title }}</div>
+						<div class="mr-4">
+							<i v-if="!menu.status" class="fas fa-arrow-down mt-1" />
+							<i v-if="menu.status" class="fas fa-arrow-up mt-1" />
+						</div>
+					</div>
 				</button>
 				<div v-show="menu.status"
 					class="grid grid-cols-2 md:grid-cols-2 bg-gradient-to-b from-blue-300 to-blue-200 rounded-2xl p-6 mt-2">
