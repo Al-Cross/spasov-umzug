@@ -42,7 +42,9 @@ function submit() {
 			success.value = true;
 		})
 		.catch(error => {
-			formDataStore.errors = error.response.data.errors;
+			if (error.status === 419) {
+				formDataStore.errors = error.response.data.errors;
+			}
 		});
 };
 

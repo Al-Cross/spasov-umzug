@@ -19058,7 +19058,9 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         success.value = true;
       })["catch"](function (error) {
-        _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors = error.response.data.errors;
+        if (error.status === 419) {
+          _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors = error.response.data.errors;
+        }
       });
     }
     ;
