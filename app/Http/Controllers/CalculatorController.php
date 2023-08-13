@@ -32,7 +32,6 @@ class CalculatorController extends Controller
 
     public function sanitize($userData)
     {
-        // dd($userData);
         $request = Validator::make(
             $userData,
             [

@@ -3,10 +3,10 @@
 
 **Von:** {{ $data['salutation'] }} {{ $data['first_name'] }} {{ $data['last_name'] }}\
 **Telefonnummer:** {{ $data['phone'] }}\
-**Email Adresse:** {{ $data['email'] }}
+**E-Mail Adresse:** {{ $data['email'] }}
 
 # Gewünschter Termin
-**Am Datum:** {{ $data['date']}}\
+**Am Datum:** {{ \Carbon\Carbon::parse($data['date'])->format('d.m.Y') }}\
 **Kostenträger:** {{ $data['cost_bearer']}}\
 **Bemerkungen:** {{ $data['remarks']}}
 
@@ -16,10 +16,10 @@
 **Postleitzahl:** {{ $data['from_zip'] }}\
 **Land:** {{ $data['from_province'] }}\
 **Etage:** {{ $data['from_floor'] ?? '-' }}\
-**Größe der Wohnung:** {{ $data['from_sq_m'] }}\
+**Größe der Wohnung:** {{ $data['from_sq_m'] }} m<sup>2</sup>\
 **Anzahl Räume:** {{ $data['from_rooms'] }}\
 **Fahrstuhl:** {{ $data['from_elevator'] ?? '-' }}\
-**Tragestrecke:** {{ $data['from_carry_distance'] }}\
+**Tragestrecke:** {{ $data['from_carry_distance'] }} m\
 **Gebäudeart:** {{ $data['from_building_type'] }}
 
 # Umzug nach
@@ -28,26 +28,31 @@
 **Postleitzahl:** {{ $data['to_zip'] }}\
 **Land:** {{ $data['to_province'] }}\
 **Etage:** {{ $data['to_floor'] ?? '-' }}\
-**Größe der Wohnung:** {{ $data['to_sq_m'] }}\
+**Größe der Wohnung:** {{ $data['to_sq_m'] }} m<sup>2</sup>\
 **Anzahl Räume:** {{ $data['to_rooms'] }}\
 **Fahrstuhl:** {{ $data['to_elevator'] ?? '-' }}\
-**Tragestrecke:** {{ $data['to_carry_distance'] }}\
+**Tragestrecke:** {{ $data['to_carry_distance'] }} m\
 **Gebäudeart:** {{ $data['to_building_type'] }}
 
 # Umzugsgüter
 @if(!empty($objects))
-@foreach($objects as $item)
-## {{ $item['room'] }}
+@foreach($objects as $room)
+## {{ $room['title'] }}
+
 @component('mail::table')
-| Gegenstand | Anzahl |
+| Gegenstand | Volumen m<sup>3</sup> |
 |:----------:|-------:|
-@foreach($item['elements'] as $element)
-| {{ $element['name'] }} | {{ $element['value'] }} |
+@foreach($room['contents'] as $furniture)
+| {{ $furniture['name'] }} | {{ $furniture['volume'] ?? 'nicht angegeben' }} |
 @endforeach
 @endcomponent
-**Kubikmeter im Zimmer:** {{ $item['roomVolume'] }}
+
+@if(isset($room['volume']))
+**Kubikmeter im Zimmer:** {{ $room['volume'] }}
+@endif
 @endforeach
-**Gesamte Volumen:** {{ $totalVolume }}
+
+**Gesamte Volumen:** {{ $totalVolume }} m<sup>3</sup>
 @else
 Keine Umzugsgüter wurden angegeben.
 @endif
