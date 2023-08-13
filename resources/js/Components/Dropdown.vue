@@ -12,10 +12,11 @@ import { formDataStore } from '../../data/formStore';
 
 let success = ref(false);
 let toggleModal = ref(false);
+let pendingResponse = ref(false);
 
 watch(() => formDataStore.errors, () => {
 	mainMenus.forEach(menu => {
-		mainMenus.status = menu.elements.some(str => str in formDataStore.errors);
+		menu.status = menu.elements.some(str => str in formDataStore.errors);
 	});
 });
 
@@ -29,6 +30,7 @@ function onHandleFormSubmission() {
 }
 
 function submit() {
+	pendingResponse.value = true;
 	let totalVolume = calculateTotalVolume();
 
 	axios.post('/calculator', {
@@ -40,8 +42,10 @@ function submit() {
 	})
 		.then(() => {
 			success.value = true;
+			pendingResponse.value = false;
 		})
 		.catch(error => {
+			pendingResponse.value = false;
 			if (error.response.status === 419 || error.response.status === 422) {
 				formDataStore.errors = error.response.data.errors;
 			}
@@ -128,10 +132,14 @@ function toggleMainMenu(name) {
 					<i v-if="mainMenus[5].status" class="fas fa-arrow-up absolute lg:right-56"></i>
 				</button>
 				<Services v-show="mainMenus[5].status" />
-
-				<button type="button" class="bg-yellow-100 px-5 py-1.5 rounded-full mt-2" @click="onHandleFormSubmission()">
-					{{ formDataStore.filledOutRooms.length ? 'Zur Übersicht' : 'Anfrage senden' }}
-				</button>
+				<div class="flex justify-end">
+					<button type="button" class="bg-yellow-300 hover:bg-yellow-400 shadow px-5 py-1.5 rounded-full mt-2" @click="onHandleFormSubmission()">
+						<div v-if="pendingResponse" class="lds-facebook"><div></div><div></div><div></div></div>
+						<span v-if="!pendingResponse">
+							{{ formDataStore.filledOutRooms.length ? 'Zur Übersicht' : 'Anfrage senden' }}
+						</span>
+					</button>
+				</div>
 			</div>
 		</form>
 	</div>

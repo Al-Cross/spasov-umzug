@@ -19031,11 +19031,12 @@ __webpack_require__.r(__webpack_exports__);
     __expose();
     var success = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var toggleModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var pendingResponse = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
       return _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors;
     }, function () {
       _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus.forEach(function (menu) {
-        _data_main_menus__WEBPACK_IMPORTED_MODULE_7__.mainMenus.status = menu.elements.some(function (str) {
+        menu.status = menu.elements.some(function (str) {
           return str in _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors;
         });
       });
@@ -19048,6 +19049,7 @@ __webpack_require__.r(__webpack_exports__);
       _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.filledOutRooms.length ? toggleModal.value = true : submit();
     }
     function submit() {
+      pendingResponse.value = true;
       var totalVolume = calculateTotalVolume();
       axios.post('/calculator', {
         userData: _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore,
@@ -19057,7 +19059,9 @@ __webpack_require__.r(__webpack_exports__);
         unloadingPoint: _data_services__WEBPACK_IMPORTED_MODULE_8__.services.unloadingPoint
       }).then(function () {
         success.value = true;
+        pendingResponse.value = false;
       })["catch"](function (error) {
+        pendingResponse.value = false;
         if (error.response.status === 419 || error.response.status === 422) {
           _data_formStore__WEBPACK_IMPORTED_MODULE_9__.formDataStore.errors = error.response.data.errors;
         }
@@ -19093,6 +19097,12 @@ __webpack_require__.r(__webpack_exports__);
       },
       set toggleModal(v) {
         toggleModal = v;
+      },
+      get pendingResponse() {
+        return pendingResponse;
+      },
+      set pendingResponse(v) {
+        pendingResponse = v;
       },
       onHandleFormSubmission: onHandleFormSubmission,
       submit: submit,
@@ -20042,6 +20052,20 @@ var _hoisted_16 = {
   key: 1,
   "class": "fas fa-arrow-up absolute lg:right-56"
 };
+var _hoisted_17 = {
+  "class": "flex justify-end"
+};
+var _hoisted_18 = {
+  key: 0,
+  "class": "lds-facebook"
+};
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, null, -1 /* HOISTED */);
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, null, -1 /* HOISTED */);
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, null, -1 /* HOISTED */);
+var _hoisted_22 = [_hoisted_19, _hoisted_20, _hoisted_21];
+var _hoisted_23 = {
+  key: 1
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [$setup.success ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, " Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
@@ -20083,13 +20107,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[5].title);
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.mainMenus[5].title) + " ", 1 /* TEXT */), !$setup.mainMenus[5].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_15)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.mainMenus[5].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Services"], null, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.mainMenus[5].status]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.mainMenus[5].title) + " ", 1 /* TEXT */), !$setup.mainMenus[5].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_15)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.mainMenus[5].status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Services"], null, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.mainMenus[5].status]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": "bg-yellow-100 px-5 py-1.5 rounded-full mt-2",
+    "class": "bg-yellow-300 hover:bg-yellow-400 shadow px-5 py-1.5 rounded-full mt-2",
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $setup.onHandleFormSubmission();
     })
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formDataStore.filledOutRooms.length ? 'Zur Übersicht' : 'Anfrage senden'), 1 /* TEXT */)])])]), $setup.toggleModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ItemOverviewModal"], {
+  }, [$setup.pendingResponse ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_22)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$setup.pendingResponse ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formDataStore.filledOutRooms.length ? 'Zur Übersicht' : 'Anfrage senden'), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), $setup.toggleModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ItemOverviewModal"], {
     key: 0,
     onSubmitForm: _cache[7] || (_cache[7] = function ($event) {
       return $setup.submit();
@@ -38833,6 +38857,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/styles.css":
+/*!**********************************!*\
+  !*** ./resources/css/styles.css ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -39913,6 +39950,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
+/******/ 			"css/styles": 0,
 /******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
@@ -39963,8 +40001,9 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/styles","css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/styles","css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/styles","css/app"], () => (__webpack_require__("./resources/css/styles.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -1,4 +1,4 @@
-<div class="lg:grid lg:grid-cols-3 lg:place-content-center sm:h-80 bg-blue-900 p-10">
+<div class="lg:grid lg:grid-cols-3 lg:place-content-center sm:h-80 bg-blue-900 p-10 mt-10">
 	<div class="sm:text-2xl text-xl text-blue-200 font-mono font-semibold mb-7">
 		<div>
 			<i class="fas fa-map-marker-alt fa-2x fill-current text-blue-200"></i> Anschrift:
