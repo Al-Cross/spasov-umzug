@@ -1,12 +1,12 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: [
+  content: [
   	// './resources/**/*.blade.php',
    //  './resources/**/*.js',
    //  './resources/**/*.vue',
+   "./resources/**/*.{html,js,vue,php}",
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
       'xs': '350px',
@@ -16,11 +16,6 @@ module.exports = {
       fontFamily: {
         headline: 'Poppins, sans-serif'
       }
-    },
-  },
-  variants: {
-    extend: {
-      backgroundColor: ['active'],
     },
   },
   plugins: [
