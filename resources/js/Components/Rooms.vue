@@ -21,13 +21,7 @@ function addItem(room, object) {
 		height: ''
 	};
 	if (!roomHasItems) {
-		const filledOutRoom = {
-			id: room.id,
-			title: room.title,
-			contents: []
-		}
-		filledOutRoom.contents.push(item);
-		formDataStore.filledOutRooms.push(filledOutRoom);
+		createNewRoom(room, [item]);
 	} else {
 		const filledOutRoom = findRoom(room);
 		if (filledOutRoom) {
@@ -36,6 +30,16 @@ function addItem(room, object) {
 	}
 	object.value++;
 };
+
+function createNewRoom(room, items) {
+	const filledOutRoom = {
+		id: room.id,
+		title: room.title,
+		contents: []
+	};
+	filledOutRoom.contents.push(...items);
+	formDataStore.filledOutRooms.push(filledOutRoom);
+}
 
 function removeItem(room, object) {
 	if (object.value === 0) return;
@@ -47,8 +51,7 @@ function removeItem(room, object) {
 			filledOutRoom.contents.splice(itemIndex, 1);
 		}
 		if (filledOutRoom.contents.length === 0) {
-			formDataStore.filledOutRooms = formDataStore.filledOutRooms
-				.filter(room => room.title !== filledOutRoom.title);
+			removeRoom(filledOutRoom);
 		}
 	}
 	object.value--;
@@ -58,13 +61,40 @@ function findRoom(room) {
 	return formDataStore.filledOutRooms.find(filled => filled.id === room.id);
 }
 
-function calculateVolume(room) {
-	room.volume = 0;
+function removeRoom(filledOutRoom) {
+	formDataStore.filledOutRooms = formDataStore.filledOutRooms
+		.filter(room => room.title !== filledOutRoom.title);
+}
 
-	room.contents.forEach(roomObject => {
-		room.volume += roomObject.volume * roomObject.value;
-	});
+function calculateVolume(room, object, event) {
+	const filledOutRoom = findRoom(room);
+	let newItems = createItems(event, object);
+	
+	if (filledOutRoom) {
+		filledOutRoom.contents = filledOutRoom.contents.filter(item => item.name !== object.name);
+		filledOutRoom.contents.push(...newItems);
+	} else {
+		createNewRoom(room, newItems);
+	}
+	if (filledOutRoom && filledOutRoom.contents.length === 0) {
+		removeRoom(filledOutRoom);
+	}
 };
+
+function createItems(event, object) {
+	let newItems = [];
+
+	for (let i = 0; i < event.target.value; i++) {
+		const item = {
+			name: object.name,
+			itemLength: '',
+			width: '',
+			height: ''
+		};
+		newItems.push(item);
+	}
+	return newItems;
+}
 
 function columnize(menu) {
 	if (menu.chunked.length == 0) {
@@ -96,14 +126,15 @@ function columnize(menu) {
 				<div v-show="menu.status"
 					class="grid grid-cols-2 md:grid-cols-2 bg-gradient-to-b from-blue-300 to-blue-200 rounded-2xl p-2 md:p-6 mt-2">
 					<div v-for="(chunk, chunkIndex) in menu.chunked" :key="chunkIndex">
-						<div v-for="(object, i) in chunk" :key="i" class="items-baseline text-center xl:flex max-md:h-24 mb-4">
+						<div v-for="(object, i) in chunk" :key="i"
+							class="items-baseline text-center xl:flex max-md:h-24 mb-4">
 							<div class="mb-2.5">
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-6 w-6 mr-2"
 									@click="removeItem(menu, object)">-</button>
 								<input :id="object.name" v-model="object.value" type="text"
 									class="border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
-									@change="calculateVolume(menu)">
+									@change="calculateVolume(menu, object, $event)">
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-6 w-6 mr-2"
 									@click="addItem(menu, object)">+</button>
