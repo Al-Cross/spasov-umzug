@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { formDataStore } from '../../data/formStore';
 import debounce from 'lodash.debounce';
 
 const emits = defineEmits(['submitForm', 'closeModal']);
 let error = ref(false);
+
+onMounted(() => calculateVolumeOnRoomContentsChange());
 
 const setLength = debounce((item, room, event) => {
     if (!validateInput(event.target.value)) return;
@@ -37,6 +39,10 @@ function calculateQubicMeters(room, item) {
         delete item.volume;
         calculateRoomVolume(room);
     }
+}
+
+function calculateVolumeOnRoomContentsChange() {
+	formDataStore.filledOutRooms.forEach(room => calculateRoomVolume(room));
 }
 
 function calculateRoomVolume(room) {

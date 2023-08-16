@@ -19192,6 +19192,9 @@ __webpack_require__.r(__webpack_exports__);
       emits = _ref.emit;
     __expose();
     var error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      return calculateVolumeOnRoomContentsChange();
+    });
     var setLength = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(function (item, room, event) {
       if (!validateInput(event.target.value)) return;
       item.itemLength = event.target.value;
@@ -19219,6 +19222,11 @@ __webpack_require__.r(__webpack_exports__);
         delete item.volume;
         calculateRoomVolume(room);
       }
+    }
+    function calculateVolumeOnRoomContentsChange() {
+      _data_formStore__WEBPACK_IMPORTED_MODULE_1__.formDataStore.filledOutRooms.forEach(function (room) {
+        return calculateRoomVolume(room);
+      });
     }
     function calculateRoomVolume(room) {
       var volume = room.contents.reduce(function (accumulator, item) {
@@ -19258,11 +19266,13 @@ __webpack_require__.r(__webpack_exports__);
       setWidth: setWidth,
       setHeight: setHeight,
       calculateQubicMeters: calculateQubicMeters,
+      calculateVolumeOnRoomContentsChange: calculateVolumeOnRoomContentsChange,
       calculateRoomVolume: calculateRoomVolume,
       removeEmptyMetric: removeEmptyMetric,
       validateInput: validateInput,
       submitForm: submitForm,
       closeModal: closeModal,
+      onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       get formDataStore() {
         return _data_formStore__WEBPACK_IMPORTED_MODULE_1__.formDataStore;

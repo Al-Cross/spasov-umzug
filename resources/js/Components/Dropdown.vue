@@ -172,4 +172,5 @@ function toggleMainMenu(name) {
 			</div>
 		</form>
 	</div>
-	<ItemOverviewModal v-if="toggleModal" @submit-form="submit()" @close-modal="toggleModal = false" /></template>
+	<ItemOverviewModal v-if="toggleModal" @submit-form="submit()" @close-modal="toggleModal = false" />
+</template>
