@@ -69,7 +69,7 @@ function removeRoom(filledOutRoom) {
 function calculateVolume(room, object, event) {
 	const filledOutRoom = findRoom(room);
 	let newItems = createItems(event, object);
-	
+
 	if (filledOutRoom) {
 		filledOutRoom.contents = filledOutRoom.contents.filter(item => item.name !== object.name);
 		filledOutRoom.contents.push(...newItems);
@@ -132,7 +132,7 @@ function columnize(menu) {
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
 									@click="removeItem(menu, object)">-</button>
-								<input :id="object.name" v-model="object.value" type="text"
+								<input :id="object.name" v-model="object.value" type="text" inputmode="numeric"
 									class="border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
 									@change="calculateVolume(menu, object, $event)">
 								<button type="button"

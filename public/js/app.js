@@ -20476,6 +20476,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             return object.value = $event;
           },
           type: "text",
+          inputmode: "numeric",
           "class": "border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2",
           onChange: function onChange($event) {
             return $setup.calculateVolume(menu, object, $event);
