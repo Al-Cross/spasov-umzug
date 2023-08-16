@@ -87,7 +87,7 @@ function findPropName(name) {
 		<div class="md:grid md:grid-cols-2 gap-5 lg:gap-20">
 			<div class="flex flex-col space-y-1.5 mb-5">
 				<label class="tracking-wide text-gray-700 font-bold max-sm:mb-1" for="rooms">
-					Anzahl Räume *
+					Räume *
 				</label>
 				<input id="rooms" v-model="formData[findPropName('rooms')]" type="text"
 					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">

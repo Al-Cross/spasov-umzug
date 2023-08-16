@@ -879,6 +879,9 @@ select {
 .h-24 {
   height: 6rem;
 }
+.h-7 {
+  height: 1.75rem;
+}
 .w-1\/2 {
   width: 50%;
 }
@@ -914,6 +917,12 @@ select {
 }
 .w-\[4rem\] {
   width: 4rem;
+}
+.w-10 {
+  width: 2.5rem;
+}
+.w-7 {
+  width: 1.75rem;
 }
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -971,6 +980,9 @@ select {
 }
 .gap-5 {
   gap: 1.25rem;
+}
+.gap-1 {
+  gap: 0.25rem;
 }
 .gap-x-10 {
   -moz-column-gap: 2.5rem;
@@ -1526,6 +1538,13 @@ select {
   }
 }
 
+@media not all and (min-width: 350px) {
+
+  .max-xs\:p-2 {
+    padding: 0.5rem;
+  }
+}
+
 @media (min-width: 350px) {
 
   .xs\:ml-2 {
@@ -1629,6 +1648,10 @@ select {
     display: none;
   }
 
+  .md\:h-8 {
+    height: 2rem;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -1639,6 +1662,10 @@ select {
 
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:w-8 {
+    width: 2rem;
   }
 
   .md\:grid-cols-2 {

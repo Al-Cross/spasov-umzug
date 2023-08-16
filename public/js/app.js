@@ -19573,7 +19573,7 @@ var _hoisted_23 = {
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "tracking-wide text-gray-700 font-bold max-sm:mb-1",
   "for": "rooms"
-}, " Anzahl Räume * ", -1 /* HOISTED */);
+}, " Räume * ", -1 /* HOISTED */);
 var _hoisted_25 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
@@ -20047,7 +20047,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "container mx-auto px-6 md:px-16"
+  "class": "container mx-auto max-xs:p-2 md:px-16"
 };
 var _hoisted_2 = {
   key: 0,
@@ -20466,7 +20466,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "class": "items-baseline text-center xl:flex max-md:h-24 mb-4"
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           type: "button",
-          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-6 w-6 mr-2",
+          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2",
           onClick: function onClick($event) {
             return $setup.removeItem(menu, object);
           }
@@ -20482,7 +20482,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }
         }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_12), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, object.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           type: "button",
-          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-6 w-6 mr-2",
+          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2",
           onClick: function onClick($event) {
             return $setup.addItem(menu, object);
           }

@@ -73,7 +73,7 @@ function toggleMainMenu(name) {
 </script>
 
 <template>
-	<div class="container mx-auto px-6 md:px-16">
+	<div class="container mx-auto max-xs:p-2 md:px-16">
 		<div v-if="success" class="text-green-700 text-center p-3 mb-5">
 			Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist.
 		</div>
