@@ -46,7 +46,7 @@ function removeItem(room, object) {
 
 	const filledOutRoom = findRoom(room);
 	if (filledOutRoom) {
-		const itemIndex = filledOutRoom.contents.findIndex(item => item.name === object.name);
+		const itemIndex = filledOutRoom.contents.findLastIndex(item => item.name === object.name);
 		if (itemIndex !== -1) {
 			filledOutRoom.contents.splice(itemIndex, 1);
 		}

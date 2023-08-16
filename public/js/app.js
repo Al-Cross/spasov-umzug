@@ -19359,7 +19359,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       if (object.value === 0) return;
       var filledOutRoom = findRoom(room);
       if (filledOutRoom) {
-        var itemIndex = filledOutRoom.contents.findIndex(function (item) {
+        var itemIndex = filledOutRoom.contents.findLastIndex(function (item) {
           return item.name === object.name;
         });
         if (itemIndex !== -1) {
