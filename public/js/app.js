@@ -19447,96 +19447,96 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6"
+  "class": "grid grid-cols-1 sm:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6"
 };
 var _hoisted_2 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "street"
 }, " Straße/ Nr. * ", -1 /* HOISTED */);
 var _hoisted_4 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "location"
 }, "Ort *", -1 /* HOISTED */);
 var _hoisted_6 = {
-  "class": "grid md:grid-cols-none lg:grid-cols-2 grid-cols-2 gap-5 lg:gap-20"
-};
-var _hoisted_7 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
-  "for": "floor"
-}, "Etage", -1 /* HOISTED */);
-var _hoisted_9 = {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
+  "for": "zip"
+}, " Postleitzahl * ", -1 /* HOISTED */);
+var _hoisted_8 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
-  "for": "sq_m"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Größe m"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("sup", null, "2"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" *")], -1 /* HOISTED */);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
+  "for": "province"
+}, "Land *", -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "grid grid-cols-2 gap-5 lg:gap-20"
+};
 var _hoisted_11 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
+  "for": "floor"
+}, "Etage", -1 /* HOISTED */);
+var _hoisted_13 = {
+  "class": "flex flex-col space-y-1.5 mb-3"
+};
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
+  "for": "sq_m"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Größe m"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("sup", null, "2"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("* ")], -1 /* HOISTED */);
+var _hoisted_15 = {
+  "class": "flex flex-col space-y-1.5 mb-3"
+};
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "elevator"
 }, " Fahrstuhl ", -1 /* HOISTED */);
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "Nicht vorhanden",
   selected: ""
 }, "Nicht vorhanden", -1 /* HOISTED */);
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "2-4 Personen"
 }, "2-4 Personen", -1 /* HOISTED */);
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "5-8 Personen"
 }, "5-8 Personen", -1 /* HOISTED */);
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "Lastenfahrstuhl"
 }, "Lastenfahrstuhl", -1 /* HOISTED */);
-var _hoisted_17 = [_hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16];
-var _hoisted_18 = {
-  "class": "flex flex-col space-y-1.5 mb-3"
-};
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
-  "for": "zip"
-}, " Postleitzahl * ", -1 /* HOISTED */);
-var _hoisted_20 = {
-  "class": "flex flex-col space-y-1.5 mb-3"
-};
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
-  "for": "province"
-}, "Land *", -1 /* HOISTED */);
+var _hoisted_21 = [_hoisted_17, _hoisted_18, _hoisted_19, _hoisted_20];
 var _hoisted_22 = {
-  "class": "md:grid md:grid-cols-none lg:grid-cols-2 gap-5 lg:gap-20"
+  "class": "md:grid md:grid-cols-2 gap-5 lg:gap-20"
 };
 var _hoisted_23 = {
   "class": "flex flex-col space-y-1.5 mb-5"
 };
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold mb-1",
+  "class": "tracking-wide text-gray-700 font-bold max-sm:mb-1",
   "for": "rooms"
 }, " Anzahl Räume * ", -1 /* HOISTED */);
 var _hoisted_25 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "carry_distance"
 }, " Tragestrecke * ", -1 /* HOISTED */);
 var _hoisted_27 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "building_type"
 }, " Gebäudeart ", -1 /* HOISTED */);
 var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"Mehrfamilienhaus\" selected>Mehrfamilienhaus</option><option value=\"Einfamilienhaus\">Einfamilienhaus</option><option value=\"Doppelhaushalfte\">Doppelhaushälfte</option><option value=\"Reihenhaus\">Reihenhaus</option><option value=\"Maisonette\">Maisonette-Wohnung</option><option value=\"Garage\">Garage</option><option value=\"Lager\">Lager</option><option value=\"Burogebaude\">Bürogebäude</option><option value=\"Bungalow\">Bungalow</option>", 9);
@@ -19574,13 +19574,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    id: "floor",
+  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "zip",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $setup.formData[$setup.findPropName('zip')] = $event;
+    }),
+    type: "text",
+    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('zip')]]]), $setup.formData.errors[$setup.findPropName('zip')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    key: 0,
+    errors: $setup.formData.errors
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formData.errors[$setup.findPropName('zip')][0]), 1 /* TEXT */)];
+    }),
+
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "province",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $setup.formData[$setup.findPropName('province')] = $event;
+    }),
+    type: "text",
+    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('province')]]]), $setup.formData.errors[$setup.findPropName('province')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    key: 0,
+    errors: $setup.formData.errors
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formData.errors[$setup.findPropName('province')][0]), 1 /* TEXT */)];
+    }),
+
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "floor",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.formData[$setup.findPropName('floor')] = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 md:max-lg:w-1/2"
+    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('floor')]]]), $setup.formData.errors[$setup.findPropName('floor')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     errors: $setup.formData.errors
@@ -19590,9 +19622,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     id: "sq_m",
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $setup.formData[$setup.findPropName('sq_m')] = $event;
     }),
     type: "text",
@@ -19606,50 +19638,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     id: "elevator",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $setup.formData[$setup.findPropName('elevator')] = $event;
     }),
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-48"
-  }, _hoisted_17, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('elevator')]]]), $setup.formData.errors[$setup.findPropName('elevator')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
+  }, _hoisted_21, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('elevator')]]]), $setup.formData.errors[$setup.findPropName('elevator')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     errors: $setup.formData.errors
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formData.errors[$setup.findPropName('elevator')][0]), 1 /* TEXT */)];
-    }),
-
-    _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    id: "zip",
-    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-      return $setup.formData[$setup.findPropName('zip')] = $event;
-    }),
-    type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 md:w-1/2 lg:w-1/4"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('zip')]]]), $setup.formData.errors[$setup.findPropName('zip')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
-    key: 0,
-    errors: $setup.formData.errors
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formData.errors[$setup.findPropName('zip')][0]), 1 /* TEXT */)];
-    }),
-
-    _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["errors"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    id: "province",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-      return $setup.formData[$setup.findPropName('province')] = $event;
-    }),
-    type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('province')]]]), $setup.formData.errors[$setup.findPropName('province')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
-    key: 0,
-    errors: $setup.formData.errors
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formData.errors[$setup.findPropName('province')][0]), 1 /* TEXT */)];
     }),
 
     _: 1 /* STABLE */
@@ -19690,7 +19690,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $setup.formData[$setup.findPropName('building_type')] = $event;
     }),
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-1/3"
+    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
   }, _hoisted_38, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('building_type')]]]), $setup.formData.errors[$setup.findPropName('building_type')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     errors: $setup.formData.errors
@@ -19725,39 +19725,39 @@ var _hoisted_2 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "termin"
 }, "Termin *", -1 /* HOISTED */);
 var _hoisted_4 = {
   "class": "mb-3"
 };
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold"
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold"
 }, " Kostenträger * ", -1 /* HOISTED */);
 var _hoisted_6 = {
   "class": "mt-1"
 };
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold mb-2 ml-1",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold mb-2 ml-1",
   "for": "self"
 }, " Selbst ", -1 /* HOISTED */);
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold mb-2 ml-1",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold mb-2 ml-1",
   "for": "employer"
 }, " Arbeitgeber ", -1 /* HOISTED */);
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold mb-2 ml-1",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold mb-2 ml-1",
   "for": "UnemploymentAgency"
 }, " Bundesagentur für Arbeit ", -1 /* HOISTED */);
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold mb-2 ml-1",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold mb-2 ml-1",
   "for": "army"
 }, " Bundeswehr ", -1 /* HOISTED */);
 var _hoisted_11 = {
-  "class": "flex flex-col md:col-span-2 lg:col-span-1 space-y-1.5 mb-3"
+  "class": "flex flex-col md:col-span-2 lg:col-span-1 space-y-1.5"
 };
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold ml-1",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold ml-1",
   "for": "remarks"
 }, " Bemerkungen ", -1 /* HOISTED */);
 
@@ -19855,7 +19855,7 @@ var _hoisted_2 = {
   "class": "flex flex-col col-span-2 space-y-1.5 mb-3"
 };
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "salutation"
 }, " Anrede * ", -1 /* HOISTED */);
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
@@ -19874,28 +19874,28 @@ var _hoisted_8 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "firstName"
 }, " Vorname * ", -1 /* HOISTED */);
 var _hoisted_10 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "lastName"
 }, " Nachname * ", -1 /* HOISTED */);
 var _hoisted_12 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "phone"
 }, " Telefonnummer * ", -1 /* HOISTED */);
 var _hoisted_14 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 font-bold",
+  "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold",
   "for": "email"
 }, " Email Adresse * ", -1 /* HOISTED */);
 
@@ -20370,7 +20370,7 @@ var _hoisted_8 = {
   "class": "fas fa-arrow-up mt-1"
 };
 var _hoisted_9 = {
-  "class": "grid grid-cols-2 md:grid-cols-2 bg-gradient-to-b from-blue-300 to-blue-200 rounded-2xl p-6 mt-2"
+  "class": "grid grid-cols-2 md:grid-cols-2 bg-gradient-to-b from-blue-300 to-blue-200 rounded-2xl p-2 md:p-6 mt-2"
 };
 var _hoisted_10 = {
   "class": "mb-2.5"
@@ -20396,10 +20396,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(chunk, function (object, i) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
           key: i,
-          "class": "items-baseline text-center xl:flex mb-4"
+          "class": "items-baseline text-center xl:flex max-md:h-24 mb-4"
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           type: "button",
-          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2",
+          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-6 w-6 mr-2",
           onClick: function onClick($event) {
             return $setup.removeItem(menu, object);
           }
@@ -20415,12 +20415,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }
         }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_12), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, object.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           type: "button",
-          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-8 w-8 mr-2",
+          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none rounded h-6 w-6 mr-2",
           onClick: function onClick($event) {
             return $setup.addItem(menu, object);
           }
         }, "+", 8 /* PROPS */, _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-          "class": "fw-bold",
+          "class": "text-sm sm:text-base fw-bold",
           textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(object.name)
         }, null, 8 /* PROPS */, _hoisted_14)]);
       }), 128 /* KEYED_FRAGMENT */))]);
@@ -20444,24 +20444,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "grid gap-2 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6"
+  "class": "grid gap-2 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-2 xs:p-6"
 };
 var _hoisted_2 = {
-  "class": "bg-blue-300 font-bold rounded p-2"
+  "class": "bg-blue-300 font-bold rounded text-sm sm:text-base p-2"
 };
 var _hoisted_3 = {
-  "class": "font-bold"
+  "class": "text-sm sm:text-base font-bold"
 };
 var _hoisted_4 = {
   "class": "grid grid-cols-2"
 };
 var _hoisted_5 = ["value"];
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "beladestelle"
+  "for": "beladestelle",
+  "class": "text-sm sm:text-base ml-2"
 }, "Beladestelle", -1 /* HOISTED */);
 var _hoisted_7 = ["value"];
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "entladestelle"
+  "for": "entladestelle",
+  "class": "text-sm sm:text-base ml-2"
 }, "Entladestelle", -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -20471,7 +20473,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(service.name), 1 /* TEXT */), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(service.objects, function (object, i) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
         key: i,
-        "class": "grid lg:grid-cols-2 font-semibold text-lg m-2"
+        "class": "grid md:grid-cols-2 font-semibold text-lg m-2"
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(object), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.services.loadingPoint = $event;
@@ -20597,10 +20599,10 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   id: 0,
   title: 'Arbeitszimmer',
   contents: [{
-    name: 'Aktienschrank (laufende Meter)',
+    name: 'Aktienschrank',
     value: 0
   }, {
-    name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
+    name: 'Bücherregal, nicht zerlegbar',
     value: 0
   }, {
     name: 'Deckenlampe',
@@ -20609,7 +20611,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Rollcontainer',
     value: 0
   }, {
-    name: 'Schreibtisch (bis 1,6 m)',
+    name: 'Schreibtisch',
     value: 0
   }, {
     name: 'Schreibtischstuhl',
@@ -20621,10 +20623,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Teppich',
     value: 0
   }, {
-    name: 'Tisch bis 1,0 m',
-    value: 0
-  }, {
-    name: 'Tisch über 1,2 m',
+    name: 'Tisch',
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
@@ -20633,16 +20632,13 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Brücke',
     value: 0
   }, {
-    name: 'Bücherregal, zerlegbar (laufende Meter)',
+    name: 'Bücherregal, zerlegbar',
     value: 0
   }, {
     name: 'Kommode',
     value: 0
   }, {
-    name: 'Schrank zerlegbar (laufende Meter)',
-    value: 0
-  }, {
-    name: 'Schreibtisch über 1,6 m',
+    name: 'Schrank zerlegbar',
     value: 0
   }, {
     name: 'Sessel mit Armlehnen',
@@ -20651,18 +20647,12 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Stehlampe',
     value: 0
   }, {
-    name: 'Tisch bis 0,6 m',
-    value: 0
-  }, {
-    name: 'Tisch über 1,2 m',
-    value: 0
-  }, {
     name: 'Umzugskarton bis 80 L',
     value: 0
   }],
   status: false,
   chunked: [],
-  itemsPerColumn: 11,
+  itemsPerColumn: 8,
   volume: 0
 }, {
   id: 1,
@@ -20715,7 +20705,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Brücke',
     value: 0
   }, {
-    name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
+    name: 'Bücherregal, nicht zerlegbar',
     value: 0
   }, {
     name: 'Deckenlampe',
@@ -20733,10 +20723,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Teppich',
     value: 0
   }, {
-    name: 'Tisch bis 1,0 m',
-    value: 0
-  }, {
-    name: 'Tisch über 1,2 m',
+    name: 'Tisch',
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
@@ -20745,25 +20732,19 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Buffet ohne Aufsatz',
     value: 0
   }, {
-    name: 'Bücherregal, zerlegbar (laufende Meter)',
+    name: 'Bücherregal, zerlegbar',
     value: 0
   }, {
-    name: 'Eckbank (Anzahl Sitzplätze)',
+    name: 'Eckbank',
     value: 0
   }, {
-    name: 'Schrank, zerlegbar (laufende Meter)',
+    name: 'Schrank, zerlegbar',
     value: 0
   }, {
     name: 'Stuhl',
     value: 0
   }, {
     name: 'Teewagen, nicht zerlegbar',
-    value: 0
-  }, {
-    name: 'Tisch bis 0,6 m',
-    value: 0
-  }, {
-    name: 'Tisch über 1,2 m',
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
@@ -20774,7 +20755,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   }],
   status: false,
   chunked: [],
-  itemsPerColumn: 10,
+  itemsPerColumn: 8,
   volume: 0
 }, {
   id: 3,
@@ -20837,7 +20818,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Klapptisch/Klappstuhl',
     value: 0
   }, {
-    name: 'Leiter (je angefangener Meter)',
+    name: 'Leiter',
     value: 0
   }, {
     name: 'Mülltonne',
@@ -20846,10 +20827,10 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Rasenmäher, Hand',
     value: 0
   }, {
-    name: 'Regal, zerlegbar (je angefangener Meter)',
+    name: 'Regal, zerlegbar',
     value: 0
   }, {
-    name: 'Schrank, zerlegbar (laufende Meter)',
+    name: 'Schrank, zerlegbar',
     value: 0
   }, {
     name: 'Ski',
@@ -20875,7 +20856,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   id: 4,
   title: 'Kinderzimmer / Studio',
   contents: [{
-    name: 'Anbauwand bis 38 cm (laufende Meter)',
+    name: 'Anbauwand',
     value: 0
   }, {
     name: 'Bett, komplett',
@@ -20884,7 +20865,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Brücke',
     value: 0
   }, {
-    name: 'Bücherregal, zerlegbar (laufende Meter)',
+    name: 'Bücherregal, zerlegbar',
     value: 0
   }, {
     name: 'Etagenbett, komplett',
@@ -20899,7 +20880,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Nachttisch',
     value: 0
   }, {
-    name: 'Schrank, zerlegbar (laufende Meter)',
+    name: 'Schrank, zerlegbar',
     value: 0
   }, {
     name: 'Spielzeugkiste',
@@ -20908,37 +20889,25 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Teppich',
     value: 0
   }, {
-    name: 'Tisch bis 1,0 m',
-    value: 0
-  }, {
-    name: 'Tisch bis 1,2 m',
-    value: 0
-  }, {
     name: 'Umzugskarton über 80 L',
     value: 0
   }, {
-    name: 'Anbauwand über 38 cm Tiefe (laufende Meter)',
+    name: 'Bettzeug',
     value: 0
   }, {
-    name: 'Bettzeug, je Betteinheit',
-    value: 0
-  }, {
-    name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
+    name: 'Bücherregal, nicht zerlegbar',
     value: 0
   }, {
     name: 'Deckenlampe',
     value: 0
   }, {
-    name: 'Kinderbett, komplett',
+    name: 'Kinderbett',
     value: 0
   }, {
-    name: 'Klettergerüst (je angefangener Meter)',
+    name: 'Klettergerüst',
     value: 0
   }, {
     name: 'Laufgitter',
-    value: 0
-  }, {
-    name: 'Schrank bis zwei Türen, nicht zerlegbar',
     value: 0
   }, {
     name: 'Schreibpult',
@@ -20947,10 +20916,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Stuhl/Hocker',
     value: 0
   }, {
-    name: 'Tisch bis 0,6 m',
-    value: 0
-  }, {
-    name: 'Tisch bis 1,2 m',
+    name: 'Tisch',
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
@@ -20958,40 +20924,37 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   }],
   status: false,
   chunked: [],
-  itemsPerColumn: 14,
+  itemsPerColumn: 11,
   volume: 0
 }, {
   id: 5,
   title: 'Küche',
   contents: [{
-    name: 'Arbeitsplatte, nicht unterbrochen (je angefangener Meter)',
+    name: 'Arbeitsplatte',
     value: 0
   }, {
     name: 'Buffet mit Aufsätzen',
     value: 0
   }, {
-    name: 'Eckbank (Anzahl Sitzplätze)',
+    name: 'Eckbank',
     value: 0
   }, {
     name: 'Herd',
     value: 0
   }, {
-    name: 'Kühlschrank/Truhe über 120 L',
+    name: 'Kühlschrank/Truhe',
     value: 0
   }, {
     name: 'Stuhl',
     value: 0
   }, {
-    name: 'Tisch bis 0,6 m',
-    value: 0
-  }, {
-    name: 'Tisch bis 1,2 m',
+    name: 'Tisch',
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
     value: 0
   }, {
-    name: 'Unterteil (Anzahl Türen)',
+    name: 'Unterteil',
     value: 0
   }, {
     name: 'Besenschrank',
@@ -21003,31 +20966,25 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Geschirrspülmaschine',
     value: 0
   }, {
-    name: 'Kühlschrank/Truhe bis 120 L',
-    value: 0
-  }, {
-    name: 'Oberteil (Anzahl Türen)',
+    name: 'Oberteil',
     value: 0
   }, {
     name: 'Teppich',
     value: 0,
     volume: Math.random()
   }, {
-    name: 'Tisch bis 1,0 m',
-    value: 0
-  }, {
-    name: 'Tisch über 1,2 m',
-    value: 0
-  }, {
     name: 'Umzugskarton über 80 L',
     value: 0
   }, {
-    name: 'Waschmaschine/Trockner',
+    name: 'Waschmaschine',
+    value: 0
+  }, {
+    name: 'Trockner',
     value: 0
   }],
   status: false,
   chunked: [],
-  itemsPerColumn: 10,
+  itemsPerColumn: 8,
   volume: 0
 }, {
   id: 6,
@@ -21048,7 +21005,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Kommode',
     value: 0
   }, {
-    name: 'Schrank bis 2 Türen, nicht zerlegbar',
+    name: 'Schrank, nicht zerlegbar',
     value: 0
   }, {
     name: 'Sideboard',
@@ -21060,7 +21017,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Umzugskarton über 80 L',
     value: 0
   }, {
-    name: 'Bettzeug (je Betteinheit)',
+    name: 'Bettzeug',
     value: 0
   }, {
     name: 'Doppelbett, komplett',
@@ -21075,10 +21032,10 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Nachttisch',
     value: 0
   }, {
-    name: 'Schrank, zerlegbar (laufende Meter)',
+    name: 'Schrank, zerlegbar',
     value: 0
   }, {
-    name: 'Spiegel über 0,8 m',
+    name: 'Spiegel',
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
@@ -21095,16 +21052,16 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
   id: 7,
   title: 'Wohnzimmer',
   contents: [{
-    name: 'Anbauwand bis 38 cm Tiefe (laufende Meter)',
+    name: 'Anbauwand',
     value: 0
   }, {
-    name: 'Bilder über 0,8 m',
+    name: 'Bilder',
     value: 0
   }, {
     name: 'Buffet mit Aufsatz',
     value: 0
   }, {
-    name: 'Bücherregal, zerlegbar (laufende Meter)',
+    name: 'Bücherregal, zerlegbar',
     value: 0
   }, {
     name: 'Fernseher',
@@ -21119,7 +21076,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Musikschrank/Turm',
     value: 0
   }, {
-    name: 'Schreibtisch bis 1,6 m',
+    name: 'Schreibtisch',
     value: 0
   }, {
     name: 'Sekretär',
@@ -21128,7 +21085,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Sessel ohne Armlehnen',
     value: 0
   }, {
-    name: 'Sitzlandschaft (Element), (Anzahl Sitzplätze)',
+    name: 'Sitzlandschaft',
     value: 0
   }, {
     name: 'Standuhr',
@@ -21140,25 +21097,19 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Stuhl mit Armlehnen',
     value: 0
   }, {
-    name: 'Tisch bis 0,6 m',
-    value: 0
-  }, {
-    name: 'Tisch bis 1,2 m',
+    name: 'Tisch',
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
     value: 0
   }, {
-    name: 'Wohnzimmerschrank, zerlegbar (laufende Meter)',
-    value: 0
-  }, {
-    name: 'Anbauwand über 38 cm Tiefe (laufende Meter)',
+    name: 'Wohnzimmerschrank, zerlegbar',
     value: 0
   }, {
     name: 'Brücke',
     value: 0
   }, {
-    name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
+    name: 'Bücherregal, nicht zerlegbar',
     value: 0
   }, {
     name: 'Deckenlampe',
@@ -21173,10 +21124,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Lüster',
     value: 0
   }, {
-    name: 'Nähmaschine (Schrank)',
-    value: 0
-  }, {
-    name: 'Schreibtisch über 1,6 m',
+    name: 'Nähmaschine',
     value: 0
   }, {
     name: 'Sessel mit Armlehnen',
@@ -21185,7 +21133,7 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Sideboard',
     value: 0
   }, {
-    name: 'Sofa, Couch, Liege (Anzahl Sitzplätze)',
+    name: 'Sofa, Couch, Liege',
     value: 0
   }, {
     name: 'Stehlampe',
@@ -21197,18 +21145,12 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     name: 'Teppich',
     value: 0
   }, {
-    name: 'Tisch bis 1,0 m',
-    value: 0
-  }, {
-    name: 'Tisch über 1,2 m',
-    value: 0
-  }, {
     name: 'Umzugskarton über 80 L',
     value: 0
   }],
   status: false,
   chunked: [],
-  itemsPerColumn: 19,
+  itemsPerColumn: 16,
   volume: 0
 }]);
 

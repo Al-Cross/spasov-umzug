@@ -9,7 +9,7 @@ let formData = formDataStore;
 	<div
 		class="md:grid md:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 transition duration-500 ease-in rounded-2xl w-full p-6">
 		<div class="flex flex-col col-span-2 space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 font-bold" for="salutation">
+			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="salutation">
 				Anrede *
 			</label>
 			<select id="salutation" v-model="formData.salutation"
@@ -23,7 +23,7 @@ let formData = formDataStore;
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 font-bold" for="firstName">
+			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="firstName">
 				Vorname *
 			</label>
 			<input id="firstName" v-model="formData.first_name" type="text"
@@ -33,7 +33,7 @@ let formData = formDataStore;
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 font-bold" for="lastName">
+			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="lastName">
 				Nachname *
 			</label>
 			<input id="lastName" v-model="formData.last_name" type="text"
@@ -43,7 +43,7 @@ let formData = formDataStore;
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 font-bold" for="phone">
+			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="phone">
 				Telefonnummer *
 			</label>
 			<input id="phone" v-model="formData.phone" type="text"
@@ -53,7 +53,7 @@ let formData = formDataStore;
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 font-bold" for="email">
+			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="email">
 				Email Adresse *
 			</label>
 			<input id="email" v-model="formData.email" type="email"

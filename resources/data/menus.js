@@ -6,11 +6,11 @@ export const rooms = reactive([
 		title: 'Arbeitszimmer',
 		contents: [
 			{
-				name: 'Aktienschrank (laufende Meter)',
+				name: 'Aktienschrank',
 				value: 0,
 			},
 			{
-				name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
+				name: 'Bücherregal, nicht zerlegbar',
 				value: 0,
 			},
 			{
@@ -22,7 +22,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Schreibtisch (bis 1,6 m)',
+				name: 'Schreibtisch',
 				value: 0,
 			},
 			{
@@ -38,11 +38,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Tisch bis 1,0 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch über 1,2 m',
+				name: 'Tisch',
 				value: 0,
 			},
 			{
@@ -54,7 +50,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Bücherregal, zerlegbar (laufende Meter)',
+				name: 'Bücherregal, zerlegbar',
 				value: 0,
 			},
 			{
@@ -62,11 +58,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Schrank zerlegbar (laufende Meter)',
-				value: 0,
-			},
-			{
-				name: 'Schreibtisch über 1,6 m',
+				name: 'Schrank zerlegbar',
 				value: 0,
 			},
 			{
@@ -78,21 +70,13 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Tisch bis 0,6 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch über 1,2 m',
-				value: 0,
-			},
-			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
 			}
 		],
 		status: false,
 		chunked: [],
-		itemsPerColumn: 11,
+		itemsPerColumn: 8,
 		volume: 0
 	},
 	{
@@ -162,7 +146,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
+				name: 'Bücherregal, nicht zerlegbar',
 				value: 0,
 			},
 			{
@@ -186,11 +170,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Tisch bis 1,0 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch über 1,2 m',
+				name: 'Tisch',
 				value: 0,
 			},
 			{
@@ -202,15 +182,15 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Bücherregal, zerlegbar (laufende Meter)',
+				name: 'Bücherregal, zerlegbar',
 				value: 0,
 			},
 			{
-				name: 'Eckbank (Anzahl Sitzplätze)',
+				name: 'Eckbank',
 				value: 0,
 			},
 			{
-				name: 'Schrank, zerlegbar (laufende Meter)',
+				name: 'Schrank, zerlegbar',
 				value: 0,
 			},
 			{
@@ -219,14 +199,6 @@ export const rooms = reactive([
 			},
 			{
 				name: 'Teewagen, nicht zerlegbar',
-				value: 0,
-			},
-			{
-				name: 'Tisch bis 0,6 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch über 1,2 m',
 				value: 0,
 			},
 			{
@@ -240,7 +212,7 @@ export const rooms = reactive([
 		],
 		status: false,
 		chunked: [],
-		itemsPerColumn: 10,
+		itemsPerColumn: 8,
 		volume: 0
 	},
 	{
@@ -324,7 +296,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Leiter (je angefangener Meter)',
+				name: 'Leiter',
 				value: 0,
 			},
 			{
@@ -336,11 +308,11 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Regal, zerlegbar (je angefangener Meter)',
+				name: 'Regal, zerlegbar',
 				value: 0,
 			},
 			{
-				name: 'Schrank, zerlegbar (laufende Meter)',
+				name: 'Schrank, zerlegbar',
 				value: 0,
 			},
 			{
@@ -374,7 +346,7 @@ export const rooms = reactive([
 		title: 'Kinderzimmer / Studio',
 		contents: [
 			{
-				name: 'Anbauwand bis 38 cm (laufende Meter)',
+				name: 'Anbauwand',
 				value: 0,
 			},
 			{
@@ -386,7 +358,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Bücherregal, zerlegbar (laufende Meter)',
+				name: 'Bücherregal, zerlegbar',
 				value: 0,
 			},
 			{
@@ -406,7 +378,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Schrank, zerlegbar (laufende Meter)',
+				name: 'Schrank, zerlegbar',
 				value: 0,
 			},
 			{
@@ -418,27 +390,15 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Tisch bis 1,0 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch bis 1,2 m',
-				value: 0,
-			},
-			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
 			},
 			{
-				name: 'Anbauwand über 38 cm Tiefe (laufende Meter)',
+				name: 'Bettzeug',
 				value: 0,
 			},
 			{
-				name: 'Bettzeug, je Betteinheit',
-				value: 0,
-			},
-			{
-				name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
+				name: 'Bücherregal, nicht zerlegbar',
 				value: 0,
 			},
 			{
@@ -446,19 +406,15 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Kinderbett, komplett',
+				name: 'Kinderbett',
 				value: 0,
 			},
 			{
-				name: 'Klettergerüst (je angefangener Meter)',
+				name: 'Klettergerüst',
 				value: 0,
 			},
 			{
 				name: 'Laufgitter',
-				value: 0,
-			},
-			{
-				name: 'Schrank bis zwei Türen, nicht zerlegbar',
 				value: 0,
 			},
 			{
@@ -470,11 +426,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Tisch bis 0,6 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch bis 1,2 m',
+				name: 'Tisch',
 				value: 0,
 			},
 			{
@@ -484,7 +436,7 @@ export const rooms = reactive([
 		],
 		status: false,
 		chunked: [],
-		itemsPerColumn: 14,
+		itemsPerColumn: 11,
 		volume: 0
 	},
 	{
@@ -492,7 +444,7 @@ export const rooms = reactive([
 		title: 'Küche',
 		contents: [
 			{
-				name: 'Arbeitsplatte, nicht unterbrochen (je angefangener Meter)',
+				name: 'Arbeitsplatte',
 				value: 0,
 			},
 			{
@@ -500,7 +452,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Eckbank (Anzahl Sitzplätze)',
+				name: 'Eckbank',
 				value: 0,
 			},
 			{
@@ -508,7 +460,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Kühlschrank/Truhe über 120 L',
+				name: 'Kühlschrank/Truhe',
 				value: 0,
 			},
 			{
@@ -516,11 +468,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Tisch bis 0,6 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch bis 1,2 m',
+				name: 'Tisch',
 				value: 0,
 			},
 			{
@@ -528,7 +476,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Unterteil (Anzahl Türen)',
+				name: 'Unterteil',
 				value: 0,
 			},
 			{
@@ -544,11 +492,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Kühlschrank/Truhe bis 120 L',
-				value: 0,
-			},
-			{
-				name: 'Oberteil (Anzahl Türen)',
+				name: 'Oberteil',
 				value: 0,
 			},
 			{
@@ -556,25 +500,21 @@ export const rooms = reactive([
 				value: 0, volume: Math.random()
 			},
 			{
-				name: 'Tisch bis 1,0 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch über 1,2 m',
-				value: 0,
-			},
-			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
 			},
 			{
-				name: 'Waschmaschine/Trockner',
+				name: 'Waschmaschine',
+				value: 0,
+			},
+			{
+				name: 'Trockner',
 				value: 0,
 			}
 		],
 		status: false,
 		chunked: [],
-		itemsPerColumn: 10,
+		itemsPerColumn: 8,
 		volume: 0
 	},
 	{
@@ -602,7 +542,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Schrank bis 2 Türen, nicht zerlegbar',
+				name: 'Schrank, nicht zerlegbar',
 				value: 0,
 			},
 			{
@@ -618,7 +558,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Bettzeug (je Betteinheit)',
+				name: 'Bettzeug',
 				value: 0,
 			},
 			{
@@ -638,11 +578,11 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Schrank, zerlegbar (laufende Meter)',
+				name: 'Schrank, zerlegbar',
 				value: 0,
 			},
 			{
-				name: 'Spiegel über 0,8 m',
+				name: 'Spiegel',
 				value: 0,
 			},
 			{
@@ -664,11 +604,11 @@ export const rooms = reactive([
 		title: 'Wohnzimmer',
 		contents: [
 			{
-				name: 'Anbauwand bis 38 cm Tiefe (laufende Meter)',
+				name: 'Anbauwand',
 				value: 0,
 			},
 			{
-				name: 'Bilder über 0,8 m',
+				name: 'Bilder',
 				value: 0,
 			},
 			{
@@ -676,7 +616,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Bücherregal, zerlegbar (laufende Meter)',
+				name: 'Bücherregal, zerlegbar',
 				value: 0,
 			},
 			{
@@ -696,7 +636,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Schreibtisch bis 1,6 m',
+				name: 'Schreibtisch',
 				value: 0,
 			},
 			{
@@ -708,7 +648,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Sitzlandschaft (Element), (Anzahl Sitzplätze)',
+				name: 'Sitzlandschaft',
 				value: 0,
 			},
 			{
@@ -724,11 +664,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Tisch bis 0,6 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch bis 1,2 m',
+				name: 'Tisch',
 				value: 0,
 			},
 			{
@@ -736,11 +672,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Wohnzimmerschrank, zerlegbar (laufende Meter)',
-				value: 0,
-			},
-			{
-				name: 'Anbauwand über 38 cm Tiefe (laufende Meter)',
+				name: 'Wohnzimmerschrank, zerlegbar',
 				value: 0,
 			},
 			{
@@ -748,7 +680,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Bücherregal, nicht zerlegbar (laufende Meter)',
+				name: 'Bücherregal, nicht zerlegbar',
 				value: 0,
 			},
 			{
@@ -768,11 +700,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Nähmaschine (Schrank)',
-				value: 0,
-			},
-			{
-				name: 'Schreibtisch über 1,6 m',
+				name: 'Nähmaschine',
 				value: 0,
 			},
 			{
@@ -784,7 +712,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Sofa, Couch, Liege (Anzahl Sitzplätze)',
+				name: 'Sofa, Couch, Liege',
 				value: 0,
 			},
 			{
@@ -800,21 +728,13 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Tisch bis 1,0 m',
-				value: 0,
-			},
-			{
-				name: 'Tisch über 1,2 m',
-				value: 0,
-			},
-			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
 			}
 		],
 		status: false,
 		chunked: [],
-		itemsPerColumn: 19,
+		itemsPerColumn: 16,
 		volume: 0
 	}
 ]);
