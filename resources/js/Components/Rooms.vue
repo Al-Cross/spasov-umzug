@@ -1,6 +1,8 @@
 <script setup>
 import { formDataStore } from '../../data/formStore';
 import { rooms } from '../../data/menus';
+import { useCreateNewRoom, useAddItem, useCalculateVolume } from '../composables/roomItems';
+import { useAddBoxToRoom, useCreateBox, useAddMultipleBoxes } from '../composables/boxes';
 
 
 function toggleRoom(roomName) {
@@ -11,34 +13,30 @@ function toggleRoom(roomName) {
 	});
 }
 
-function addItem(room, object) {
-	const roomHasItems = formDataStore.filledOutRooms
+function onAddItem(room, object) {
+	object.value++;
+	const roomExists = formDataStore.filledOutRooms
 		.some(filledOutRoom => filledOutRoom.title === room.title);
-	const item = {
+	let item = {
 		name: object.name,
 		itemLength: '',
 		width: '',
 		height: ''
 	};
-	if (!roomHasItems) {
-		createNewRoom(room, [item]);
-	} else {
-		const filledOutRoom = findRoom(room);
-		if (filledOutRoom) {
-			filledOutRoom.contents.push(item);
-		}
-	}
-	object.value++;
+	roomExists ? useAddItem(room, item) : useCreateNewRoom(room, [item], false);
 };
 
-function createNewRoom(room, items) {
-	const filledOutRoom = {
-		id: room.id,
-		title: room.title,
-		contents: []
-	};
-	filledOutRoom.contents.push(...items);
-	formDataStore.filledOutRooms.push(filledOutRoom);
+function onAddBox(room, object) {
+	object.value++;
+	const roomExists = formDataStore.filledOutRooms
+		.some(filledOutRoom => filledOutRoom.title === room.title);
+	let box = { name: object.name };
+
+	box = object.boxUnder80l
+		? useCreateBox(box, room, object.value, 'isBoxUnder80l', 'boxesUnder80l')
+		: useCreateBox(box, room, object.value, 'isBoxOver80l', 'boxesOver80l');
+
+	roomExists ? useAddBoxToRoom(room, box) : useCreateNewRoom(room, [box], true);
 }
 
 function removeItem(room, object) {
@@ -46,6 +44,11 @@ function removeItem(room, object) {
 
 	const filledOutRoom = findRoom(room);
 	if (filledOutRoom) {
+		if (object.boxUnder80l && filledOutRoom.boxesUnder80l > 1) {
+			filledOutRoom.boxesUnder80l--;
+		} else if (object.boxOver80l && filledOutRoom.boxesOver80l > 1) {
+			filledOutRoom.boxesOver80l--;
+		}
 		const itemIndex = filledOutRoom.contents.findLastIndex(item => item.name === object.name);
 		if (itemIndex !== -1) {
 			filledOutRoom.contents.splice(itemIndex, 1);
@@ -64,36 +67,6 @@ function findRoom(room) {
 function removeRoom(filledOutRoom) {
 	formDataStore.filledOutRooms = formDataStore.filledOutRooms
 		.filter(room => room.title !== filledOutRoom.title);
-}
-
-function calculateVolume(room, object, event) {
-	const filledOutRoom = findRoom(room);
-	let newItems = createItems(event, object);
-
-	if (filledOutRoom) {
-		filledOutRoom.contents = filledOutRoom.contents.filter(item => item.name !== object.name);
-		filledOutRoom.contents.push(...newItems);
-	} else {
-		createNewRoom(room, newItems);
-	}
-	if (filledOutRoom && filledOutRoom.contents.length === 0) {
-		removeRoom(filledOutRoom);
-	}
-};
-
-function createItems(event, object) {
-	let newItems = [];
-
-	for (let i = 0; i < event.target.value; i++) {
-		const item = {
-			name: object.name,
-			itemLength: '',
-			width: '',
-			height: ''
-		};
-		newItems.push(item);
-	}
-	return newItems;
 }
 
 function columnize(menu) {
@@ -134,10 +107,10 @@ function columnize(menu) {
 									@click="removeItem(menu, object)">-</button>
 								<input :id="object.name" v-model="object.value" type="text" inputmode="numeric"
 									class="border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
-									@change="calculateVolume(menu, object, $event)">
+									@change="object.boxUnder80l || object.boxOver80l ? useAddMultipleBoxes(menu, object, $event) : useCalculateVolume(menu, object, $event, createItems)">
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
-									@click="addItem(menu, object)">+</button>
+									@click="object.boxUnder80l || object.boxOver80l ? onAddBox(menu, object) : onAddItem(menu, object)">+</button>
 							</div>
 							<span class="text-sm sm:text-base fw-bold" v-text="object.name"></span>
 						</div>

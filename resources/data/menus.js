@@ -44,6 +44,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
+				boxOver80l: true
 			},
 			{
 				name: 'Brücke',
@@ -72,6 +73,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
+				boxUnder80l: true
 			}
 		],
 		status: false,
@@ -102,6 +104,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
+				boxOver80l: true
 			},
 			{
 				name: 'Wäschepuff',
@@ -122,6 +125,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
+				boxUnder80l: true
 			},
 			{
 				name: 'Waschmaschine/Trockner',
@@ -176,6 +180,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
+				boxOver80l: true
 			},
 			{
 				name: 'Buffet ohne Aufsatz',
@@ -204,6 +209,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
+				boxUnder80l: true
 			},
 			{
 				name: 'Vitrine (Glasschrank)',
@@ -270,6 +276,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
+				boxOver80l: true
 			},
 			{
 				name: 'Werkzeugkoffer',
@@ -326,6 +333,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
+				boxUnder80l: true
 			},
 			{
 				name: 'Werkbank, zerlegbar',
@@ -392,6 +400,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
+				boxOver80l: true
 			},
 			{
 				name: 'Bettzeug',
@@ -432,6 +441,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
+				boxUnder80l: true
 			}
 		],
 		status: false,
@@ -474,6 +484,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
+				boxUnder80l: true
 			},
 			{
 				name: 'Unterteil',
@@ -502,6 +513,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
+				boxOver80l: true
 			},
 			{
 				name: 'Waschmaschine',
@@ -556,6 +568,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
+				boxOver80l: true
 			},
 			{
 				name: 'Bettzeug',
@@ -588,6 +601,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
+				boxUnder80l: true
 			},
 			{
 				name: 'Wäschetruhe',
@@ -670,6 +684,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton bis 80 L',
 				value: 0,
+				boxUnder80l: true
 			},
 			{
 				name: 'Wohnzimmerschrank, zerlegbar',
@@ -730,6 +745,7 @@ export const rooms = reactive([
 			{
 				name: 'Umzugskarton über 80 L',
 				value: 0,
+				boxOver80l: true
 			}
 		],
 		status: false,

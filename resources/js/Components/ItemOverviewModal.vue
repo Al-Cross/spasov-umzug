@@ -102,8 +102,11 @@ function closeModal() {
 								<div>
 									{{ item.name }}
 									<span v-if="item.volume">{{ item.volume }} m<sup>3</sup></span>
+									<span v-if="item.isBoxUnder80l">(x{{ room.boxesUnder80l }})</span>
+									<span v-if="item.isBoxOver80l">(x{{ room.boxesOver80l }})</span>
 								</div>
-								<div class="flex md:justify-center sm:gap-4">
+								<div v-if="!item.isBoxUnder80l && !item.isBoxOver80l"
+									class="flex md:justify-center sm:gap-4">
 									<div class="flex">
 										<input :value="item.itemLength" type="text" class="w-[4rem] sm:w-20" placeholder="L"
 											@input="setLength(item, room, $event)">

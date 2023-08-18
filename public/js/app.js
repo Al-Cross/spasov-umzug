@@ -19304,12 +19304,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
 /* harmony import */ var _data_menus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../data/menus */ "./resources/data/menus.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+/* harmony import */ var _composables_roomItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../composables/roomItems */ "./resources/js/composables/roomItems.js");
+/* harmony import */ var _composables_boxes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../composables/boxes */ "./resources/js/composables/boxes.js");
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -19324,8 +19322,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       });
     }
-    function addItem(room, object) {
-      var roomHasItems = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.some(function (filledOutRoom) {
+    function onAddItem(room, object) {
+      object.value++;
+      var roomExists = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.some(function (filledOutRoom) {
         return filledOutRoom.title === room.title;
       });
       var item = {
@@ -19334,31 +19333,29 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         width: '',
         height: ''
       };
-      if (!roomHasItems) {
-        createNewRoom(room, [item]);
-      } else {
-        var filledOutRoom = findRoom(room);
-        if (filledOutRoom) {
-          filledOutRoom.contents.push(item);
-        }
-      }
-      object.value++;
+      roomExists ? (0,_composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useAddItem)(room, item) : (0,_composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useCreateNewRoom)(room, [item], false);
     }
     ;
-    function createNewRoom(room, items) {
-      var _filledOutRoom$conten;
-      var filledOutRoom = {
-        id: room.id,
-        title: room.title,
-        contents: []
+    function onAddBox(room, object) {
+      object.value++;
+      var roomExists = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.some(function (filledOutRoom) {
+        return filledOutRoom.title === room.title;
+      });
+      var box = {
+        name: object.name
       };
-      (_filledOutRoom$conten = filledOutRoom.contents).push.apply(_filledOutRoom$conten, _toConsumableArray(items));
-      _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.push(filledOutRoom);
+      box = object.boxUnder80l ? (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useCreateBox)(box, room, object.value, 'isBoxUnder80l', 'boxesUnder80l') : (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useCreateBox)(box, room, object.value, 'isBoxOver80l', 'boxesOver80l');
+      roomExists ? (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useAddBoxToRoom)(room, box) : (0,_composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useCreateNewRoom)(room, [box], true);
     }
     function removeItem(room, object) {
       if (object.value === 0) return;
       var filledOutRoom = findRoom(room);
       if (filledOutRoom) {
+        if (object.boxUnder80l && filledOutRoom.boxesUnder80l > 1) {
+          filledOutRoom.boxesUnder80l--;
+        } else if (object.boxOver80l && filledOutRoom.boxesOver80l > 1) {
+          filledOutRoom.boxesOver80l--;
+        }
         var itemIndex = filledOutRoom.contents.findLastIndex(function (item) {
           return item.name === object.name;
         });
@@ -19382,36 +19379,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return room.title !== filledOutRoom.title;
       });
     }
-    function calculateVolume(room, object, event) {
-      var filledOutRoom = findRoom(room);
-      var newItems = createItems(event, object);
-      if (filledOutRoom) {
-        var _filledOutRoom$conten2;
-        filledOutRoom.contents = filledOutRoom.contents.filter(function (item) {
-          return item.name !== object.name;
-        });
-        (_filledOutRoom$conten2 = filledOutRoom.contents).push.apply(_filledOutRoom$conten2, _toConsumableArray(newItems));
-      } else {
-        createNewRoom(room, newItems);
-      }
-      if (filledOutRoom && filledOutRoom.contents.length === 0) {
-        removeRoom(filledOutRoom);
-      }
-    }
-    ;
-    function createItems(event, object) {
-      var newItems = [];
-      for (var i = 0; i < event.target.value; i++) {
-        var item = {
-          name: object.name,
-          itemLength: '',
-          width: '',
-          height: ''
-        };
-        newItems.push(item);
-      }
-      return newItems;
-    }
     function columnize(menu) {
       if (menu.chunked.length == 0) {
         var i = 0;
@@ -19424,19 +19391,35 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     ;
     var __returned__ = {
       toggleRoom: toggleRoom,
-      addItem: addItem,
-      createNewRoom: createNewRoom,
+      onAddItem: onAddItem,
+      onAddBox: onAddBox,
       removeItem: removeItem,
       findRoom: findRoom,
       removeRoom: removeRoom,
-      calculateVolume: calculateVolume,
-      createItems: createItems,
       columnize: columnize,
       get formDataStore() {
         return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore;
       },
       get rooms() {
         return _data_menus__WEBPACK_IMPORTED_MODULE_1__.rooms;
+      },
+      get useCreateNewRoom() {
+        return _composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useCreateNewRoom;
+      },
+      get useAddItem() {
+        return _composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useAddItem;
+      },
+      get useCalculateVolume() {
+        return _composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useCalculateVolume;
+      },
+      get useAddBoxToRoom() {
+        return _composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useAddBoxToRoom;
+      },
+      get useCreateBox() {
+        return _composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useCreateBox;
+      },
+      get useAddMultipleBoxes() {
+        return _composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useAddMultipleBoxes;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -20302,45 +20285,52 @@ var _hoisted_10 = {
 };
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("sup", null, "3", -1 /* HOISTED */);
 var _hoisted_12 = {
-  "class": "flex md:justify-center sm:gap-4"
+  key: 1
 };
 var _hoisted_13 = {
+  key: 2
+};
+var _hoisted_14 = {
+  key: 0,
+  "class": "flex md:justify-center sm:gap-4"
+};
+var _hoisted_15 = {
   "class": "flex"
 };
-var _hoisted_14 = ["value", "onInput"];
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_16 = ["value", "onInput"];
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "self-end sm:ml-1 max-sm:mr-1"
 }, "cm", -1 /* HOISTED */);
-var _hoisted_16 = {
+var _hoisted_18 = {
   "class": "flex"
 };
-var _hoisted_17 = ["value", "onInput"];
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_19 = ["value", "onInput"];
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "self-end sm:ml-1 max-sm:mr-1"
 }, "cm", -1 /* HOISTED */);
-var _hoisted_19 = {
+var _hoisted_21 = {
   "class": "flex"
 };
-var _hoisted_20 = ["value", "onInput"];
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_22 = ["value", "onInput"];
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "self-end sm:ml-1 max-sm:mr-1"
 }, "cm", -1 /* HOISTED */);
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "border-t-2"
 }, null, -1 /* HOISTED */);
-var _hoisted_23 = {
+var _hoisted_25 = {
   key: 0,
   "class": "text-red-500 text-sm md:hidden"
 };
-var _hoisted_24 = {
+var _hoisted_26 = {
   "class": "flex justify-between sm:justify-end pt-3"
 };
-var _hoisted_25 = {
+var _hoisted_27 = {
   key: 0,
   "class": "hidden md:block self-center text-red-500 text-sm mr-10"
 };
-var _hoisted_26 = ["disabled"];
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_28 = ["disabled"];
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "absolute inset-0 opacity-25 bg-black z-40"
 }, null, -1 /* HOISTED */);
 
@@ -20353,7 +20343,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
         key: i,
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([i % 2 !== 0 ? 'bg-blue-100' : '', "lg:flex lg:justify-between lg:items-center xl:gap-10 mt-2"])
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.name) + " ", 1 /* TEXT */), item.volume ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.volume) + " m", 1 /* TEXT */), _hoisted_11])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.name) + " ", 1 /* TEXT */), item.volume ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.volume) + " m", 1 /* TEXT */), _hoisted_11])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), item.isBoxUnder80l ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_12, "(x" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(room.boxesUnder80l) + ")", 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), item.isBoxOver80l ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_13, "(x" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(room.boxesOver80l) + ")", 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), !item.isBoxUnder80l && !item.isBoxOver80l ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         value: item.itemLength,
         type: "text",
         "class": "w-[4rem] sm:w-20",
@@ -20361,7 +20351,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onInput: function onInput($event) {
           return $setup.setLength(item, room, $event);
         }
-      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_14), _hoisted_15]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_16), _hoisted_17]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         value: item.width,
         type: "text",
         "class": "w-[4rem] sm:w-20",
@@ -20369,7 +20359,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onInput: function onInput($event) {
           return $setup.setWidth(item, room, $event);
         }
-      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_17), _hoisted_18]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_19), _hoisted_20]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         value: item.height,
         type: "text",
         "class": "w-[4rem] sm:w-20",
@@ -20377,9 +20367,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onInput: function onInput($event) {
           return $setup.setHeight(item, room, $event);
         }
-      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_20), _hoisted_21])])], 2 /* CLASS */);
+      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_22), _hoisted_23])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */);
     }), 128 /* KEYED_FRAGMENT */))])]);
-  }), 128 /* KEYED_FRAGMENT */))]), _hoisted_22, $setup.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, " Die Eingabefelder dürfen nur numerische Zeichen enthalten. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [$setup.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, " Die Eingabefelder dürfen nur numerische Zeichen enthalten. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), 128 /* KEYED_FRAGMENT */))]), _hoisted_24, $setup.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, " Die Eingabefelder dürfen nur numerische Zeichen enthalten. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [$setup.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, " Die Eingabefelder dürfen nur numerische Zeichen enthalten. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "rounded border-2 border-black hover:bg-gray-200 px-4 py-2",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -20394,7 +20384,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $setup.submitForm();
     })
-  }, " Anfrage senden ", 10 /* CLASS, PROPS */, _hoisted_26)])])]), _hoisted_27]);
+  }, " Anfrage senden ", 10 /* CLASS, PROPS */, _hoisted_28)])])]), _hoisted_29]);
 }
 
 /***/ }),
@@ -20479,13 +20469,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           inputmode: "numeric",
           "class": "border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2",
           onChange: function onChange($event) {
-            return $setup.calculateVolume(menu, object, $event);
+            return object.boxUnder80l || object.boxOver80l ? $setup.useAddMultipleBoxes(menu, object, $event) : $setup.useCalculateVolume(menu, object, $event, _ctx.createItems);
           }
         }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_12), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, object.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           type: "button",
           "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2",
           onClick: function onClick($event) {
-            return $setup.addItem(menu, object);
+            return object.boxUnder80l || object.boxOver80l ? $setup.onAddBox(menu, object) : $setup.onAddItem(menu, object);
           }
         }, "+", 8 /* PROPS */, _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
           "class": "text-sm sm:text-base fw-bold",
@@ -20695,7 +20685,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0
+    value: 0,
+    boxOver80l: true
   }, {
     name: 'Brücke',
     value: 0
@@ -20716,7 +20707,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0
+    value: 0,
+    boxUnder80l: true
   }],
   status: false,
   chunked: [],
@@ -20739,7 +20731,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0
+    value: 0,
+    boxOver80l: true
   }, {
     name: 'Wäschepuff',
     value: 0
@@ -20754,7 +20747,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0
+    value: 0,
+    boxUnder80l: true
   }, {
     name: 'Waschmaschine/Trockner',
     value: 0
@@ -20795,7 +20789,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0
+    value: 0,
+    boxOver80l: true
   }, {
     name: 'Buffet ohne Aufsatz',
     value: 0
@@ -20816,7 +20811,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0
+    value: 0,
+    boxUnder80l: true
   }, {
     name: 'Vitrine (Glasschrank)',
     value: 0
@@ -20866,7 +20862,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0
+    value: 0,
+    boxOver80l: true
   }, {
     name: 'Werkzeugkoffer',
     value: 0
@@ -20908,7 +20905,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0
+    value: 0,
+    boxUnder80l: true
   }, {
     name: 'Werkbank, zerlegbar',
     value: 0
@@ -20958,7 +20956,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0
+    value: 0,
+    boxOver80l: true
   }, {
     name: 'Bettzeug',
     value: 0
@@ -20988,7 +20987,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0
+    value: 0,
+    boxUnder80l: true
   }],
   status: false,
   chunked: [],
@@ -21020,7 +21020,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0
+    value: 0,
+    boxUnder80l: true
   }, {
     name: 'Unterteil',
     value: 0
@@ -21042,7 +21043,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     volume: Math.random()
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0
+    value: 0,
+    boxOver80l: true
   }, {
     name: 'Waschmaschine',
     value: 0
@@ -21083,7 +21085,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0
+    value: 0,
+    boxOver80l: true
   }, {
     name: 'Bettzeug',
     value: 0
@@ -21107,7 +21110,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0
+    value: 0,
+    boxUnder80l: true
   }, {
     name: 'Wäschetruhe',
     value: 0
@@ -21169,7 +21173,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton bis 80 L',
-    value: 0
+    value: 0,
+    boxUnder80l: true
   }, {
     name: 'Wohnzimmerschrank, zerlegbar',
     value: 0
@@ -21214,7 +21219,8 @@ var rooms = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
     value: 0
   }, {
     name: 'Umzugskarton über 80 L',
-    value: 0
+    value: 0,
+    boxOver80l: true
   }],
   status: false,
   chunked: [],
@@ -21314,6 +21320,166 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/composables/boxes.js":
+/*!*******************************************!*\
+  !*** ./resources/js/composables/boxes.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useAddBoxToRoom: () => (/* binding */ useAddBoxToRoom),
+/* harmony export */   useAddMultipleBoxes: () => (/* binding */ useAddMultipleBoxes),
+/* harmony export */   useCreateBox: () => (/* binding */ useCreateBox)
+/* harmony export */ });
+/* harmony import */ var _roomItems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./roomItems */ "./resources/js/composables/roomItems.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
+function useAddBoxToRoom(room, box) {
+  var filledOutRoom = (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useFindRoom)(room);
+  if (filledOutRoom) {
+    filledOutRoom.boxesUnder80l = room.boxesUnder80l;
+    filledOutRoom.boxesOver80l = room.boxesOver80l;
+    var boxUnder80l = filledOutRoom.contents.some(function (item) {
+      return item.isBoxUnder80l;
+    });
+    var boxOver80l = filledOutRoom.contents.some(function (item) {
+      return item.isBoxOver80l;
+    });
+    if (box.isBoxUnder80l && !boxUnder80l || box.isBoxOver80l && !boxOver80l) {
+      filledOutRoom.contents.push(box);
+    }
+  }
+}
+function useAddMultipleBoxes(room, object, event) {
+  var filledOutRoom = (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useFindRoom)(room);
+  var newBoxes = assignBoxes(room, event, object);
+  if (filledOutRoom) {
+    var _filledOutRoom$conten;
+    filledOutRoom.boxesUnder80l = room.boxesUnder80l;
+    filledOutRoom.boxesOver80l = room.boxesOver80l;
+    filledOutRoom.contents = filledOutRoom.contents.filter(function (item) {
+      return item.name !== object.name;
+    });
+    (_filledOutRoom$conten = filledOutRoom.contents).push.apply(_filledOutRoom$conten, _toConsumableArray(newBoxes));
+  } else {
+    (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useCreateNewRoom)(room, newBoxes, true);
+  }
+  if (filledOutRoom && filledOutRoom.contents.length === 0) {
+    (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useRemoveRoom)(filledOutRoom);
+  }
+}
+;
+function useCreateBox(box, room, numberOfBoxes, boxType, roomBoxes) {
+  box[boxType] = true;
+  room[roomBoxes] = numberOfBoxes;
+  return box;
+}
+function assignBoxes(room, event, object) {
+  var box = {
+    name: object.name
+  };
+  box = object.boxUnder80l ? useCreateBox(box, room, +event.target.value, 'isBoxUnder80l', 'boxesUnder80l') : useCreateBox(box, room, +event.target.value, 'isBoxOver80l', 'boxesOver80l');
+  return +event.target.value ? [box] : [];
+}
+
+/***/ }),
+
+/***/ "./resources/js/composables/roomItems.js":
+/*!***********************************************!*\
+  !*** ./resources/js/composables/roomItems.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useAddItem: () => (/* binding */ useAddItem),
+/* harmony export */   useCalculateVolume: () => (/* binding */ useCalculateVolume),
+/* harmony export */   useCreateNewRoom: () => (/* binding */ useCreateNewRoom),
+/* harmony export */   useFindRoom: () => (/* binding */ useFindRoom),
+/* harmony export */   useRemoveRoom: () => (/* binding */ useRemoveRoom)
+/* harmony export */ });
+/* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+function useAddItem(room, item) {
+  var filledOutRoom = useFindRoom(room);
+  filledOutRoom.contents.push(item);
+}
+function useCreateNewRoom(room, items, isBox) {
+  var _newRoom$contents;
+  var newRoom = _objectSpread({
+    id: room.id,
+    title: room.title,
+    contents: []
+  }, isBox && {
+    boxesUnder80l: room.boxesUnder80l,
+    boxesOver80l: room.boxesOver80l
+  });
+  (_newRoom$contents = newRoom.contents).push.apply(_newRoom$contents, _toConsumableArray(items));
+  _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.push(newRoom);
+}
+function useFindRoom(room) {
+  return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.find(function (filled) {
+    return filled.id === room.id;
+  });
+}
+function useCalculateVolume(room, object, event) {
+  var filledOutRoom = useFindRoom(room);
+  var newItems = createItems(event, object);
+  if (filledOutRoom) {
+    var _filledOutRoom$conten;
+    filledOutRoom.contents = filledOutRoom.contents.filter(function (item) {
+      return item.name !== object.name;
+    });
+    (_filledOutRoom$conten = filledOutRoom.contents).push.apply(_filledOutRoom$conten, _toConsumableArray(newItems));
+  } else {
+    useCreateNewRoom(room, newItems, false);
+  }
+  if (filledOutRoom && filledOutRoom.contents.length === 0) {
+    useRemoveRoom(filledOutRoom);
+  }
+}
+;
+function createItems(event, object) {
+  var newItems = [];
+  for (var i = 0; i < event.target.value; i++) {
+    var item = {
+      name: object.name,
+      itemLength: '',
+      width: '',
+      height: ''
+    };
+    newItems.push(item);
+  }
+  return newItems;
+}
+function useRemoveRoom(filledOutRoom) {
+  _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.filter(function (room) {
+    return room.title !== filledOutRoom.title;
+  });
+}
 
 /***/ }),
 
