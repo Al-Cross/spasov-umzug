@@ -1,8 +1,8 @@
 <script setup>
 import { formDataStore } from '../../data/formStore';
 import { rooms } from '../../data/menus';
-import { useCreateNewRoom, useAddItem, useCalculateVolume } from '../composables/roomItems';
-import { useAddBoxToRoom, useCreateBox, useAddMultipleBoxes } from '../composables/boxes';
+import { useCreateNewRoom, useAddItem, useCalculateVolume, useRemoveItem } from '../composables/roomItems';
+import { useAddBoxToRoom, useCreateBox, useAddMultipleBoxes, useReduceBoxQuantity } from '../composables/boxes';
 
 
 function toggleRoom(roomName) {
@@ -30,43 +30,32 @@ function onAddBox(room, object) {
 	object.value++;
 	const roomExists = formDataStore.filledOutRooms
 		.some(filledOutRoom => filledOutRoom.title === room.title);
+	const boxType = object.boxUnder80l ? 'boxUnder80l' : 'boxOver80l';
 	let box = { name: object.name };
 
-	box = object.boxUnder80l
-		? useCreateBox(box, room, object.value, 'isBoxUnder80l', 'boxesUnder80l')
-		: useCreateBox(box, room, object.value, 'isBoxOver80l', 'boxesOver80l');
+	box = boxType === 'boxUnder80l'
+		? useCreateBox(box, 'isBoxUnder80l')
+		: useCreateBox(box, 'isBoxOver80l');
 
-	roomExists ? useAddBoxToRoom(room, box) : useCreateNewRoom(room, [box], true);
+	roomExists
+		? useAddBoxToRoom(room, box, boxType, +object.value)
+		: useCreateNewRoom(room, [box], boxType, +object.value);
 }
 
-function removeItem(room, object) {
+function onRemoveItem(room, object) {
 	if (object.value === 0) return;
 
-	const filledOutRoom = findRoom(room);
-	if (filledOutRoom) {
-		if (object.boxUnder80l && filledOutRoom.boxesUnder80l > 1) {
-			filledOutRoom.boxesUnder80l--;
-		} else if (object.boxOver80l && filledOutRoom.boxesOver80l > 1) {
-			filledOutRoom.boxesOver80l--;
-		}
-		const itemIndex = filledOutRoom.contents.findLastIndex(item => item.name === object.name);
-		if (itemIndex !== -1) {
-			filledOutRoom.contents.splice(itemIndex, 1);
-		}
-		if (filledOutRoom.contents.length === 0) {
-			removeRoom(filledOutRoom);
-		}
-	}
+	useRemoveItem(room, object);
 	object.value--;
 };
 
-function findRoom(room) {
-	return formDataStore.filledOutRooms.find(filled => filled.id === room.id);
-}
+function onRemoveBox(room, object) {
+	if (object.value === 0) return;
 
-function removeRoom(filledOutRoom) {
-	formDataStore.filledOutRooms = formDataStore.filledOutRooms
-		.filter(room => room.title !== filledOutRoom.title);
+	object.boxUnder80l
+	? useReduceBoxQuantity(room, object.name, 'boxesUnder80l')
+	: useReduceBoxQuantity(room, object.name, 'boxesOver80l');
+	object.value--;
 }
 
 function columnize(menu) {
@@ -104,10 +93,10 @@ function columnize(menu) {
 							<div class="mb-2.5">
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
-									@click="removeItem(menu, object)">-</button>
+									@click="object.boxUnder80l || object.boxOver80l ? onRemoveBox(menu, object) : onRemoveItem(menu, object)">-</button>
 								<input :id="object.name" v-model="object.value" type="text" inputmode="numeric"
 									class="border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
-									@change="object.boxUnder80l || object.boxOver80l ? useAddMultipleBoxes(menu, object, $event) : useCalculateVolume(menu, object, $event, createItems)">
+									@change="object.boxUnder80l || object.boxOver80l ? useAddMultipleBoxes(menu, object, $event) : useCalculateVolume(menu, object, $event)">
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
 									@click="object.boxUnder80l || object.boxOver80l ? onAddBox(menu, object) : onAddItem(menu, object)">+</button>

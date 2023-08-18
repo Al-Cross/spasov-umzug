@@ -19341,43 +19341,23 @@ __webpack_require__.r(__webpack_exports__);
       var roomExists = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.some(function (filledOutRoom) {
         return filledOutRoom.title === room.title;
       });
+      var boxType = object.boxUnder80l ? 'boxUnder80l' : 'boxOver80l';
       var box = {
         name: object.name
       };
-      box = object.boxUnder80l ? (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useCreateBox)(box, room, object.value, 'isBoxUnder80l', 'boxesUnder80l') : (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useCreateBox)(box, room, object.value, 'isBoxOver80l', 'boxesOver80l');
-      roomExists ? (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useAddBoxToRoom)(room, box) : (0,_composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useCreateNewRoom)(room, [box], true);
+      box = boxType === 'boxUnder80l' ? (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useCreateBox)(box, 'isBoxUnder80l') : (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useCreateBox)(box, 'isBoxOver80l');
+      roomExists ? (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useAddBoxToRoom)(room, box, boxType, +object.value) : (0,_composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useCreateNewRoom)(room, [box], boxType, +object.value);
     }
-    function removeItem(room, object) {
+    function onRemoveItem(room, object) {
       if (object.value === 0) return;
-      var filledOutRoom = findRoom(room);
-      if (filledOutRoom) {
-        if (object.boxUnder80l && filledOutRoom.boxesUnder80l > 1) {
-          filledOutRoom.boxesUnder80l--;
-        } else if (object.boxOver80l && filledOutRoom.boxesOver80l > 1) {
-          filledOutRoom.boxesOver80l--;
-        }
-        var itemIndex = filledOutRoom.contents.findLastIndex(function (item) {
-          return item.name === object.name;
-        });
-        if (itemIndex !== -1) {
-          filledOutRoom.contents.splice(itemIndex, 1);
-        }
-        if (filledOutRoom.contents.length === 0) {
-          removeRoom(filledOutRoom);
-        }
-      }
+      (0,_composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useRemoveItem)(room, object);
       object.value--;
     }
     ;
-    function findRoom(room) {
-      return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.find(function (filled) {
-        return filled.id === room.id;
-      });
-    }
-    function removeRoom(filledOutRoom) {
-      _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.filter(function (room) {
-        return room.title !== filledOutRoom.title;
-      });
+    function onRemoveBox(room, object) {
+      if (object.value === 0) return;
+      object.boxUnder80l ? (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useReduceBoxQuantity)(room, object.name, 'boxesUnder80l') : (0,_composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useReduceBoxQuantity)(room, object.name, 'boxesOver80l');
+      object.value--;
     }
     function columnize(menu) {
       if (menu.chunked.length == 0) {
@@ -19393,9 +19373,8 @@ __webpack_require__.r(__webpack_exports__);
       toggleRoom: toggleRoom,
       onAddItem: onAddItem,
       onAddBox: onAddBox,
-      removeItem: removeItem,
-      findRoom: findRoom,
-      removeRoom: removeRoom,
+      onRemoveItem: onRemoveItem,
+      onRemoveBox: onRemoveBox,
       columnize: columnize,
       get formDataStore() {
         return _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore;
@@ -19412,6 +19391,9 @@ __webpack_require__.r(__webpack_exports__);
       get useCalculateVolume() {
         return _composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useCalculateVolume;
       },
+      get useRemoveItem() {
+        return _composables_roomItems__WEBPACK_IMPORTED_MODULE_2__.useRemoveItem;
+      },
       get useAddBoxToRoom() {
         return _composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useAddBoxToRoom;
       },
@@ -19420,6 +19402,9 @@ __webpack_require__.r(__webpack_exports__);
       },
       get useAddMultipleBoxes() {
         return _composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useAddMultipleBoxes;
+      },
+      get useReduceBoxQuantity() {
+        return _composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useReduceBoxQuantity;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -20458,7 +20443,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           type: "button",
           "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2",
           onClick: function onClick($event) {
-            return $setup.removeItem(menu, object);
+            return object.boxUnder80l || object.boxOver80l ? $setup.onRemoveBox(menu, object) : $setup.onRemoveItem(menu, object);
           }
         }, "-", 8 /* PROPS */, _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
           id: object.name,
@@ -20469,7 +20454,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           inputmode: "numeric",
           "class": "border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2",
           onChange: function onChange($event) {
-            return object.boxUnder80l || object.boxOver80l ? $setup.useAddMultipleBoxes(menu, object, $event) : $setup.useCalculateVolume(menu, object, $event, _ctx.createItems);
+            return object.boxUnder80l || object.boxOver80l ? $setup.useAddMultipleBoxes(menu, object, $event) : $setup.useCalculateVolume(menu, object, $event);
           }
         }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_12), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, object.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           type: "button",
@@ -21334,7 +21319,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   useAddBoxToRoom: () => (/* binding */ useAddBoxToRoom),
 /* harmony export */   useAddMultipleBoxes: () => (/* binding */ useAddMultipleBoxes),
-/* harmony export */   useCreateBox: () => (/* binding */ useCreateBox)
+/* harmony export */   useCreateBox: () => (/* binding */ useCreateBox),
+/* harmony export */   useReduceBoxQuantity: () => (/* binding */ useReduceBoxQuantity)
 /* harmony export */ });
 /* harmony import */ var _roomItems__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./roomItems */ "./resources/js/composables/roomItems.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -21344,51 +21330,64 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
-function useAddBoxToRoom(room, box) {
+function useAddBoxToRoom(room, box, boxType, numberOfBoxes) {
   var filledOutRoom = (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useFindRoom)(room);
   if (filledOutRoom) {
-    filledOutRoom.boxesUnder80l = room.boxesUnder80l;
-    filledOutRoom.boxesOver80l = room.boxesOver80l;
-    var boxUnder80l = filledOutRoom.contents.some(function (item) {
+    boxType === 'boxUnder80l' ? filledOutRoom.boxesUnder80l = numberOfBoxes : filledOutRoom.boxesOver80l = numberOfBoxes;
+    var roomContainsBoxUnder80l = filledOutRoom.contents.some(function (item) {
       return item.isBoxUnder80l;
     });
-    var boxOver80l = filledOutRoom.contents.some(function (item) {
+    var roomContainsBoxOver80l = filledOutRoom.contents.some(function (item) {
       return item.isBoxOver80l;
     });
-    if (box.isBoxUnder80l && !boxUnder80l || box.isBoxOver80l && !boxOver80l) {
+    if (box.isBoxUnder80l && !roomContainsBoxUnder80l || box.isBoxOver80l && !roomContainsBoxOver80l) {
       filledOutRoom.contents.push(box);
     }
   }
 }
 function useAddMultipleBoxes(room, object, event) {
   var filledOutRoom = (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useFindRoom)(room);
-  var newBoxes = assignBoxes(room, event, object);
+  var boxType = object.boxUnder80l ? 'boxUnder80l' : 'boxOver80l';
+  var newBoxes = assignBoxes(event, object);
   if (filledOutRoom) {
     var _filledOutRoom$conten;
-    filledOutRoom.boxesUnder80l = room.boxesUnder80l;
-    filledOutRoom.boxesOver80l = room.boxesOver80l;
+    boxType === 'boxUnder80l' ? filledOutRoom.boxesUnder80l = +event.target.value : filledOutRoom.boxesOver80l = +event.target.value;
     filledOutRoom.contents = filledOutRoom.contents.filter(function (item) {
       return item.name !== object.name;
     });
     (_filledOutRoom$conten = filledOutRoom.contents).push.apply(_filledOutRoom$conten, _toConsumableArray(newBoxes));
   } else {
-    (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useCreateNewRoom)(room, newBoxes, true);
+    (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useCreateNewRoom)(room, newBoxes, boxType, +event.target.value);
   }
   if (filledOutRoom && filledOutRoom.contents.length === 0) {
     (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useRemoveRoom)(filledOutRoom);
   }
 }
 ;
-function useCreateBox(box, room, numberOfBoxes, boxType, roomBoxes) {
+function useCreateBox(box, boxType) {
   box[boxType] = true;
-  room[roomBoxes] = numberOfBoxes;
   return box;
 }
-function assignBoxes(room, event, object) {
+function useReduceBoxQuantity(room, boxName, boxType) {
+  var filledOutRoom = (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useFindRoom)(room);
+  filledOutRoom[boxType]--;
+  if (filledOutRoom[boxType] === 0) {
+    removeBox(filledOutRoom, boxName);
+  }
+}
+function removeBox(filledOutRoom, boxName) {
+  filledOutRoom.contents = filledOutRoom.contents.filter(function (item) {
+    return item.name !== boxName;
+  });
+  if (filledOutRoom.contents.length === 0) {
+    (0,_roomItems__WEBPACK_IMPORTED_MODULE_0__.useRemoveRoom)(filledOutRoom);
+  }
+}
+function assignBoxes(event, object) {
   var box = {
     name: object.name
   };
-  box = object.boxUnder80l ? useCreateBox(box, room, +event.target.value, 'isBoxUnder80l', 'boxesUnder80l') : useCreateBox(box, room, +event.target.value, 'isBoxOver80l', 'boxesOver80l');
+  box = object.boxUnder80l ? useCreateBox(box, 'isBoxUnder80l') : useCreateBox(box, 'isBoxOver80l');
   return +event.target.value ? [box] : [];
 }
 
@@ -21407,6 +21406,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   useCalculateVolume: () => (/* binding */ useCalculateVolume),
 /* harmony export */   useCreateNewRoom: () => (/* binding */ useCreateNewRoom),
 /* harmony export */   useFindRoom: () => (/* binding */ useFindRoom),
+/* harmony export */   useRemoveItem: () => (/* binding */ useRemoveItem),
 /* harmony export */   useRemoveRoom: () => (/* binding */ useRemoveRoom)
 /* harmony export */ });
 /* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
@@ -21427,15 +21427,18 @@ function useAddItem(room, item) {
   var filledOutRoom = useFindRoom(room);
   filledOutRoom.contents.push(item);
 }
-function useCreateNewRoom(room, items, isBox) {
+function useCreateNewRoom(room, items) {
   var _newRoom$contents;
-  var newRoom = _objectSpread({
+  var boxType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var numberOfBoxes = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  var newRoom = _objectSpread(_objectSpread({
     id: room.id,
     title: room.title,
     contents: []
-  }, isBox && {
-    boxesUnder80l: room.boxesUnder80l,
-    boxesOver80l: room.boxesOver80l
+  }, boxType === 'boxUnder80l' && {
+    boxesUnder80l: numberOfBoxes
+  }), boxType === 'boxOver80l' && {
+    boxesOver80l: numberOfBoxes
   });
   (_newRoom$contents = newRoom.contents).push.apply(_newRoom$contents, _toConsumableArray(items));
   _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.push(newRoom);
@@ -21462,6 +21465,25 @@ function useCalculateVolume(room, object, event) {
   }
 }
 ;
+function useRemoveItem(room, object) {
+  var filledOutRoom = useFindRoom(room);
+  if (filledOutRoom) {
+    var itemIndex = filledOutRoom.contents.findLastIndex(function (item) {
+      return item.name === object.name;
+    });
+    if (itemIndex !== -1) {
+      filledOutRoom.contents.splice(itemIndex, 1);
+    }
+    if (filledOutRoom.contents.length === 0) {
+      useRemoveRoom(filledOutRoom);
+    }
+  }
+}
+function useRemoveRoom(filledOutRoom) {
+  _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.filter(function (room) {
+    return room.title !== filledOutRoom.title;
+  });
+}
 function createItems(event, object) {
   var newItems = [];
   for (var i = 0; i < event.target.value; i++) {
@@ -21474,11 +21496,6 @@ function createItems(event, object) {
     newItems.push(item);
   }
   return newItems;
-}
-function useRemoveRoom(filledOutRoom) {
-  _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms = _data_formStore__WEBPACK_IMPORTED_MODULE_0__.formDataStore.filledOutRooms.filter(function (room) {
-    return room.title !== filledOutRoom.title;
-  });
 }
 
 /***/ }),
