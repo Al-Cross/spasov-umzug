@@ -18,16 +18,16 @@ function findPropName(name) {
 				Straße/ Nr. *
 			</label>
 			<input id="street" v-model="formData[findPropName('street')]" type="text"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-			<form-error v-if="formData.errors[findPropName('street')]" :errors="formData.errors">
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+			<form-error v-if="formData.errors[findPropName('street')]" :error-source="findPropName('street')">
 				{{ formData.errors[findPropName('street')][0] }}
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
 			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="location">Ort *</label>
 			<input id="location" v-model="formData[findPropName('location')]" type="text"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-			<form-error v-if="formData.errors[findPropName('location')]" :errors="formData.errors">
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+			<form-error v-if="formData.errors[findPropName('location')]" :error-source="findPropName('location')">
 				{{ formData.errors[findPropName('location')][0] }}
 			</form-error>
 		</div>
@@ -36,16 +36,16 @@ function findPropName(name) {
 				Postleitzahl *
 			</label>
 			<input id="zip" v-model="formData[findPropName('zip')]" type="text"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]">
-			<form-error v-if="formData.errors[findPropName('zip')]" :errors="formData.errors">
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]" />
+			<form-error v-if="formData.errors[findPropName('zip')]" :error-source="findPropName('zip')">
 				{{ formData.errors[findPropName('zip')][0] }}
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
 			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="province">Land *</label>
 			<input id="province" v-model="formData[findPropName('province')]" type="text"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-			<form-error v-if="formData.errors[findPropName('province')]" :errors="formData.errors">
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+			<form-error v-if="formData.errors[findPropName('province')]" :error-source="findPropName('province')">
 				{{ formData.errors[findPropName('province')][0] }}
 			</form-error>
 		</div>
@@ -53,8 +53,8 @@ function findPropName(name) {
 			<div class="flex flex-col space-y-1.5 mb-3">
 				<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="floor">Etage</label>
 				<input id="floor" v-model="formData[findPropName('floor')]" type="text"
-					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-				<form-error v-if="formData.errors[findPropName('floor')]" :errors="formData.errors">
+					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+				<form-error v-if="formData.errors[findPropName('floor')]" :error-source="findPropName('floor')">
 					{{ formData.errors[findPropName('floor')][0] }}
 				</form-error>
 			</div>
@@ -63,8 +63,8 @@ function findPropName(name) {
 					Größe m<sup>2</sup>*
 				</label>
 				<input id="sq_m" v-model="formData[findPropName('sq_m')]" type="text"
-					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-				<form-error v-if="formData.errors[findPropName('sq_m')]" :errors="formData.errors">
+					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+				<form-error v-if="formData.errors[findPropName('sq_m')]" :error-source="findPropName('sq_m')">
 					{{ formData.errors[findPropName('sq_m')][0] }}
 				</form-error>
 			</div>
@@ -80,7 +80,7 @@ function findPropName(name) {
 				<option value="5-8 Personen">5-8 Personen</option>
 				<option value="Lastenfahrstuhl">Lastenfahrstuhl</option>
 			</select>
-			<form-error v-if="formData.errors[findPropName('elevator')]" :errors="formData.errors">
+			<form-error v-if="formData.errors[findPropName('elevator')]" :error-source="findPropName('elevator')">
 				{{ formData.errors[findPropName('elevator')][0] }}
 			</form-error>
 		</div>
@@ -90,8 +90,8 @@ function findPropName(name) {
 					Räume *
 				</label>
 				<input id="rooms" v-model="formData[findPropName('rooms')]" type="text"
-					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-				<form-error v-if="formData.errors[findPropName('rooms')]" :errors="formData.errors">
+					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+				<form-error v-if="formData.errors[findPropName('rooms')]" :error-source="findPropName('rooms')">
 					{{ formData.errors[findPropName('rooms')][0] }}
 				</form-error>
 			</div>
@@ -100,8 +100,9 @@ function findPropName(name) {
 					Tragestrecke *
 				</label>
 				<input id="carry_distance" v-model="formData[findPropName('carry_distance')]" type="text"
-					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-				<form-error v-if="formData.errors[findPropName('carry_distance')]" :errors="formData.errors">
+					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+				<form-error v-if="formData.errors[findPropName('carry_distance')]"
+					:error-source="findPropName('carry_distance')">
 					{{ formData.errors[findPropName('carry_distance')][0] }}
 				</form-error>
 			</div>
@@ -122,7 +123,7 @@ function findPropName(name) {
 				<option value="Burogebaude">Bürogebäude</option>
 				<option value="Bungalow">Bungalow</option>
 			</select>
-			<form-error v-if="formData.errors[findPropName('building_type')]" :errors="formData.errors">
+			<form-error v-if="formData.errors[findPropName('building_type')]" :error-source="findPropName('building_type')">
 				{{ formData.errors[findPropName('building_type')][0] }}
 			</form-error>
 		</div>

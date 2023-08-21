@@ -5,5 +5,12 @@
 </template>
 
 <script setup>
-defineProps({ errors: Object });
+import { formDataStore } from '../../data/formStore';
+import { watch } from 'vue';
+
+const props = defineProps({ errorSource: String });
+
+watch(() => formDataStore[props.errorSource], () => {
+	delete formDataStore.errors[props.errorSource];
+});
 </script>

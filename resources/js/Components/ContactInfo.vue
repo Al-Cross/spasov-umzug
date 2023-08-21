@@ -18,7 +18,7 @@ let formData = formDataStore;
 				<option value="Frau">Frau</option>
 				<option value="Herr">Herr</option>
 			</select>
-			<form-error v-if="formData.errors.salutation" :errors="formData.errors">
+			<form-error v-if="formData.errors.salutation" error-source="salutation">
 				{{ formData.errors.salutation[0] }}
 			</form-error>
 		</div>
@@ -27,8 +27,8 @@ let formData = formDataStore;
 				Vorname *
 			</label>
 			<input id="firstName" v-model="formData.first_name" type="text"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-			<form-error v-if="formData.errors.first_name" :errors="formData.errors">
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+			<form-error v-if="formData.errors.first_name" error-source="first_name">
 				{{ formData.errors.first_name[0] }}
 			</form-error>
 		</div>
@@ -37,8 +37,8 @@ let formData = formDataStore;
 				Nachname *
 			</label>
 			<input id="lastName" v-model="formData.last_name" type="text"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-			<form-error v-if="formData.errors.last_name" :errors="formData.errors">
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+			<form-error v-if="formData.errors.last_name" error-source="last_name">
 				{{ formData.errors.last_name[0] }}
 			</form-error>
 		</div>
@@ -47,8 +47,8 @@ let formData = formDataStore;
 				Telefonnummer *
 			</label>
 			<input id="phone" v-model="formData.phone" type="text"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-			<form-error v-if="formData.errors.phone" :errors="formData.errors">
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+			<form-error v-if="formData.errors.phone" error-source="phone">
 				{{ formData.errors.phone[0] }}
 			</form-error>
 		</div>
@@ -57,8 +57,8 @@ let formData = formDataStore;
 				Email Adresse *
 			</label>
 			<input id="email" v-model="formData.email" type="email"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-			<form-error v-if="formData.errors.email" :errors="formData.errors">
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+			<form-error v-if="formData.errors.email" error-source="email">
 				{{ formData.errors.email[0] }}
 			</form-error>
 		</div>

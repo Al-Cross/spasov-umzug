@@ -11,11 +11,11 @@ import { services } from '../../data/services';
 				<span class="text-sm sm:text-base font-bold">{{ object }}</span>
 				<div class="grid grid-cols-2">
 					<div>
-						<input v-model="services.loadingPoint" type="checkbox" :value="object">
+						<input v-model="services.loadingPoint" type="checkbox" :value="object" />
 						<label for="beladestelle" class="text-sm sm:text-base ml-2">Beladestelle</label>
 					</div>
 					<div>
-						<input v-model="services.unloadingPoint" type="checkbox" :value="object">
+						<input v-model="services.unloadingPoint" type="checkbox" :value="object" />
 						<label for="entladestelle" class="text-sm sm:text-base ml-2">Entladestelle</label>
 					</div>
 				</div>
