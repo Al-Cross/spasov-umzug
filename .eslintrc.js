@@ -24,6 +24,7 @@ module.exports = {
     "vue/multiline-html-element-content-newline": "off",
     "vue/html-self-closing": ["error", {
       "html": {
+        "void": "always",
         "normal": "any",
         "component": "always"
       }
