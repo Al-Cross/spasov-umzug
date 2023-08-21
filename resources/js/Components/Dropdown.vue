@@ -80,6 +80,32 @@ function toggleMainMenu(name) {
 
 <template>
 	<div class="container mx-auto max-xs:p-2 md:px-16">
+		<div class="w-3/4 m-auto py-3 md:py-11">
+			<span class="md:text-xl">
+				Damit wir Ihnen eine genauere Einschätzung des Aufwands Ihres Umzugs geben können,
+				brauchen wir von Ihnen die folgende Informationen:
+			</span>
+			<div class="flex gap-4 text-sm md:text-base max-sm:mb-2 mt-3">
+				<img src="storage/images/hand.png" class="h-8 w-8" alt="hand_pointer" />
+				<span>Ihre Kontaktdaten</span>
+			</div>
+			<div class="flex gap-4 text-sm md:text-base max-sm:mb-2">
+				<img src="storage/images/hand.png" class="h-8 w-8" alt="hand_pointer" />
+				<span>wann Sie den Umzug geplannt haben</span>
+			</div>
+			<div class="flex gap-4 text-sm md:text-base max-sm:mb-2">
+				<img src="storage/images/hand.png" class="h-8 w-8" alt="hand_pointer" />
+				<span>die Adressen, die für den Umzug wichtig sind</span>
+			</div>
+			<div class="flex gap-4 text-sm md:text-base max-sm:mb-2">
+				<img src="storage/images/hand.png" class="h-8 w-8" alt="hand_pointer" />
+				<span>
+					die Umzugsgüter und deren Maßen. Nachdem Sie die gewünschte Umzugsgüter
+					und deren Anzahl ausgewählt und auf dem Button "zum Übersicht" geklickt haben,
+					haben Sie die Möglichkeit die Maßen jeden Gegenstands anzugeben.
+				</span>
+			</div>
+		</div>
 		<div v-if="success" class="text-green-700 text-center p-3 mb-5">
 			Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist.
 		</div>

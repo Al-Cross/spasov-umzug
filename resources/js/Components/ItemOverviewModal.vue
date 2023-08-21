@@ -120,17 +120,17 @@ function closeModal() {
 									class="flex md:justify-center sm:gap-4">
 									<div class="flex">
 										<input :value="item.itemLength" type="text" class="w-[4rem] sm:w-20" placeholder="L"
-											@input="setLength(item, room, $event)">
+											@input="setLength(item, room, $event)" />
 										<span class="self-end sm:ml-1 max-sm:mr-1">cm</span>
 									</div>
 									<div class="flex">
 										<input :value="item.width" type="text" class="w-[4rem] sm:w-20" placeholder="B"
-											@input="setWidth(item, room, $event)">
+											@input="setWidth(item, room, $event)" />
 										<span class="self-end sm:ml-1 max-sm:mr-1">cm</span>
 									</div>
 									<div class="flex">
 										<input :value="item.height" type="text" class="w-[4rem] sm:w-20" placeholder="H"
-											@input="setHeight(item, room, $event)">
+											@input="setHeight(item, room, $event)" />
 										<span class="self-end sm:ml-1 max-sm:mr-1">cm</span>
 									</div>
 								</div>

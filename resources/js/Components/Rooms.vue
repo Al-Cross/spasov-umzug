@@ -96,7 +96,7 @@ function columnize(menu) {
 									@click="object.boxUnder80l || object.boxOver80l ? onRemoveBox(menu, object) : onRemoveItem(menu, object)">-</button>
 								<input :id="object.name" v-model="object.value" type="text" inputmode="numeric"
 									class="border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
-									@change="object.boxUnder80l || object.boxOver80l ? useAddMultipleBoxes(menu, object, $event) : useCalculateVolume(menu, object, $event)">
+									@change="object.boxUnder80l || object.boxOver80l ? useAddMultipleBoxes(menu, object, $event) : useCalculateVolume(menu, object, $event)" />
 								<button type="button"
 									class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
 									@click="object.boxUnder80l || object.boxOver80l ? onAddBox(menu, object) : onAddItem(menu, object)">+</button>

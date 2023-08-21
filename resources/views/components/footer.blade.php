@@ -32,8 +32,13 @@
 	</div>
 </div>
 <div class="bg-blue-900 text-center text-blue-200">
-	<span>&#169; {{ date('Y')}}</span>
-	<a href="https://spasov-umzuege.de" title="Spasov Umzüge">spasov-umzuege.de | Umzugsunternehmen Karlsruhe</a>
+	<div>
+		<a href="https://www.flaticon.com/free-icons/pointer" title="pointer icons">Pointer icons created by Vitaly Gorbachev - Flaticon</a>
+	</div>
+	<div>
+		<span>&#169; {{ date('Y')}}</span>
+		<a href="https://spasov-umzuege.de" title="Spasov Umzüge">spasov-umzuege.de | Umzugsunternehmen Karlsruhe</a>
+	</div>
 </div>
 
 <div>
