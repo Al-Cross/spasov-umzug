@@ -1480,10 +1480,21 @@ select {
   background-color: rgb(133 77 14 / var(--tw-bg-opacity));
 }
 
+@media not all and (min-width: 1024px) {
+
+  .max-lg\:w-10\/12 {
+    width: 83.333333%;
+  }
+}
+
 @media not all and (min-width: 768px) {
 
   .max-md\:h-24 {
     height: 6rem;
+  }
+
+  .max-md\:w-10\/12 {
+    width: 83.333333%;
   }
 }
 
@@ -1495,6 +1506,10 @@ select {
 
   .max-sm\:mr-1 {
     margin-right: 0.25rem;
+  }
+
+  .max-sm\:w-10\/12 {
+    width: 83.333333%;
   }
 }
 

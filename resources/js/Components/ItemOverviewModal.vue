@@ -42,7 +42,10 @@ function calculateQubicMeters(room, item) {
 }
 
 function calculateVolumeOnRoomContentsChange() {
-	formDataStore.filledOutRooms.forEach(room => calculateRoomVolume(room));
+	formDataStore.filledOutRooms.forEach(room => {
+		calculateRoomVolume(room);
+		sortAlphabetically(room);
+	});
 }
 
 function calculateRoomVolume(room) {
@@ -53,6 +56,14 @@ function calculateRoomVolume(room) {
 		return accumulator;
 	}, 0);
 	room.volume = Math.round(volume * 100) / 100;
+}
+
+function sortAlphabetically(room) {
+	room.contents.sort((item1, item2) => {
+		if (item1.name < item2.name) return -1;
+		if (item1.name > item2.name) return 1;
+		if (item1.name === item2.name) return 0;
+	});
 }
 
 function removeEmptyMetric(item, metric) {
@@ -79,7 +90,7 @@ function closeModal() {
 
 <template>
 	<div class="fixed flex justify-center items-center overflow-x-hidden overflow-y-auto inset-0">
-		<div class="relative mx-auto sm:w-10/12 z-50">
+		<div class="relative mx-auto max-lg:w-10/12 z-50">
 			<div class="flex flex-col bg-white w-80 sm:w-full rounded shadow-2xl p-5">
 				<div class="text-2xl text-center font-bold">
 					Umzugsgüter Übersicht

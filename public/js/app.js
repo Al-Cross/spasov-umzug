@@ -19225,7 +19225,8 @@ __webpack_require__.r(__webpack_exports__);
     }
     function calculateVolumeOnRoomContentsChange() {
       _data_formStore__WEBPACK_IMPORTED_MODULE_1__.formDataStore.filledOutRooms.forEach(function (room) {
-        return calculateRoomVolume(room);
+        calculateRoomVolume(room);
+        sortAlphabetically(room);
       });
     }
     function calculateRoomVolume(room) {
@@ -19236,6 +19237,13 @@ __webpack_require__.r(__webpack_exports__);
         return accumulator;
       }, 0);
       room.volume = Math.round(volume * 100) / 100;
+    }
+    function sortAlphabetically(room) {
+      room.contents.sort(function (item1, item2) {
+        if (item1.name < item2.name) return -1;
+        if (item1.name > item2.name) return 1;
+        if (item1.name === item2.name) return 0;
+      });
     }
     function removeEmptyMetric(item, metric) {
       if (item[metric] === '') {
@@ -19268,6 +19276,7 @@ __webpack_require__.r(__webpack_exports__);
       calculateQubicMeters: calculateQubicMeters,
       calculateVolumeOnRoomContentsChange: calculateVolumeOnRoomContentsChange,
       calculateRoomVolume: calculateRoomVolume,
+      sortAlphabetically: sortAlphabetically,
       removeEmptyMetric: removeEmptyMetric,
       validateInput: validateInput,
       submitForm: submitForm,
@@ -20243,7 +20252,7 @@ var _hoisted_1 = {
   "class": "fixed flex justify-center items-center overflow-x-hidden overflow-y-auto inset-0"
 };
 var _hoisted_2 = {
-  "class": "relative mx-auto sm:w-10/12 z-50"
+  "class": "relative mx-auto max-lg:w-10/12 z-50"
 };
 var _hoisted_3 = {
   "class": "flex flex-col bg-white w-80 sm:w-full rounded shadow-2xl p-5"
