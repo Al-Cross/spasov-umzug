@@ -98,7 +98,7 @@ function closeModal() {
 						</span>
 						<div>
 							<div v-for="(item, i) in room.contents" :key="i" :class="i % 2 !== 0 ? 'bg-blue-100' : ''"
-								class="lg:flex lg:justify-between lg:items-center xl:gap-10 mt-2">
+								class="md:flex md:justify-between md:items-center xl:gap-10 md:h-12 mt-2">
 								<div>
 									{{ item.name }}
 									<span v-if="item.volume">{{ item.volume }} m<sup>3</sup></span>
