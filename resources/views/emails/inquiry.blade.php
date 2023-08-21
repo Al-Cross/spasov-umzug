@@ -43,8 +43,16 @@
 | Gegenstand | Volumen m<sup>3</sup> |
 |:----------:|-------:|
 @foreach($room['contents'] as $furniture)
+@if(!isset($furniture['isBoxUnder80l']) && !isset($furniture['isBoxOver80l']))
 | {{ $furniture['name'] }} | {{ $furniture['volume'] ?? 'nicht angegeben' }} |
+@endif
 @endforeach
+@if(isset($room['boxesUnder80l']))
+| Umzugskarton bis 80 L | {{ $room['boxesUnder80l'] }} Stück
+@endif
+@if(isset($room['boxesOver80l']))
+| Umzugskarton über 80 L | {{ $room['boxesOver80l'] }} Stück
+@endif
 @endcomponent
 
 @if(isset($room['volume']))
