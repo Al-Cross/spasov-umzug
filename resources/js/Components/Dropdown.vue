@@ -22,7 +22,13 @@ watch(() => formDataStore.errors, () => {
 
 watch(toggleModal, (newValue) => {
 	const scrollToTopElement = document.querySelector('.fade-small');
-	scrollToTopElement.style.zIndex = newValue ? -1 : 0;
+	if (newValue) {
+		document.body.classList.add('overflow-hidden');
+		scrollToTopElement.style.zIndex = -1;
+	} else {
+		document.body.classList.remove('overflow-hidden');
+		scrollToTopElement.style.zIndex = 0;
+	}
 });
 
 function onHandleFormSubmission() {
