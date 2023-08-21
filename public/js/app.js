@@ -18916,6 +18916,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _FormError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormError */ "./resources/js/components/FormError.vue");
 /* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -18924,6 +18926,13 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose;
     __expose();
     var formData = _data_formStore__WEBPACK_IMPORTED_MODULE_1__.formDataStore;
+    (0,vue__WEBPACK_IMPORTED_MODULE_2__.watch)(function () {
+      return formData.date;
+    }, function (newValue) {
+      if (new Date(newValue) < new Date()) {
+        formData.errors.date = ['Bitte wählen Sie ein Datum ab morgen.'];
+      }
+    });
     var __returned__ = {
       get formData() {
         return formData;
@@ -18936,7 +18945,8 @@ __webpack_require__.r(__webpack_exports__);
       },
       get formDataStore() {
         return _data_formStore__WEBPACK_IMPORTED_MODULE_1__.formDataStore;
-      }
+      },
+      watch: vue__WEBPACK_IMPORTED_MODULE_2__.watch
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

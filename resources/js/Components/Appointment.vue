@@ -1,8 +1,15 @@
 <script setup>
 import FormError from './FormError';
 import { formDataStore } from '../../data/formStore';
+import { watch } from 'vue';
 
 let formData = formDataStore;
+
+watch(() => formData.date, (newValue) => {
+	if (new Date(newValue) < new Date()) {
+		formData.errors.date = ['Bitte wählen Sie ein Datum ab morgen.'];
+	}
+});
 </script>
 
 <template>
