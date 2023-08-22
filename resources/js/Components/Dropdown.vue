@@ -13,12 +13,16 @@ import { formDataStore } from '../../data/formStore';
 let success = ref(false);
 let toggleModal = ref(false);
 let pendingResponse = ref(false);
+let privacyPolicyAccepted = ref(false);
+let showPrivacyPolicyErrorMessage = ref(false);
 
 watch(() => formDataStore.errors, () => {
 	mainMenus.forEach(menu => {
 		menu.status = menu.elements.some(str => str in formDataStore.errors);
 	});
 });
+
+watch(privacyPolicyAccepted, () => showPrivacyPolicyErrorMessage.value = false);
 
 watch(toggleModal, (newValue) => {
 	const scrollToTopElement = document.querySelector('.fade-small');
@@ -36,6 +40,9 @@ function onHandleFormSubmission() {
 }
 
 function submit() {
+	if (!privacyPolicyAccepted.value) {
+		return showPrivacyPolicyErrorMessage.value = true;
+	}
 	pendingResponse.value = true;
 	let totalVolume = calculateTotalVolume();
 
@@ -188,6 +195,17 @@ function toggleMainMenu(name) {
 					</div>
 				</button>
 				<Services v-show="mainMenus[5].status" />
+				<div class="flex items-center gap-3 text-sm sm:text-base pt-8">
+					<input v-model="privacyPolicyAccepted" type="checkbox" />
+					<span>
+						Ich bestätige, dass ich die 
+						<a href="#" class="text-blue-500 underline">Datenschutzerklärung</a>
+						zur Kenntnis genommen habe.
+					</span>
+				</div>
+				<div v-if="showPrivacyPolicyErrorMessage" class="text-red-500 text-xs italic">
+					Fehlende Akzeptierung.
+				</div>
 				<div class="flex justify-end">
 					<button type="button" class="bg-yellow-300 hover:bg-yellow-400 shadow px-5 py-1.5 rounded-full mt-2"
 						@click="onHandleFormSubmission()">
