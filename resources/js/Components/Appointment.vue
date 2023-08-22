@@ -13,7 +13,7 @@ watch(() => formData.date, (newValue) => {
 </script>
 
 <template>
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 gap-x-10 bg-gray-200 w-full p-6">
 		<div class="flex flex-col space-y-1.5 mb-3">
 			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="termin">Termin *</label>
 			<input v-model="formData.date" type="date"

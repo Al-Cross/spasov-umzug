@@ -3,9 +3,9 @@ import { services } from '../../data/services';
 </script>
 
 <template>
-	<div class="grid gap-2 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-2 xs:p-6">
+	<div class="grid gap-2 bg-gray-200 w-full p-2 xs:p-6">
 		<template v-for="(service, index) in services.type" :key="index">
-			<span class="bg-blue-300 font-bold rounded text-sm sm:text-base p-2">{{ service.name }}</span>
+			<span class="bg-gray-300 font-bold rounded text-sm sm:text-base p-2">{{ service.name }}</span>
 			<div v-for="(object, i) in service.objects" :key="i"
 				class="grid md:grid-cols-2 font-semibold text-lg m-2">
 				<span class="text-sm sm:text-base font-bold">{{ object }}</span>

@@ -12,7 +12,7 @@ function findPropName(name) {
 
 <template>
 	<div
-		class="grid grid-cols-1 sm:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 rounded-2xl w-full p-6">
+		class="grid grid-cols-1 sm:grid-cols-2 gap-2 gap-x-10 bg-gray-200 w-full p-6">
 		<div class="flex flex-col space-y-1.5 mb-3">
 			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="street">
 				Straße/ Nr. *
@@ -86,7 +86,7 @@ function findPropName(name) {
 		</div>
 		<div class="md:grid md:grid-cols-2 gap-5 lg:gap-20">
 			<div class="flex flex-col space-y-1.5 mb-5">
-				<label class="tracking-wide text-gray-700 font-bold max-sm:mb-1" for="rooms">
+				<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold max-sm:mb-1" for="rooms">
 					Räume *
 				</label>
 				<input id="rooms" v-model="formData[findPropName('rooms')]" type="text"

@@ -7,7 +7,7 @@ let formData = formDataStore;
 
 <template>
 	<div
-		class="md:grid md:grid-cols-2 gap-2 gap-x-10 bg-gradient-to-b from-blue-200 to-blue-100 transition duration-500 ease-in rounded-2xl w-full p-6">
+		class="md:grid md:grid-cols-2 gap-2 gap-x-10 bg-gray-200 w-full p-6">
 		<div class="flex flex-col col-span-2 space-y-1.5 mb-3">
 			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="salutation">
 				Anrede *

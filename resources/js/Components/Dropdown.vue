@@ -117,84 +117,103 @@ function toggleMainMenu(name) {
 			Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist.
 		</div>
 		<form class="mt-7">
-			<div class="space-y-1.5">
-				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-sm xs:text-base sm:text-2xl tracking-widest py-4 w-full"
+			<div>
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[0].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[0].title)">
-					<div class="flex justify-between">
+					<div class="flex justify-between py-4">
 						<div class="m-auto">{{ mainMenus[0].title }}</div>
 						<div class="mr-4">
 							<i v-if="!mainMenus[0].status" class="fas fa-arrow-down mt-1" />
 							<i v-if="mainMenus[0].status" class="fas fa-arrow-up mt-1" />
 						</div>
 					</div>
-				</button>
-				<contact-info v-show="mainMenus[0].status" />
+					<div class="grid cursor-default" :class="mainMenus[0].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+						<div class="overflow-hidden">
+							<Contact-info />
+						</div>
+					</div>
+				</div>
 
-				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-sm xs:text-base sm:text-2xl tracking-widest py-4 w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[1].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[1].title)">
-					<div class="flex justify-between">
+					<div class="flex justify-between py-4">
 						<div class="m-auto">{{ mainMenus[1].title }}</div>
 						<div class="mr-4">
 							<i v-if="!mainMenus[1].status" class="fas fa-arrow-down mt-1" />
 							<i v-if="mainMenus[1].status" class="fas fa-arrow-up mt-1" />
 						</div>
 					</div>
-				</button>
-				<Appointment v-show="mainMenus[1].status" />
+					<div class="grid cursor-default" :class="mainMenus[1].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+						<div class="overflow-hidden">
+							<Appointment />
+						</div>
+					</div>
+				</div>
 
-				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-sm xs:text-base sm:text-2xl tracking-widest py-4 w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[2].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[2].title)">
-					<div class="flex justify-between">
+					<div class="flex justify-between py-4">
 						<div class="m-auto">{{ mainMenus[2].title }}</div>
 						<div class="mr-4">
 							<i v-if="!mainMenus[2].status" class="fas fa-arrow-down mt-1" />
 							<i v-if="mainMenus[2].status" class="fas fa-arrow-up mt-1" />
 						</div>
 					</div>
-				</button>
-				<AddressFromTo v-show="mainMenus[2].status" direction="from" />
-
-				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-sm xs:text-base sm:text-2xl tracking-widest py-4 w-full"
+					<div class="grid cursor-default" :class="mainMenus[2].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+						<div class="overflow-hidden">
+							<AddressFromTo direction="from" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[3].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[3].title)">
-					<div class="flex justify-between">
+					<div class="flex justify-between py-4">
 						<div class="m-auto">{{ mainMenus[3].title }}</div>
 						<div class="mr-4">
 							<i v-if="!mainMenus[3].status" class="fas fa-arrow-down mt-1" />
 							<i v-if="mainMenus[3].status" class="fas fa-arrow-up mt-1" />
 						</div>
 					</div>
-				</button>
-				<AddressFromTo v-show="mainMenus[3].status" direction="to" />
+					<div class="grid cursor-default" :class="mainMenus[3].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+						<div class="overflow-hidden">
+							<AddressFromTo direction="to" />
+						</div>
+					</div>
+				</div>
 
-				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-sm xs:text-base sm:text-2xl tracking-widest py-4 w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[4].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[4].title)">
-					<div class="flex justify-between">
+					<div class="flex justify-between py-4">
 						<div class="m-auto">{{ mainMenus[4].title }}</div>
 						<div class="mr-4">
 							<i v-if="!mainMenus[4].status" class="fas fa-arrow-down mt-1" />
 							<i v-if="mainMenus[4].status" class="fas fa-arrow-up mt-1" />
 						</div>
 					</div>
-				</button>
-				<Rooms v-show="mainMenus[4].status" />
+					<div class="grid cursor-default" :class="mainMenus[4].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+						<div class="overflow-hidden">
+							<Rooms />
+						</div>
+					</div>
+				</div>
 
-				<button type="button"
-					class="bg-gradient-to-b from-yellow-100 via-yellow-300 to-yellow-500 hover:to-yellow-400 hover:text-white rounded-3xl focus:outline-none focus:to-yellow-400 focus:text-white font-mono text-sm xs:text-base sm:text-2xl tracking-widest py-4 w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[5].status ? 'bg-blue-400' : ''" @click="toggleMainMenu(mainMenus[5].title)">
-					<div class="flex justify-between">
+					<div class="flex justify-between py-4">
 						<div class="m-auto">{{ mainMenus[5].title }}</div>
 						<div class="mr-4">
 							<i v-if="!mainMenus[5].status" class="fas fa-arrow-down mt-1" />
 							<i v-if="mainMenus[5].status" class="fas fa-arrow-up mt-1" />
 						</div>
 					</div>
-				</button>
-				<Services v-show="mainMenus[5].status" />
+					<div class="grid cursor-default" :class="mainMenus[5].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+						<div class="overflow-hidden">
+							<Services />
+						</div>
+					</div>
+				</div>
+
 				<div class="flex items-center gap-3 text-sm sm:text-base pt-8">
 					<input v-model="privacyPolicyAccepted" type="checkbox" />
 					<span>
