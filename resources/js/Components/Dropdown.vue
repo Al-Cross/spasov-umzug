@@ -225,13 +225,13 @@ function toggleMainMenu(name) {
 				</div>
 
 				<div :id="mainMenus[5].title"
-					class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-xs sm:text-base md:text-2xl tracking-widest w-full"
+					class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full"
 					:class="mainMenus[5].status ? 'bg-blue-400' : ''" @click="toggleMainMenu(mainMenus[5].title)">
 					<div class="flex justify-between py-4">
 						<div class="ml-4">
 							<i class="fas fa-tools" />
 						</div>
-						<div class="m-auto">{{ mainMenus[5].title }}</div>
+						<div class="m-auto text-xs sm:text-base">{{ mainMenus[5].title }}</div>
 						<div class="mr-4">
 							<i v-if="!mainMenus[5].status" class="fas fa-plus mt-1" />
 							<i v-if="mainMenus[5].status" class="fas fa-minus mt-1" />

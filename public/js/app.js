@@ -18862,6 +18862,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _FormError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormError */ "./resources/js/components/FormError.vue");
 /* harmony import */ var _data_formStore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../data/formStore */ "./resources/data/formStore.js");
+/* harmony import */ var _data_dropdowns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/dropdowns */ "./resources/data/dropdowns.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -18891,6 +18893,15 @@ __webpack_require__.r(__webpack_exports__);
       },
       get formDataStore() {
         return _data_formStore__WEBPACK_IMPORTED_MODULE_1__.formDataStore;
+      },
+      get provinces() {
+        return _data_dropdowns__WEBPACK_IMPORTED_MODULE_2__.provinces;
+      },
+      get elevator() {
+        return _data_dropdowns__WEBPACK_IMPORTED_MODULE_2__.elevator;
+      },
+      get buildingTypes() {
+        return _data_dropdowns__WEBPACK_IMPORTED_MODULE_2__.buildingTypes;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -19373,8 +19384,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data_menus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../data/menus */ "./resources/data/menus.js");
 /* harmony import */ var _composables_roomItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../composables/roomItems */ "./resources/js/composables/roomItems.js");
 /* harmony import */ var _composables_boxes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../composables/boxes */ "./resources/js/composables/boxes.js");
-/* harmony import */ var _data_main_menus__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../data/main-menus */ "./resources/data/main-menus.js");
-
 
 
 
@@ -19478,9 +19487,6 @@ __webpack_require__.r(__webpack_exports__);
       },
       get useReduceBoxQuantity() {
         return _composables_boxes__WEBPACK_IMPORTED_MODULE_3__.useReduceBoxQuantity;
-      },
-      get mainMenus() {
-        return _data_main_menus__WEBPACK_IMPORTED_MODULE_4__.mainMenus;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -19555,7 +19561,7 @@ var _hoisted_4 = {
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold",
   "for": "location"
-}, "Ort *", -1 /* HOISTED */);
+}, " Ort * ", -1 /* HOISTED */);
 var _hoisted_6 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
@@ -19569,71 +19575,68 @@ var _hoisted_8 = {
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold",
   "for": "province"
-}, "Land *", -1 /* HOISTED */);
-var _hoisted_10 = {
+}, " Land * ", -1 /* HOISTED */);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  disabled: "",
+  selected: "",
+  value: ""
+}, "Auswählen", -1 /* HOISTED */);
+var _hoisted_11 = ["value"];
+var _hoisted_12 = {
   "class": "grid grid-cols-2 gap-5 lg:gap-10"
 };
-var _hoisted_11 = {
-  "class": "flex flex-col space-y-1.5 mb-3"
-};
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold",
-  "for": "floor"
-}, "Etage", -1 /* HOISTED */);
 var _hoisted_13 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold",
-  "for": "sq_m"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Größe m"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("sup", null, "2"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" * ")], -1 /* HOISTED */);
+  "for": "floor"
+}, " Etage ", -1 /* HOISTED */);
 var _hoisted_15 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold",
+  "for": "sq_m"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Größe m"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("sup", null, "2"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" * ")], -1 /* HOISTED */);
+var _hoisted_17 = {
+  "class": "flex flex-col space-y-1.5 mb-3"
+};
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold",
   "for": "elevator"
 }, " Fahrstuhl ", -1 /* HOISTED */);
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Nicht vorhanden",
-  selected: ""
-}, "Nicht vorhanden", -1 /* HOISTED */);
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "2-4 Personen"
-}, "2-4 Personen", -1 /* HOISTED */);
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "5-8 Personen"
-}, "5-8 Personen", -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Lastenfahrstuhl"
-}, "Lastenfahrstuhl", -1 /* HOISTED */);
-var _hoisted_21 = [_hoisted_17, _hoisted_18, _hoisted_19, _hoisted_20];
-var _hoisted_22 = {
+var _hoisted_19 = ["value"];
+var _hoisted_20 = {
   "class": "md:grid md:grid-cols-2 gap-5 lg:gap-10"
 };
-var _hoisted_23 = {
+var _hoisted_21 = {
   "class": "flex flex-col space-y-1.5 mb-5"
 };
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "tracking-wide text-gray-700 text-sm sm:text-base font-bold max-sm:mb-1",
   "for": "rooms"
 }, " Räume * ", -1 /* HOISTED */);
+var _hoisted_23 = {
+  "class": "flex flex-col space-y-1.5 mb-3"
+};
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold whitespace-nowrap",
+  "for": "carry_distance"
+}, " Tragestrecke * ", -1 /* HOISTED */);
 var _hoisted_25 = {
   "class": "flex flex-col space-y-1.5 mb-3"
 };
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold whitespace-nowrap",
-  "for": "carry_distance"
-}, " Tragestrecke * ", -1 /* HOISTED */);
-var _hoisted_27 = {
-  "class": "flex flex-col space-y-1.5 mb-3"
-};
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold",
   "for": "building_type"
 }, " Gebäudeart ", -1 /* HOISTED */);
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"Mehrfamilienhaus\" selected>Mehrfamilienhaus</option><option value=\"Einfamilienhaus\">Einfamilienhaus</option><option value=\"Doppelhaushalfte\">Doppelhaushälfte</option><option value=\"Reihenhaus\">Reihenhaus</option><option value=\"Maisonette\">Maisonette-Wohnung</option><option value=\"Garage\">Garage</option><option value=\"Lager\">Lager</option><option value=\"Burogebaude\">Bürogebäude</option><option value=\"Bungalow\">Bungalow</option>", 9);
-var _hoisted_38 = [_hoisted_29];
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "",
+  selected: "",
+  disabled: ""
+}, "Auswählen", -1 /* HOISTED */);
+var _hoisted_28 = ["value"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     id: "street",
@@ -19683,14 +19686,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     id: "province",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $setup.formData[$setup.findPropName('province')] = $event;
     }),
-    type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('province')]]]), $setup.formData.errors[$setup.findPropName('province')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+  }, [_hoisted_10, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.provinces, function (province, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: index,
+      value: province
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(province), 9 /* TEXT, PROPS */, _hoisted_11);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('province')]]]), $setup.formData.errors[$setup.findPropName('province')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('province')
   }, {
@@ -19699,7 +19706,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     id: "floor",
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.formData[$setup.findPropName('floor')] = $event;
@@ -19715,7 +19722,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     id: "sq_m",
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $setup.formData[$setup.findPropName('sq_m')] = $event;
@@ -19731,13 +19738,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     id: "elevator",
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $setup.formData[$setup.findPropName('elevator')] = $event;
     }),
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, _hoisted_21, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('elevator')]]]), $setup.formData.errors[$setup.findPropName('elevator')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.elevator, function (elevatorOption, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: index,
+      value: elevatorOption,
+      selected: ""
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(elevatorOption), 9 /* TEXT, PROPS */, _hoisted_19);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('elevator')]]]), $setup.formData.errors[$setup.findPropName('elevator')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('elevator')
   }, {
@@ -19746,7 +19759,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     id: "rooms",
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $setup.formData[$setup.findPropName('rooms')] = $event;
@@ -19762,7 +19775,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     id: "carry_distance",
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $setup.formData[$setup.findPropName('carry_distance')] = $event;
@@ -19778,13 +19791,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, 8 /* PROPS */, ["error-source"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     id: "building_type",
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $setup.formData[$setup.findPropName('building_type')] = $event;
     }),
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, _hoisted_38, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('building_type')]]]), $setup.formData.errors[$setup.findPropName('building_type')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+  }, [_hoisted_27, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.buildingTypes, function (type, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: index,
+      value: type
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(type), 9 /* TEXT, PROPS */, _hoisted_28);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('building_type')]]]), $setup.formData.errors[$setup.findPropName('building_type')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('building_type')
   }, {
@@ -20236,7 +20254,7 @@ var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "fas fa-tools"
 })], -1 /* HOISTED */);
 var _hoisted_43 = {
-  "class": "m-auto"
+  "class": "m-auto text-xs sm:text-base"
 };
 var _hoisted_44 = {
   "class": "mr-4"
@@ -20324,7 +20342,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {}, ["stop"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Rooms"])])], 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: $setup.mainMenus[5].title,
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-xs sm:text-base md:text-2xl tracking-widest w-full", $setup.mainMenus[5].status ? 'bg-blue-400' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full", $setup.mainMenus[5].status ? 'bg-blue-400' : '']),
     onClick: _cache[11] || (_cache[11] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[5].title);
     })
@@ -20696,6 +20714,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./resources/data/dropdowns.js":
+/*!*************************************!*\
+  !*** ./resources/data/dropdowns.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   buildingTypes: () => (/* binding */ buildingTypes),
+/* harmony export */   elevator: () => (/* binding */ elevator),
+/* harmony export */   provinces: () => (/* binding */ provinces)
+/* harmony export */ });
+var provinces = ['Baden-Württemberg', 'Bayern', 'Berlin', 'Brandenburg', 'Bremen', 'Hamburg', 'Hessen', 'Mecklenburg-Vorpommern', 'Niedersachsen', 'Nordrhein-Westfalen', 'Rheinland-Pfalz', 'Saarland', 'Sachsen', 'Sachsen-Anhalt', 'Schleswig-Holstein', 'Thüringen'];
+var elevator = ['Nicht vorhanden', '2-4 Personen', '5-8 Personen', 'Lastenfahrstuhl'];
+var buildingTypes = ['Mehrfamilienhaus', 'Einfamilienhaus', 'Doppelhaushälfte', 'Reihenhaus', 'Maisonette-Wohnung', 'Garage', 'Lager', 'Bürogebäude', 'Bungalow'];
+
+/***/ }),
+
 /***/ "./resources/data/formStore.js":
 /*!*************************************!*\
   !*** ./resources/data/formStore.js ***!
@@ -20728,7 +20765,7 @@ var formDataStore = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   from_province: '',
   from_rooms: '',
   from_carry_distance: '',
-  from_building_type: 'Mehrfamilienhaus',
+  from_building_type: '',
   to_street: '',
   to_location: '',
   to_floor: '',
@@ -20738,7 +20775,7 @@ var formDataStore = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   to_province: '',
   to_rooms: '',
   to_carry_distance: '',
-  to_building_type: 'Mehrfamilienhaus',
+  to_building_type: '',
   errors: [],
   filledOutRooms: []
 });

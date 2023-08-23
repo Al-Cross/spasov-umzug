@@ -18,7 +18,7 @@ export const formDataStore = reactive({
     from_province: '',
     from_rooms: '',
     from_carry_distance: '',
-    from_building_type: 'Mehrfamilienhaus',
+    from_building_type: '',
     to_street: '',
     to_location: '',
     to_floor: '',
@@ -28,7 +28,7 @@ export const formDataStore = reactive({
     to_province: '',
     to_rooms: '',
     to_carry_distance: '',
-    to_building_type: 'Mehrfamilienhaus',
+    to_building_type: '',
 
     errors: [],
 

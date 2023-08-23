@@ -1,6 +1,7 @@
 <script setup>
 import FormError from './FormError';
 import { formDataStore } from '../../data/formStore';
+import { provinces, elevator, buildingTypes } from '../../data/dropdowns';
 
 const props = defineProps({ direction: String });
 
@@ -11,8 +12,7 @@ function findPropName(name) {
 </script>
 
 <template>
-	<div
-		class="grid grid-cols-1 sm:grid-cols-2 gap-2 gap-x-6 lg:gap-x-10 bg-gray-200 w-full p-6">
+	<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 gap-x-6 lg:gap-x-10 bg-gray-200 w-full p-6">
 		<div class="flex flex-col space-y-1.5 mb-3">
 			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="street">
 				Straße/ Nr. *
@@ -24,7 +24,9 @@ function findPropName(name) {
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="location">Ort *</label>
+			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="location">
+				Ort *
+			</label>
 			<input id="location" v-model="formData[findPropName('location')]" type="text"
 				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
 			<form-error v-if="formData.errors[findPropName('location')]" :error-source="findPropName('location')">
@@ -42,16 +44,25 @@ function findPropName(name) {
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="province">Land *</label>
-			<input id="province" v-model="formData[findPropName('province')]" type="text"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="province">
+				Land *
+			</label>
+			<select id="province" v-model="formData[findPropName('province')]"
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer">
+				<option disabled selected value="">Auswählen</option>
+				<option v-for="(province, index) in provinces" :key="index" :value="province">
+					{{ province }}
+				</option>
+			</select>
 			<form-error v-if="formData.errors[findPropName('province')]" :error-source="findPropName('province')">
 				{{ formData.errors[findPropName('province')][0] }}
 			</form-error>
 		</div>
 		<div class="grid grid-cols-2 gap-5 lg:gap-10">
 			<div class="flex flex-col space-y-1.5 mb-3">
-				<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="floor">Etage</label>
+				<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="floor">
+					Etage
+				</label>
 				<input id="floor" v-model="formData[findPropName('floor')]" type="text"
 					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
 				<form-error v-if="formData.errors[findPropName('floor')]" :error-source="findPropName('floor')">
@@ -74,11 +85,10 @@ function findPropName(name) {
 				Fahrstuhl
 			</label>
 			<select id="elevator" v-model="formData[findPropName('elevator')]"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-				<option value="Nicht vorhanden" selected>Nicht vorhanden</option>
-				<option value="2-4 Personen">2-4 Personen</option>
-				<option value="5-8 Personen">5-8 Personen</option>
-				<option value="Lastenfahrstuhl">Lastenfahrstuhl</option>
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer">
+				<option v-for="(elevatorOption, index) in elevator" :key="index" :value="elevatorOption" selected>
+					{{ elevatorOption }}
+				</option>
 			</select>
 			<form-error v-if="formData.errors[findPropName('elevator')]" :error-source="findPropName('elevator')">
 				{{ formData.errors[findPropName('elevator')][0] }}
@@ -96,7 +106,8 @@ function findPropName(name) {
 				</form-error>
 			</div>
 			<div class="flex flex-col space-y-1.5 mb-3">
-				<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold whitespace-nowrap" for="carry_distance">
+				<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold whitespace-nowrap"
+					for="carry_distance">
 					Tragestrecke *
 				</label>
 				<input id="carry_distance" v-model="formData[findPropName('carry_distance')]" type="text"
@@ -112,16 +123,11 @@ function findPropName(name) {
 				Gebäudeart
 			</label>
 			<select id="building_type" v-model="formData[findPropName('building_type')]"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200">
-				<option value="Mehrfamilienhaus" selected>Mehrfamilienhaus</option>
-				<option value="Einfamilienhaus">Einfamilienhaus</option>
-				<option value="Doppelhaushalfte">Doppelhaushälfte</option>
-				<option value="Reihenhaus">Reihenhaus</option>
-				<option value="Maisonette">Maisonette-Wohnung</option>
-				<option value="Garage">Garage</option>
-				<option value="Lager">Lager</option>
-				<option value="Burogebaude">Bürogebäude</option>
-				<option value="Bungalow">Bungalow</option>
+				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer">
+				<option value="" selected disabled>Auswählen</option>
+				<option v-for="(type, index) in buildingTypes" :key="index" :value="type">
+					{{ type }}
+				</option>
 			</select>
 			<form-error v-if="formData.errors[findPropName('building_type')]" :error-source="findPropName('building_type')">
 				{{ formData.errors[findPropName('building_type')][0] }}

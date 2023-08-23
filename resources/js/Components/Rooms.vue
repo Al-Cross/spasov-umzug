@@ -3,7 +3,6 @@ import { formDataStore, scrollIntoView } from '../../data/formStore';
 import { rooms } from '../../data/menus';
 import { useCreateNewRoom, useAddItem, useCalculateVolume, useRemoveItem } from '../composables/roomItems';
 import { useAddBoxToRoom, useCreateBox, useAddMultipleBoxes, useReduceBoxQuantity } from '../composables/boxes';
-import { mainMenus } from '../../data/main-menus';
 
 
 function toggleRoom(roomName) {
