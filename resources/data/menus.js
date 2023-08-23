@@ -111,7 +111,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Hut-/Kleiderablage',
+				name: 'Hut-/ Kleiderablage',
 				value: 0,
 			},
 			{
@@ -128,7 +128,7 @@ export const rooms = reactive([
 				boxUnder80l: true
 			},
 			{
-				name: 'Waschmaschine/Trockner',
+				name: 'Waschmaschine/ Trockner',
 				value: 0,
 			},
 			{
@@ -299,7 +299,7 @@ export const rooms = reactive([
 				value: 0,
 			},
 			{
-				name: 'Klapptisch/Klappstuhl',
+				name: 'Klapptisch/ Klappstuhl',
 				value: 0,
 			},
 			{

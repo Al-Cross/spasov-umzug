@@ -44,13 +44,3 @@
         height: 20px;
     }
 }
-
-.grid-rows-0-fr {
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 700ms;
-}
-
-.grid-rows-1-fr {
-    grid-template-rows: 1fr;
-    transition: grid-template-rows 700ms;
-}

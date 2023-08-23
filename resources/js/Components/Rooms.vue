@@ -53,8 +53,8 @@ function onRemoveBox(room, object) {
 	if (object.value === 0) return;
 
 	object.boxUnder80l
-	? useReduceBoxQuantity(room, object.name, 'boxesUnder80l')
-	: useReduceBoxQuantity(room, object.name, 'boxesOver80l');
+		? useReduceBoxQuantity(room, object.name, 'boxesUnder80l')
+		: useReduceBoxQuantity(room, object.name, 'boxesOver80l');
 	object.value--;
 }
 
@@ -74,16 +74,19 @@ function columnize(menu) {
 	<div class="rounded-2xl w-full md:p-6">
 		<div class="p-2">
 			<template v-for="(menu, index) in rooms" :key="index">
-				<div class="cursor-pointer bg-yellow-400 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono md:text-2xl tracking-widest w-full"
-					:class="menu.status ? 'bg-blue-201' : 'hover:to-yellow-600'" @click="toggleRoom(menu.title); columnize(menu)">
+				<div class="cursor-pointer bg-yellow-400 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full"
+					:class="menu.status ? 'bg-blue-201' : 'hover:to-yellow-600'"
+					@click="toggleRoom(menu.title); columnize(menu)">
 					<div class="flex justify-between py-4">
 						<div class="m-auto text-xs md:text-xl">{{ menu.title }}</div>
 						<div class="mr-4">
-							<i v-if="!menu.status" class="fas fa-arrow-down mt-1" />
-							<i v-if="menu.status" class="fas fa-arrow-up mt-1" />
+							<i v-if="!menu.status" class="fas fa-plus mt-1" />
+							<i v-if="menu.status" class="fas fa-minus mt-1" />
 						</div>
 					</div>
-					<div class="grid cursor-default" :class="menu.status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+					<div class="grid cursor-default"
+						:class="menu.status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700'"
+						@click.stop>
 						<div class="overflow-hidden bg-gray-200">
 							<div class="grid grid-cols-2 md:grid-cols-2 p-2 md:p-6 mt-2">
 								<div v-for="(chunk, chunkIndex) in menu.chunked" :key="chunkIndex">
@@ -100,7 +103,7 @@ function columnize(menu) {
 												class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
 												@click="object.boxUnder80l || object.boxOver80l ? onAddBox(menu, object) : onAddItem(menu, object)">+</button>
 										</div>
-										<span class="text-sm sm:text-base fw-bold" v-text="object.name"></span>
+										<span class="text-xs sm:text-base fw-bold" v-text="object.name"></span>
 									</div>
 								</div>
 							</div>

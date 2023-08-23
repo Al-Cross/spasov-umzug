@@ -12,9 +12,9 @@ function findPropName(name) {
 
 <template>
 	<div
-		class="grid grid-cols-1 sm:grid-cols-2 gap-2 gap-x-10 bg-gray-200 w-full p-6">
+		class="grid grid-cols-1 sm:grid-cols-2 gap-2 gap-x-6 lg:gap-x-10 bg-gray-200 w-full p-6">
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="street">
+			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="street">
 				Straße/ Nr. *
 			</label>
 			<input id="street" v-model="formData[findPropName('street')]" type="text"
@@ -24,7 +24,7 @@ function findPropName(name) {
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="location">Ort *</label>
+			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="location">Ort *</label>
 			<input id="location" v-model="formData[findPropName('location')]" type="text"
 				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
 			<form-error v-if="formData.errors[findPropName('location')]" :error-source="findPropName('location')">
@@ -32,7 +32,7 @@ function findPropName(name) {
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="zip">
+			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="zip">
 				Postleitzahl *
 			</label>
 			<input id="zip" v-model="formData[findPropName('zip')]" type="text"
@@ -42,16 +42,16 @@ function findPropName(name) {
 			</form-error>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="province">Land *</label>
+			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="province">Land *</label>
 			<input id="province" v-model="formData[findPropName('province')]" type="text"
 				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
 			<form-error v-if="formData.errors[findPropName('province')]" :error-source="findPropName('province')">
 				{{ formData.errors[findPropName('province')][0] }}
 			</form-error>
 		</div>
-		<div class="grid grid-cols-2 gap-5 lg:gap-20">
+		<div class="grid grid-cols-2 gap-5 lg:gap-10">
 			<div class="flex flex-col space-y-1.5 mb-3">
-				<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="floor">Etage</label>
+				<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="floor">Etage</label>
 				<input id="floor" v-model="formData[findPropName('floor')]" type="text"
 					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
 				<form-error v-if="formData.errors[findPropName('floor')]" :error-source="findPropName('floor')">
@@ -59,8 +59,8 @@ function findPropName(name) {
 				</form-error>
 			</div>
 			<div class="flex flex-col space-y-1.5 mb-3">
-				<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="sq_m">
-					Größe m<sup>2</sup>*
+				<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="sq_m">
+					Größe m<sup>2</sup> *
 				</label>
 				<input id="sq_m" v-model="formData[findPropName('sq_m')]" type="text"
 					class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
@@ -70,7 +70,7 @@ function findPropName(name) {
 			</div>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="elevator">
+			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="elevator">
 				Fahrstuhl
 			</label>
 			<select id="elevator" v-model="formData[findPropName('elevator')]"
@@ -84,7 +84,7 @@ function findPropName(name) {
 				{{ formData.errors[findPropName('elevator')][0] }}
 			</form-error>
 		</div>
-		<div class="md:grid md:grid-cols-2 gap-5 lg:gap-20">
+		<div class="md:grid md:grid-cols-2 gap-5 lg:gap-10">
 			<div class="flex flex-col space-y-1.5 mb-5">
 				<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold max-sm:mb-1" for="rooms">
 					Räume *
@@ -96,7 +96,7 @@ function findPropName(name) {
 				</form-error>
 			</div>
 			<div class="flex flex-col space-y-1.5 mb-3">
-				<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="carry_distance">
+				<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold whitespace-nowrap" for="carry_distance">
 					Tragestrecke *
 				</label>
 				<input id="carry_distance" v-model="formData[findPropName('carry_distance')]" type="text"
@@ -108,7 +108,7 @@ function findPropName(name) {
 			</div>
 		</div>
 		<div class="flex flex-col space-y-1.5 mb-3">
-			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="building_type">
+			<label class="tracking-wide text-gray-700 text-sm md:text-base font-bold" for="building_type">
 				Gebäudeart
 			</label>
 			<select id="building_type" v-model="formData[findPropName('building_type')]"

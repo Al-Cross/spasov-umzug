@@ -118,96 +118,126 @@ function toggleMainMenu(name) {
 		</div>
 		<form class="mt-7">
 			<div>
-				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[0].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[0].title)">
-					<div class="flex justify-between py-4">
+					<div class="flex justify-between items-center py-4">
+						<div class="ml-4">
+							<i class="fas fa-address-card" />
+						</div>
 						<div class="m-auto">{{ mainMenus[0].title }}</div>
 						<div class="mr-4">
-							<i v-if="!mainMenus[0].status" class="fas fa-arrow-down mt-1" />
-							<i v-if="mainMenus[0].status" class="fas fa-arrow-up mt-1" />
+							<i v-if="!mainMenus[0].status" class="fas fa-plus mt-1" />
+							<i v-if="mainMenus[0].status" class="fas fa-minus mt-1" />
 						</div>
 					</div>
-					<div class="grid cursor-default" :class="mainMenus[0].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+					<div class="grid cursor-default"
+						:class="mainMenus[0].status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700'"
+						@click.stop>
 						<div class="overflow-hidden">
 							<Contact-info />
 						</div>
 					</div>
 				</div>
 
-				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[1].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[1].title)">
 					<div class="flex justify-between py-4">
+						<div class="ml-4">
+							<i class="fas fa-calendar-check" />
+						</div>
 						<div class="m-auto">{{ mainMenus[1].title }}</div>
 						<div class="mr-4">
-							<i v-if="!mainMenus[1].status" class="fas fa-arrow-down mt-1" />
-							<i v-if="mainMenus[1].status" class="fas fa-arrow-up mt-1" />
+							<i v-if="!mainMenus[1].status" class="fas fa-plus mt-1" />
+							<i v-if="mainMenus[1].status" class="fas fa-minus mt-1" />
 						</div>
 					</div>
-					<div class="grid cursor-default" :class="mainMenus[1].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+					<div class="grid cursor-default"
+						:class="mainMenus[1].status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700'"
+						@click.stop>
 						<div class="overflow-hidden">
 							<Appointment />
 						</div>
 					</div>
 				</div>
 
-				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[2].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[2].title)">
 					<div class="flex justify-between py-4">
+						<div class="ml-4">
+							<i class="fas fa-map-marked-alt" />
+						</div>
 						<div class="m-auto">{{ mainMenus[2].title }}</div>
 						<div class="mr-4">
-							<i v-if="!mainMenus[2].status" class="fas fa-arrow-down mt-1" />
-							<i v-if="mainMenus[2].status" class="fas fa-arrow-up mt-1" />
+							<i v-if="!mainMenus[2].status" class="fas fa-plus mt-1" />
+							<i v-if="mainMenus[2].status" class="fas fa-minus mt-1" />
 						</div>
 					</div>
-					<div class="grid cursor-default" :class="mainMenus[2].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+					<div class="grid cursor-default"
+						:class="mainMenus[2].status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700'"
+						@click.stop>
 						<div class="overflow-hidden">
 							<AddressFromTo direction="from" />
 						</div>
 					</div>
 				</div>
-				
-				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[3].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[3].title)">
 					<div class="flex justify-between py-4">
+						<div class="ml-4">
+							<i class="fas fa-map-marked" />
+						</div>
 						<div class="m-auto">{{ mainMenus[3].title }}</div>
 						<div class="mr-4">
-							<i v-if="!mainMenus[3].status" class="fas fa-arrow-down mt-1" />
-							<i v-if="mainMenus[3].status" class="fas fa-arrow-up mt-1" />
+							<i v-if="!mainMenus[3].status" class="fas fa-plus mt-1" />
+							<i v-if="mainMenus[3].status" class="fas fa-minus mt-1" />
 						</div>
 					</div>
-					<div class="grid cursor-default" :class="mainMenus[3].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+					<div class="grid cursor-default"
+						:class="mainMenus[3].status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700'"
+						@click.stop>
 						<div class="overflow-hidden">
 							<AddressFromTo direction="to" />
 						</div>
 					</div>
 				</div>
 
-				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[4].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[4].title)">
 					<div class="flex justify-between py-4">
+						<div class="ml-4">
+							<i class="fas fa-couch" />
+						</div>
 						<div class="m-auto">{{ mainMenus[4].title }}</div>
 						<div class="mr-4">
-							<i v-if="!mainMenus[4].status" class="fas fa-arrow-down mt-1" />
-							<i v-if="mainMenus[4].status" class="fas fa-arrow-up mt-1" />
+							<i v-if="!mainMenus[4].status" class="fas fa-plus mt-1" />
+							<i v-if="mainMenus[4].status" class="fas fa-minus mt-1" />
 						</div>
 					</div>
-					<div class="grid cursor-default" :class="mainMenus[4].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+					<div class="grid cursor-default"
+						:class="mainMenus[4].status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700'"
+						@click.stop>
 						<div class="overflow-hidden">
 							<Rooms />
 						</div>
 					</div>
 				</div>
 
-				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 focus:outline-none focus:to-yellow-400 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-xs sm:text-base md:text-2xl tracking-widest w-full"
 					:class="mainMenus[5].status ? 'bg-blue-400' : ''" @click="toggleMainMenu(mainMenus[5].title)">
 					<div class="flex justify-between py-4">
+						<div class="ml-4">
+							<i class="fas fa-tools" />
+						</div>
 						<div class="m-auto">{{ mainMenus[5].title }}</div>
 						<div class="mr-4">
-							<i v-if="!mainMenus[5].status" class="fas fa-arrow-down mt-1" />
-							<i v-if="mainMenus[5].status" class="fas fa-arrow-up mt-1" />
+							<i v-if="!mainMenus[5].status" class="fas fa-plus mt-1" />
+							<i v-if="mainMenus[5].status" class="fas fa-minus mt-1" />
 						</div>
 					</div>
-					<div class="grid cursor-default" :class="mainMenus[5].status ? 'grid-rows-1-fr' : 'grid-rows-0-fr'" @click.stop>
+					<div class="grid cursor-default"
+						:class="mainMenus[5].status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700'"
+						@click.stop>
 						<div class="overflow-hidden">
 							<Services />
 						</div>
@@ -217,7 +247,7 @@ function toggleMainMenu(name) {
 				<div class="flex items-center gap-3 text-sm sm:text-base pt-8">
 					<input v-model="privacyPolicyAccepted" type="checkbox" />
 					<span>
-						Ich bestätige, dass ich die 
+						Ich bestätige, dass ich die
 						<a href="#" class="text-blue-500 underline">Datenschutzerklärung</a>
 						zur Kenntnis genommen habe.
 					</span>

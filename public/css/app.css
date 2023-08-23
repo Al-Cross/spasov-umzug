@@ -846,6 +846,9 @@ select {
 .mr-3 {
   margin-right: 0.75rem;
 }
+.ml-4 {
+  margin-left: 1rem;
+}
 .block {
   display: block;
 }
@@ -969,6 +972,12 @@ select {
 .grid-rows-1 {
   grid-template-rows: repeat(1, minmax(0, 1fr));
 }
+.grid-rows-\[0fr\] {
+  grid-template-rows: 0fr;
+}
+.grid-rows-\[1fr\] {
+  grid-template-rows: 1fr;
+}
 .flex-row {
   flex-direction: row;
 }
@@ -1014,6 +1023,14 @@ select {
 .gap-x-10 {
   -moz-column-gap: 2.5rem;
        column-gap: 2.5rem;
+}
+.gap-x-8 {
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.gap-x-6 {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
 }
 .space-x-11 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1070,6 +1087,9 @@ select {
 }
 .overflow-y-scroll {
   overflow-y: scroll;
+}
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 .rounded {
   border-radius: 0.25rem;
@@ -1567,6 +1587,11 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+.transition-\[grid-template-rows\] {
+  transition-property: grid-template-rows;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
 .duration-500 {
   transition-duration: 500ms;
 }
@@ -1765,12 +1790,21 @@ select {
 
 @media not all and (min-width: 350px) {
 
+  .max-xs\:my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
   .max-xs\:p-2 {
     padding: 0.5rem;
   }
 }
 
 @media (min-width: 350px) {
+
+  .xs\:m-2 {
+    margin: 0.5rem;
+  }
 
   .xs\:p-6 {
     padding: 1.5rem;
@@ -1783,6 +1817,10 @@ select {
 }
 
 @media (min-width: 640px) {
+
+  .sm\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
 
   .sm\:mb-10 {
     margin-bottom: 2.5rem;
@@ -1814,6 +1852,10 @@ select {
 
   .sm\:gap-4 {
     gap: 1rem;
+  }
+
+  .sm\:p-6 {
+    padding: 1.5rem;
   }
 
   .sm\:text-2xl {
@@ -2045,6 +2087,15 @@ select {
     gap: 0.75rem;
   }
 
+  .lg\:gap-10 {
+    gap: 2.5rem;
+  }
+
+  .lg\:gap-x-10 {
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
+  }
+
   .lg\:rounded-full {
     border-radius: 9999px;
   }
@@ -2128,6 +2179,11 @@ select {
   .lg\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+
+  .lg\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
