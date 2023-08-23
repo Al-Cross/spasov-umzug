@@ -34,3 +34,10 @@ export const formDataStore = reactive({
 
     filledOutRooms: []
 });
+
+export function scrollIntoView(id) {
+    const elementToScrollTo = document.getElementById(id);
+    if (elementToScrollTo) {
+        elementToScrollTo.scrollIntoView({ behavior: 'smooth' });
+    }
+}
