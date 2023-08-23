@@ -19575,7 +19575,7 @@ var _hoisted_8 = {
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "tracking-wide text-gray-700 text-sm md:text-base font-bold",
   "for": "province"
-}, " Land * ", -1 /* HOISTED */);
+}, " Land ", -1 /* HOISTED */);
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   disabled: "",
   selected: "",
@@ -19644,8 +19644,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('street')] = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('street')]]]), $setup.formData.errors[$setup.findPropName('street')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('street')] ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('street')]]]), $setup.formData.errors[$setup.findPropName('street')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('street')
   }, {
@@ -19660,8 +19660,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('location')] = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('location')]]]), $setup.formData.errors[$setup.findPropName('location')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('location')] ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('location')]]]), $setup.formData.errors[$setup.findPropName('location')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('location')
   }, {
@@ -19676,8 +19676,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('zip')] = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('zip')]]]), $setup.formData.errors[$setup.findPropName('zip')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]", $setup.formData.errors[$setup.findPropName('zip')] ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('zip')]]]), $setup.formData.errors[$setup.findPropName('zip')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('zip')
   }, {
@@ -19691,13 +19691,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $setup.formData[$setup.findPropName('province')] = $event;
     }),
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('province')] ? 'border border-red-500' : ''])
   }, [_hoisted_10, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.provinces, function (province, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: index,
       value: province
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(province), 9 /* TEXT, PROPS */, _hoisted_11);
-  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('province')]]]), $setup.formData.errors[$setup.findPropName('province')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+  }), 128 /* KEYED_FRAGMENT */))], 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('province')]]]), $setup.formData.errors[$setup.findPropName('province')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('province')
   }, {
@@ -19712,8 +19712,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('floor')] = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('floor')]]]), $setup.formData.errors[$setup.findPropName('floor')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('floor')] ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('floor')]]]), $setup.formData.errors[$setup.findPropName('floor')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('floor')
   }, {
@@ -19728,8 +19728,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('sq_m')] = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('sq_m')]]]), $setup.formData.errors[$setup.findPropName('sq_m')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('sq_m')] ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('sq_m')]]]), $setup.formData.errors[$setup.findPropName('sq_m')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('sq_m')
   }, {
@@ -19743,14 +19743,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $setup.formData[$setup.findPropName('elevator')] = $event;
     }),
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('elevator')] ? 'border border-red-500' : ''])
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.elevator, function (elevatorOption, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: index,
       value: elevatorOption,
       selected: ""
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(elevatorOption), 9 /* TEXT, PROPS */, _hoisted_19);
-  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('elevator')]]]), $setup.formData.errors[$setup.findPropName('elevator')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+  }), 128 /* KEYED_FRAGMENT */))], 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('elevator')]]]), $setup.formData.errors[$setup.findPropName('elevator')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('elevator')
   }, {
@@ -19765,8 +19765,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('rooms')] = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('rooms')]]]), $setup.formData.errors[$setup.findPropName('rooms')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('rooms')] ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('rooms')]]]), $setup.formData.errors[$setup.findPropName('rooms')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('rooms')
   }, {
@@ -19781,8 +19781,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('carry_distance')] = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('carry_distance')]]]), $setup.formData.errors[$setup.findPropName('carry_distance')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('carry_distance')] ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('carry_distance')]]]), $setup.formData.errors[$setup.findPropName('carry_distance')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('carry_distance')
   }, {
@@ -19796,13 +19796,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $setup.formData[$setup.findPropName('building_type')] = $event;
     }),
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('building_type')] ? 'border border-red-500' : ''])
   }, [_hoisted_27, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.buildingTypes, function (type, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: index,
       value: type
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(type), 9 /* TEXT, PROPS */, _hoisted_28);
-  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('building_type')]]]), $setup.formData.errors[$setup.findPropName('building_type')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+  }), 128 /* KEYED_FRAGMENT */))], 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData[$setup.findPropName('building_type')]]]), $setup.formData.errors[$setup.findPropName('building_type')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('building_type')
   }, {
@@ -19878,8 +19878,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.date = $event;
     }),
     type: "date",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.date]]), $setup.formData.errors.date ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.date ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.date]]), $setup.formData.errors.date ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "date"
   }, {
@@ -19931,8 +19931,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.remarks = $event;
     }),
     rows: "7",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.remarks]]), $setup.formData.errors.remarks ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.remarks ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.remarks]]), $setup.formData.errors.remarks ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "remarks"
   }, {
@@ -20016,8 +20016,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.formData.salutation = $event;
     }),
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-36"
-  }, _hoisted_7, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData.salutation]]), $setup.formData.errors.salutation ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-36", $setup.formData.errors.salutation ? 'border border-red-500' : ''])
+  }, _hoisted_7, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData.salutation]]), $setup.formData.errors.salutation ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "salutation"
   }, {
@@ -20032,8 +20032,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.first_name = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.first_name]]), $setup.formData.errors.first_name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.first_name ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.first_name]]), $setup.formData.errors.first_name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "first_name"
   }, {
@@ -20048,8 +20048,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.last_name = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.last_name]]), $setup.formData.errors.last_name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.last_name ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.last_name]]), $setup.formData.errors.last_name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "last_name"
   }, {
@@ -20064,8 +20064,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.phone = $event;
     }),
     type: "text",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.phone]]), $setup.formData.errors.phone ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.phone ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.phone]]), $setup.formData.errors.phone ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "phone"
   }, {
@@ -20080,8 +20080,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.email = $event;
     }),
     type: "email",
-    "class": "border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.email]]), $setup.formData.errors.email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.email ? 'border border-red-500' : ''])
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.email]]), $setup.formData.errors.email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "email"
   }, {
@@ -20254,7 +20254,7 @@ var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "fas fa-tools"
 })], -1 /* HOISTED */);
 var _hoisted_43 = {
-  "class": "m-auto text-xs sm:text-base"
+  "class": "m-auto text-xs sm:text-2xl"
 };
 var _hoisted_44 = {
   "class": "mr-4"

@@ -231,7 +231,7 @@ function toggleMainMenu(name) {
 						<div class="ml-4">
 							<i class="fas fa-tools" />
 						</div>
-						<div class="m-auto text-xs sm:text-base">{{ mainMenus[5].title }}</div>
+						<div class="m-auto text-xs sm:text-2xl">{{ mainMenus[5].title }}</div>
 						<div class="mr-4">
 							<i v-if="!mainMenus[5].status" class="fas fa-plus mt-1" />
 							<i v-if="mainMenus[5].status" class="fas fa-minus mt-1" />

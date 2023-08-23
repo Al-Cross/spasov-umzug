@@ -17,7 +17,8 @@ watch(() => formData.date, (newValue) => {
 		<div class="flex flex-col space-y-1.5 mb-3">
 			<label class="tracking-wide text-gray-700 text-sm sm:text-base font-bold" for="termin">Termin *</label>
 			<input v-model="formData.date" type="date"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
+				:class="formData.errors.date ? 'border border-red-500' : ''" />
 			<form-error v-if="formData.errors.date" error-source="date">
 				{{ formData.errors.date[0] }}
 			</form-error>
@@ -61,7 +62,8 @@ watch(() => formData.date, (newValue) => {
 				Bemerkungen
 			</label>
 			<textarea id="remarks" v-model="formData.remarks" rows="7"
-				class="border-0 rounded-2xl shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200" />
+				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
+				:class="formData.errors.remarks ? 'border border-red-500' : ''" />
 			<form-error v-if="formData.errors.remarks" error-source="remarks">
 				{{ formData.errors.remarks[0] }}
 			</form-error>
