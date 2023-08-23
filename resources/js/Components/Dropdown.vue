@@ -78,11 +78,11 @@ function calculateTotalVolume() {
 
 function toggleMainMenu(name) {
 	mainMenus.forEach(menu => {
-		if (menu.title == name) {
-			menu.status = !menu.status;
-		}
+		menu.status = menu.title == name ? !menu.status : false;
 	});
-	scrollIntoView(name);
+	if (name === 'Sonstige Dienstleistungen') {
+		setTimeout(() => scrollIntoView(name), 600);
+	}
 };
 </script>
 
@@ -119,8 +119,7 @@ function toggleMainMenu(name) {
 		</div>
 		<form class="mt-7">
 			<div>
-				<div :id="mainMenus[0].title"
-					class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[0].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[0].title)">
 					<div class="flex justify-between items-center py-4">
 						<div class="ml-4">
@@ -141,8 +140,7 @@ function toggleMainMenu(name) {
 					</div>
 				</div>
 
-				<div :id="mainMenus[1].title"
-					class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[1].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[1].title)">
 					<div class="flex justify-between py-4">
 						<div class="ml-4">
@@ -163,8 +161,7 @@ function toggleMainMenu(name) {
 					</div>
 				</div>
 
-				<div :id="mainMenus[2].title"
-					class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[2].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[2].title)">
 					<div class="flex justify-between py-4">
 						<div class="ml-4">
@@ -185,8 +182,7 @@ function toggleMainMenu(name) {
 					</div>
 				</div>
 
-				<div :id="mainMenus[3].title" 
-					class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[3].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[3].title)">
 					<div class="flex justify-between py-4">
 						<div class="ml-4">
@@ -207,8 +203,7 @@ function toggleMainMenu(name) {
 					</div>
 				</div>
 
-				<div :id="mainMenus[4].title"
-					class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
+				<div class="cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full"
 					:class="mainMenus[4].status ? 'bg-blue-200' : ''" @click="toggleMainMenu(mainMenus[4].title)">
 					<div class="flex justify-between py-4">
 						<div class="ml-4">

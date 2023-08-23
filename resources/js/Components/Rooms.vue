@@ -3,15 +3,14 @@ import { formDataStore, scrollIntoView } from '../../data/formStore';
 import { rooms } from '../../data/menus';
 import { useCreateNewRoom, useAddItem, useCalculateVolume, useRemoveItem } from '../composables/roomItems';
 import { useAddBoxToRoom, useCreateBox, useAddMultipleBoxes, useReduceBoxQuantity } from '../composables/boxes';
+import { mainMenus } from '../../data/main-menus';
 
 
 function toggleRoom(roomName) {
 	rooms.forEach(menu => {
-		if (menu.title == roomName) {
-			menu.status = !menu.status;
-		}
+		menu.status = menu.title == roomName ? !menu.status : false;
 	});
-	scrollIntoView(roomName);
+	setTimeout(() => scrollIntoView(roomName), 600);
 }
 
 function onAddItem(room, object) {

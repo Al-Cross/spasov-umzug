@@ -38,6 +38,6 @@ export const formDataStore = reactive({
 export function scrollIntoView(id) {
     const elementToScrollTo = document.getElementById(id);
     if (elementToScrollTo) {
-        elementToScrollTo.scrollIntoView({ behavior: 'smooth' });
+        elementToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
