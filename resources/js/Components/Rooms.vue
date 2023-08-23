@@ -94,13 +94,13 @@ function columnize(menu) {
 										class="items-baseline text-center xl:flex max-md:h-24 mb-4">
 										<div class="mb-2.5">
 											<button type="button"
-												class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
+												class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 touch-manipulation bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
 												@click="object.boxUnder80l || object.boxOver80l ? onRemoveBox(menu, object) : onRemoveItem(menu, object)">-</button>
 											<input :id="object.name" v-model="object.value" type="text" inputmode="numeric"
 												class="border-1 rounded shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-12 text-center mr-2"
 												@change="object.boxUnder80l || object.boxOver80l ? useAddMultipleBoxes(menu, object, $event) : useCalculateVolume(menu, object, $event)" />
 											<button type="button"
-												class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
+												class="transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 touch-manipulation bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2"
 												@click="object.boxUnder80l || object.boxOver80l ? onAddBox(menu, object) : onAddItem(menu, object)">+</button>
 										</div>
 										<span class="text-xs sm:text-base fw-bold" v-text="object.name"></span>

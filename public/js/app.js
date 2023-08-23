@@ -20580,7 +20580,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "class": "items-baseline text-center xl:flex max-md:h-24 mb-4"
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           type: "button",
-          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2",
+          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-75 touch-manipulation bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2",
           onClick: function onClick($event) {
             return object.boxUnder80l || object.boxOver80l ? $setup.onRemoveBox(menu, object) : $setup.onRemoveItem(menu, object);
           }
@@ -20597,7 +20597,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }
         }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, object.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           type: "button",
-          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2",
+          "class": "transition duration-501 ease-in-out transform hover:-translate-y-1 hover:scale-110 touch-manipulation bg-gradient-to-b from-yellow-100 via-orange-300 to-orange-400 hover:to-orange-500 hover:text-white rounded-3xl focus:outline-none h-8 w-8 mr-2",
           onClick: function onClick($event) {
             return object.boxUnder80l || object.boxOver80l ? $setup.onAddBox(menu, object) : $setup.onAddItem(menu, object);
           }
