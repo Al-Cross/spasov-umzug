@@ -19644,7 +19644,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('street')] = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('street')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('street')] ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('street')]]]), $setup.formData.errors[$setup.findPropName('street')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('street')
@@ -19660,7 +19660,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('location')] = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('location')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('location')] ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('location')]]]), $setup.formData.errors[$setup.findPropName('location')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('location')
@@ -19676,7 +19676,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('zip')] = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]", $setup.formData.errors[$setup.findPropName('zip')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]", $setup.formData.errors[$setup.findPropName('zip')] ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('zip')]]]), $setup.formData.errors[$setup.findPropName('zip')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('zip')
@@ -19691,7 +19691,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $setup.formData[$setup.findPropName('province')] = $event;
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('province')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('province')] ? 'border border-red-500' : 'border-0'])
   }, [_hoisted_10, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.provinces, function (province, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: index,
@@ -19712,7 +19712,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('floor')] = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('floor')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('floor')] ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('floor')]]]), $setup.formData.errors[$setup.findPropName('floor')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('floor')
@@ -19728,7 +19728,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('sq_m')] = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('sq_m')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('sq_m')] ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('sq_m')]]]), $setup.formData.errors[$setup.findPropName('sq_m')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('sq_m')
@@ -19743,7 +19743,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $setup.formData[$setup.findPropName('elevator')] = $event;
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('elevator')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('elevator')] ? 'border border-red-500' : 'border-0'])
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.elevator, function (elevatorOption, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: index,
@@ -19765,7 +19765,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('rooms')] = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('rooms')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('rooms')] ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('rooms')]]]), $setup.formData.errors[$setup.findPropName('rooms')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('rooms')
@@ -19781,7 +19781,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData[$setup.findPropName('carry_distance')] = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('carry_distance')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors[$setup.findPropName('carry_distance')] ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData[$setup.findPropName('carry_distance')]]]), $setup.formData.errors[$setup.findPropName('carry_distance')] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": $setup.findPropName('carry_distance')
@@ -19796,7 +19796,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $setup.formData[$setup.findPropName('building_type')] = $event;
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('building_type')] ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200 cursor-pointer", $setup.formData.errors[$setup.findPropName('building_type')] ? 'border border-red-500' : 'border-0'])
   }, [_hoisted_27, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.buildingTypes, function (type, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: index,
@@ -19878,7 +19878,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.date = $event;
     }),
     type: "date",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.date ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.date ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.date]]), $setup.formData.errors.date ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "date"
@@ -19931,7 +19931,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.remarks = $event;
     }),
     rows: "7",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.remarks ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.remarks ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.remarks]]), $setup.formData.errors.remarks ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "remarks"
@@ -20016,7 +20016,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.formData.salutation = $event;
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-36", $setup.formData.errors.salutation ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200 w-36", $setup.formData.errors.salutation ? 'border border-red-500' : 'border-0'])
   }, _hoisted_7, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.formData.salutation]]), $setup.formData.errors.salutation ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "salutation"
@@ -20032,7 +20032,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.first_name = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.first_name ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.first_name ? 'border-1 border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.first_name]]), $setup.formData.errors.first_name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "first_name"
@@ -20048,7 +20048,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.last_name = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.last_name ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.last_name ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.last_name]]), $setup.formData.errors.last_name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "last_name"
@@ -20064,7 +20064,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.phone = $event;
     }),
     type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.phone ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.phone ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.phone]]), $setup.formData.errors.phone ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "phone"
@@ -20080,7 +20080,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.formData.email = $event;
     }),
     type: "email",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.email ? 'border border-red-500' : ''])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["shadow-lg focus:ring-2 focus:ring-yellow-200", $setup.formData.errors.email ? 'border border-red-500' : 'border-0'])
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.email]]), $setup.formData.errors.email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["FormError"], {
     key: 0,
     "error-source": "email"
@@ -20297,7 +20297,7 @@ var _hoisted_57 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, $setup.success ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, " Die Anfrage war erfolgreich gesendet. Wir melden uns bei Ihnen sobald die Anfrage bearbeitet ist. ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[0].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-300 hover:bg-yellow-200 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[0].status ? 'bg-blue-200' : '']),
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[0].title);
     })
@@ -20305,7 +20305,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["grid cursor-default", $setup.mainMenus[0].status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700']),
     onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {}, ["stop"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ContactInfo"])])], 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[1].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-300 hover:bg-yellow-200 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[1].status ? 'bg-blue-200' : '']),
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[1].title);
     })
@@ -20313,7 +20313,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["grid cursor-default", $setup.mainMenus[1].status ? 'grid-rows-[1fr] transition-[grid-template-rows] duration-700' : 'grid-rows-[0fr] transition-[grid-template-rows] duration-700']),
     onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {}, ["stop"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Appointment"])])], 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[2].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-300 hover:bg-yellow-200 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[2].status ? 'bg-blue-200' : '']),
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[2].title);
     })
@@ -20323,7 +20323,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["AddressFromTo"], {
     direction: "from"
   })])], 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[3].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-300 hover:bg-yellow-200 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[3].status ? 'bg-blue-200' : '']),
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[3].title);
     })
@@ -20333,7 +20333,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["AddressFromTo"], {
     direction: "to"
   })])], 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[4].status ? 'bg-blue-200' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-300 hover:bg-yellow-200 hover:text-gray-500 font-mono text-sm xs:text-base sm:text-2xl tracking-widest w-full", $setup.mainMenus[4].status ? 'bg-blue-200' : '']),
     onClick: _cache[9] || (_cache[9] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[4].title);
     })
@@ -20342,7 +20342,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {}, ["stop"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Rooms"])])], 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: $setup.mainMenus[5].title,
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-500 hover:to-yellow-300 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full", $setup.mainMenus[5].status ? 'bg-blue-400' : '']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-300 hover:bg-yellow-200 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full", $setup.mainMenus[5].status ? 'bg-blue-400' : '']),
     onClick: _cache[11] || (_cache[11] = function ($event) {
       return $setup.toggleMainMenu($setup.mainMenus[5].title);
     })
@@ -20599,7 +20599,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: index,
       id: menu.title,
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer bg-yellow-400 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full", menu.status ? 'bg-blue-201' : 'hover:to-yellow-600']),
+      "class": "cursor-pointer bg-yellow-400 hover:bg-yellow-300 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full",
       onClick: function onClick($event) {
         $setup.toggleRoom(menu.title);
         $setup.columnize(menu);
@@ -20642,7 +20642,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(object.name)
         }, null, 8 /* PROPS */, _hoisted_15)]);
       }), 128 /* KEYED_FRAGMENT */))]);
-    }), 128 /* KEYED_FRAGMENT */))])])], 2 /* CLASS */)], 10 /* CLASS, PROPS */, _hoisted_3);
+    }), 128 /* KEYED_FRAGMENT */))])])], 2 /* CLASS */)], 8 /* PROPS */, _hoisted_3);
   }), 128 /* KEYED_FRAGMENT */))])]);
 }
 

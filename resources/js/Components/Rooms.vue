@@ -74,8 +74,7 @@ function columnize(menu) {
 		<div class="p-2">
 			<template v-for="(menu, index) in rooms" :key="index">
 				<div :id="menu.title"
-					class="cursor-pointer bg-yellow-400 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full"
-					:class="menu.status ? 'bg-blue-201' : 'hover:to-yellow-600'"
+					class="cursor-pointer bg-yellow-400 hover:bg-yellow-300 hover:text-gray-500 font-mono md:text-2xl tracking-widest w-full"
 					@click="toggleRoom(menu.title); columnize(menu)">
 					<div class="flex justify-between py-4">
 						<div class="m-auto text-xs md:text-xl">{{ menu.title }}</div>

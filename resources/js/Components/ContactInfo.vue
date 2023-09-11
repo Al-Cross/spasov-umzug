@@ -13,8 +13,8 @@ let formData = formDataStore;
 				Anrede *
 			</label>
 			<select id="salutation" v-model="formData.salutation"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 w-36"
-				:class="formData.errors.salutation ? 'border border-red-500' : ''">
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200 w-36"
+				:class="formData.errors.salutation ? 'border border-red-500' : 'border-0'">
 				<option value="" disabled selected>Auswählen</option>
 				<option value="Frau">Frau</option>
 				<option value="Herr">Herr</option>
@@ -28,8 +28,8 @@ let formData = formDataStore;
 				Vorname *
 			</label>
 			<input id="firstName" v-model="formData.first_name" type="text"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-				:class="formData.errors.first_name ? 'border border-red-500' : ''" />
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+				:class="formData.errors.first_name ? 'border-1 border-red-500' : 'border-0'" />
 			<form-error v-if="formData.errors.first_name" error-source="first_name">
 				{{ formData.errors.first_name[0] }}
 			</form-error>
@@ -39,8 +39,8 @@ let formData = formDataStore;
 				Nachname *
 			</label>
 			<input id="lastName" v-model="formData.last_name" type="text"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-				:class="formData.errors.last_name ? 'border border-red-500' : ''" />
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+				:class="formData.errors.last_name ? 'border border-red-500' : 'border-0'" />
 			<form-error v-if="formData.errors.last_name" error-source="last_name">
 				{{ formData.errors.last_name[0] }}
 			</form-error>
@@ -50,8 +50,8 @@ let formData = formDataStore;
 				Telefonnummer *
 			</label>
 			<input id="phone" v-model="formData.phone" type="text"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-				:class="formData.errors.phone ? 'border border-red-500' : ''" />
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+				:class="formData.errors.phone ? 'border border-red-500' : 'border-0'" />
 			<form-error v-if="formData.errors.phone" error-source="phone">
 				{{ formData.errors.phone[0] }}
 			</form-error>
@@ -61,8 +61,8 @@ let formData = formDataStore;
 				Email Adresse *
 			</label>
 			<input id="email" v-model="formData.email" type="email"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-				:class="formData.errors.email ? 'border border-red-500' : ''" />
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+				:class="formData.errors.email ? 'border border-red-500' : 'border-0'" />
 			<form-error v-if="formData.errors.email" error-source="email">
 				{{ formData.errors.email[0] }}
 			</form-error>

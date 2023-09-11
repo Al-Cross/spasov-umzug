@@ -18,8 +18,8 @@ function findPropName(name) {
 				Straße/ Nr. *
 			</label>
 			<input id="street" v-model="formData[findPropName('street')]" type="text"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-				:class="formData.errors[findPropName('street')] ? 'border border-red-500' : ''" />
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+				:class="formData.errors[findPropName('street')] ? 'border border-red-500' : 'border-0'" />
 			<form-error v-if="formData.errors[findPropName('street')]" :error-source="findPropName('street')">
 				{{ formData.errors[findPropName('street')][0] }}
 			</form-error>
@@ -29,8 +29,8 @@ function findPropName(name) {
 				Ort *
 			</label>
 			<input id="location" v-model="formData[findPropName('location')]" type="text"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-				:class="formData.errors[findPropName('location')] ? 'border border-red-500' : ''" />
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+				:class="formData.errors[findPropName('location')] ? 'border border-red-500' : 'border-0'" />
 			<form-error v-if="formData.errors[findPropName('location')]" :error-source="findPropName('location')">
 				{{ formData.errors[findPropName('location')][0] }}
 			</form-error>
@@ -40,8 +40,8 @@ function findPropName(name) {
 				Postleitzahl *
 			</label>
 			<input id="zip" v-model="formData[findPropName('zip')]" type="text"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]"
-				:class="formData.errors[findPropName('zip')] ? 'border border-red-500' : ''" />
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200 lg:w-[10rem] xl:w-[14rem]"
+				:class="formData.errors[findPropName('zip')] ? 'border border-red-500' : 'border-0'" />
 			<form-error v-if="formData.errors[findPropName('zip')]" :error-source="findPropName('zip')">
 				{{ formData.errors[findPropName('zip')][0] }}
 			</form-error>
@@ -51,8 +51,8 @@ function findPropName(name) {
 				Land
 			</label>
 			<select id="province" v-model="formData[findPropName('province')]"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
-				:class="formData.errors[findPropName('province')] ? 'border border-red-500' : ''">
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+				:class="formData.errors[findPropName('province')] ? 'border border-red-500' : 'border-0'">
 				<option disabled selected value="">Auswählen</option>
 				<option v-for="(province, index) in provinces" :key="index" :value="province">
 					{{ province }}
@@ -68,8 +68,8 @@ function findPropName(name) {
 					Etage
 				</label>
 				<input id="floor" v-model="formData[findPropName('floor')]" type="text"
-					class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-					:class="formData.errors[findPropName('floor')] ? 'border border-red-500' : ''" />
+					class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+					:class="formData.errors[findPropName('floor')] ? 'border border-red-500' : 'border-0'" />
 				<form-error v-if="formData.errors[findPropName('floor')]" :error-source="findPropName('floor')">
 					{{ formData.errors[findPropName('floor')][0] }}
 				</form-error>
@@ -79,8 +79,8 @@ function findPropName(name) {
 					Größe m<sup>2</sup> *
 				</label>
 				<input id="sq_m" v-model="formData[findPropName('sq_m')]" type="text"
-					class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-					:class="formData.errors[findPropName('sq_m')] ? 'border border-red-500' : ''" />
+					class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+					:class="formData.errors[findPropName('sq_m')] ? 'border border-red-500' : 'border-0'" />
 				<form-error v-if="formData.errors[findPropName('sq_m')]" :error-source="findPropName('sq_m')">
 					{{ formData.errors[findPropName('sq_m')][0] }}
 				</form-error>
@@ -91,8 +91,8 @@ function findPropName(name) {
 				Fahrstuhl
 			</label>
 			<select id="elevator" v-model="formData[findPropName('elevator')]"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
-				:class="formData.errors[findPropName('elevator')] ? 'border border-red-500' : ''">
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+				:class="formData.errors[findPropName('elevator')] ? 'border border-red-500' : 'border-0'">
 				<option v-for="(elevatorOption, index) in elevator" :key="index" :value="elevatorOption" selected>
 					{{ elevatorOption }}
 				</option>
@@ -107,8 +107,8 @@ function findPropName(name) {
 					Räume *
 				</label>
 				<input id="rooms" v-model="formData[findPropName('rooms')]" type="text"
-					class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-					:class="formData.errors[findPropName('rooms')] ? 'border border-red-500' : ''" />
+					class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+					:class="formData.errors[findPropName('rooms')] ? 'border border-red-500' : 'border-0'" />
 				<form-error v-if="formData.errors[findPropName('rooms')]" :error-source="findPropName('rooms')">
 					{{ formData.errors[findPropName('rooms')][0] }}
 				</form-error>
@@ -119,8 +119,8 @@ function findPropName(name) {
 					Tragestrecke *
 				</label>
 				<input id="carry_distance" v-model="formData[findPropName('carry_distance')]" type="text"
-					class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200"
-					:class="formData.errors[findPropName('carry_distance')] ? 'border border-red-500' : ''" />
+					class="shadow-lg focus:ring-2 focus:ring-yellow-200"
+					:class="formData.errors[findPropName('carry_distance')] ? 'border border-red-500' : 'border-0'" />
 				<form-error v-if="formData.errors[findPropName('carry_distance')]"
 					:error-source="findPropName('carry_distance')">
 					{{ formData.errors[findPropName('carry_distance')][0] }}
@@ -132,8 +132,8 @@ function findPropName(name) {
 				Gebäudeart
 			</label>
 			<select id="building_type" v-model="formData[findPropName('building_type')]"
-				class="border-0 shadow-lg hover:border-yellow-200 focus:ring-2 focus:ring-yellow-200 cursor-pointer"
-				:class="formData.errors[findPropName('building_type')] ? 'border border-red-500' : ''">
+				class="shadow-lg focus:ring-2 focus:ring-yellow-200 cursor-pointer"
+				:class="formData.errors[findPropName('building_type')] ? 'border border-red-500' : 'border-0'">
 				<option value="" selected disabled>Auswählen</option>
 				<option v-for="(type, index) in buildingTypes" :key="index" :value="type">
 					{{ type }}
