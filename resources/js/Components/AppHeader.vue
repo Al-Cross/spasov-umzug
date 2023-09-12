@@ -1,18 +1,37 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { links } from '../../data/header-links.js';
 
 const mobileMenuOpen = ref(false);
+
+onMounted(() => {
+	const headerContainer = document.getElementById('header-container');
+	const header = document.getElementById('header');
+	const slatedEl = document.getElementById('slated');
+	const scrollWatcher = document.createElement('div');
+	
+	scrollWatcher.setAttribute('data-scroll-watcher', '');
+	headerContainer.before(scrollWatcher);
+
+	const navObserver = new IntersectionObserver((entries) => {
+		header.classList.toggle('bg-yellow-600', !entries[0].isIntersecting);
+		slatedEl.classList.toggle('bg-yellow-600', !entries[0].isIntersecting);
+		header.classList.toggle('text-yellow-400', entries[0].isIntersecting);
+		header.classList.toggle('text-white', !entries[0].isIntersecting);
+	}, { rootMargin: "200px 0px 0px 0px"});
+
+	navObserver.observe(scrollWatcher);
+});
 </script>
 
 <template>
-	<div style="background-image: url({{ asset('/storage/images/privat.jpg') }}); @media(max-width: 800px) {height: calc(0.664 * 100vw);} height: calc(0.364 * 100vw);"
+	<div id="header-container" style="background-image: url({{ asset('/storage/images/privat.jpg') }}); @media(max-width: 800px) {height: calc(0.664 * 100vw);} height: calc(0.364 * 100vw);"
 		class="lg:bg-center bg-cover sticky top-0">
-		<header
-			class="flex justify-between lg:bg-white md:p-4 z-50 text-lg bg-green-300 text-yellow-400 text-right font-extrabold uppercase md:w-3/4 md:m-auto">
-			<div class="absolute inset-y-0 left-44 h-16 w-6 bg-white transform -skew-x-[8deg]"></div>
+		<header id="header"
+			class="flex justify-between md:p-4 z-50 text-lg text-yellow-400 text-right font-extrabold md:w-3/4 md:m-auto">
+			<div id="slated" class="hidden xl:block absolute inset-y-0 left-44 h-16 w-6 transform -skew-x-[8deg]"></div>
 			<a href="#" class="block">INSERT LOGO HERE</a>
-			<button type="button" class="inline-block xl:hidden w-8 h-8 bg-yellow-200 text-yellow-400 p-1"
+			<button type="button" class="inline-block xl:hidden w-8 h-8 text-yellow-400 p-1"
 				@click="mobileMenuOpen = !mobileMenuOpen">
 				<svg class="w-6 h-6" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24"
 					xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +40,7 @@ const mobileMenuOpen = ref(false);
 			</button>
 			<Transition name="nav">
 				<nav v-if="mobileMenuOpen"
-					class="absolute flex xl:hidden top-5 md:top-16 left-0 md:left-[12.5%] z-20 mt-2 flex-col bg-green-300 w-full md:w-3/4 md:m-auto p-6">
+					class="absolute flex xl:hidden top-5 md:top-16 left-0 md:left-[12.5%] z-20 mt-2 flex-col bg-yellow-600 w-full md:w-3/4 md:m-auto p-6">
 					<a v-for="(anchor, index) in links" :key="index" :href="anchor.url"
 						class="hover:bg-yellow-100 px-5 py-1.5 rounded-full"
 						:style="{ animation: mobileMenuOpen ? 'fadeIn 0.7s ease-in' : '' }">
