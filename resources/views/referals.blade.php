@@ -1,5 +1,5 @@
 <x-layout>
-	<x-header></x-header>
+	<app-header></app-header>
 	<div class="lg:background lg:bg-center pt-8 lg:bg-cover">
 		<div class="container mx-auto px-8 lg:px-24">
 			<span class="font-extrabold text-2xl">Einblick in unsere Empfehlungen</span>

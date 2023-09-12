@@ -1,3 +1,29 @@
+.nav-enter-active,
+.nav-leave-active {
+    transition: transform 0.5s ease;
+    transform-origin: top;
+}
+
+.nav-enter-from,
+.nav-leave-to {
+    transform: scale(1, 0);
+}
+
+.nav-enter-to,
+.nav-leave-from {
+    transform: scale(1, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .lds-facebook {
     display: inline-block;
     position: relative;

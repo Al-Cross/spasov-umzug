@@ -1,4 +1,4 @@
 <x-layout title="Spasovs Umzugsrechner">
-    <x-header></x-header>
+    <app-header></app-header>
     <Dropdown />
 </x-layout>

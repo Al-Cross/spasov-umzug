@@ -1,5 +1,5 @@
 <x-layout>
-	<x-header>Leistungsübersicht für Ihren Umzug</x-header>
+	<app-header></app-header>
 	<div class="lg:background lg:bg-center lg:bg-cover">
 		<div class="container mx-auto px-8 lg:px-24">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 pt-16 pb-16">

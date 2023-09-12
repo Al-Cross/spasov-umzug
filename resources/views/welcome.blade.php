@@ -1,32 +1,5 @@
 <x-layout>
-    <div style="background-image: url({{ asset('/storage/images/landing-page.jpg') }}); @media(max-width: 800px) {height: calc(0.664 * 100vw);} height: calc(0.364 * 100vw);" class="lg:bg-center bg-cover">
-        <header class="flex flex-wrap md:fixed flex-row justify-between md:space-x-4 w-full md:p-10 md:z-50 text-lg text-yellow-400 md:z-50 text-right font-extrabold uppercase pt-10 fade-header">
-            <a href="#" class="block">INSERT LOGO HERE</a>
-            <button type="button" @click="mobileMenuOpen = !mobileMenuOpen" class="inline-block md:hidden w-8 h-8 bg-yellow-200 text-yellow-400 p-1">
-                <svg class="w-6 h-6" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-            <nav
-                :class="{ 'flex' : mobileMenuOpen, 'hidden' : !mobileMenuOpen }"
-                @click.away="mobileMenuOpen = false"
-                class="absolute md:block md:relative top-16 left-0 md:top-0 z-20 mt-2 md:mt-0 flex-col md:flex-row md:space-x-6 w-full md:w-auto md:bg-transparent p-6 md:p-0">
-                <a href="#" class="hover:bg-yellow-100 px-5 py-1.5 rounded-full">Home</a>
-                <a href="/services" class="hover:bg-yellow-100 px-5 py-1.5 rounded-full">Leistungen</a>
-                <a href="#" class="hover:bg-yellow-100 px-5 py-1.5 rounded-full">Facility Service</a>
-                <a href="#" class="hover:bg-yellow-100 px-5 py-1.5 rounded-full">Referenzen</a>
-                <a href="/calculator" class="hover:bg-yellow-100 px-5 py-1.5 rounded-full">Umzugsanfrage</a>
-                <a href="#" class="hover:bg-yellow-100 px-5 py-1.5 rounded-full">AGB</a>
-                <a href="#" class="hover:bg-yellow-100 px-5 py-1.5 rounded-full">Kontakt</a>
-            </nav>
-        </header> <!-- End Menu -->
-        <div class="container py-36 space-x-11 mt-48 md:mt-0">
-            <span class="lg:text-6xl text-3xl text-yellow-400 font-extrabold uppercase pl-11">Make Your Next Move</span>
-            <div class="border-b-4 border-yellow-400 w-48 ml-12 mt-5"></div>
-            <div class="w-1/2 mt-11 mb-16">
-                <span class="text-2xl text-white">Als Umzugsunternehmen sind wir Ihr kompetenter Ansprechpartner für Ihren bevorstehenden Umzug in Raum Karlsruhe, Baden-Württemberg und ganz Deutschland.</span>
-            </div>
-            <a href="#" class="text-white bg-yellow-700 font-extrabold hover:-translate-y-0.5 transform inline-block transition px-5 py-1 rounded active:bg-yellow-800 hover:bg-yellow-600">Zur Umzugsanfrage</a>
-        </div>
-    </div> <!-- End header -->
+    <app-header>Make your next move</app-header>
 
     <!-- Motto -->
     <div class="lg:py-48 lg:p-24 bg-gradient-to-b from-gray-300 to-gray-100 p-10 py-11">
