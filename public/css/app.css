@@ -722,8 +722,15 @@ select {
 .relative {
   position: relative;
 }
+.sticky {
+  position: sticky;
+}
 .inset-0 {
   inset: 0px;
+}
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px;
 }
 .bottom-20 {
   bottom: 5rem;
@@ -748,6 +755,54 @@ select {
 }
 .top-5 {
   top: 1.25rem;
+}
+.top-0 {
+  top: 0px;
+}
+.left-40 {
+  left: 10rem;
+}
+.left-20 {
+  left: 5rem;
+}
+.left-28 {
+  left: 7rem;
+}
+.left-\[7\.5rem\] {
+  left: 7.5rem;
+}
+.left-\[7\.7rem\] {
+  left: 7.7rem;
+}
+.left-\[7\.8rem\] {
+  left: 7.8rem;
+}
+.left-\[8rem\] {
+  left: 8rem;
+}
+.left-\[18\%\] {
+  left: 18%;
+}
+.left-\[10\%\] {
+  left: 10%;
+}
+.left-\[12\%\] {
+  left: 12%;
+}
+.left-\[13\%\] {
+  left: 13%;
+}
+.left-\[12\.5\%\] {
+  left: 12.5%;
+}
+.left-12 {
+  left: 3rem;
+}
+.left-4 {
+  left: 1rem;
+}
+.left-44 {
+  left: 11rem;
 }
 .z-20 {
   z-index: 20;
@@ -879,6 +934,9 @@ select {
 .h-1 {
   height: 0.25rem;
 }
+.h-16 {
+  height: 4rem;
+}
 .w-1\/2 {
   width: 50%;
 }
@@ -917,6 +975,22 @@ select {
 }
 .origin-center {
   transform-origin: center;
+}
+.-skew-x-6 {
+  --tw-skew-x: -6deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-skew-x-12 {
+  --tw-skew-x: -12deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-skew-x-\[10deg\] {
+  --tw-skew-x: -10deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-skew-x-\[8deg\] {
+  --tw-skew-x: -8deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .scale-x-100 {
   --tw-scale-x: 1;
@@ -1822,12 +1896,32 @@ select {
     top: 2.5rem;
   }
 
+  .md\:left-\[12\.5\%\] {
+    left: 12.5%;
+  }
+
+  .md\:top-11 {
+    top: 2.75rem;
+  }
+
+  .md\:top-12 {
+    top: 3rem;
+  }
+
+  .md\:top-16 {
+    top: 4rem;
+  }
+
   .md\:z-50 {
     z-index: 50;
   }
 
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
+  }
+
+  .md\:m-auto {
+    margin: auto;
   }
 
   .md\:mt-0 {
@@ -1852,6 +1946,10 @@ select {
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:w-3\/4 {
+    width: 75%;
   }
 
   .md\:grid-cols-2 {
@@ -1940,6 +2038,10 @@ select {
 
   .lg\:fixed {
     position: fixed;
+  }
+
+  .lg\:sticky {
+    position: sticky;
   }
 
   .lg\:col-span-1 {
@@ -2138,6 +2240,10 @@ select {
 
   .xl\:grid {
     display: grid;
+  }
+
+  .xl\:hidden {
+    display: none;
   }
 
   .xl\:w-\[14rem\] {
